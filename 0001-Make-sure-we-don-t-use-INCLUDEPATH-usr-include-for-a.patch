@@ -1,0 +1,36 @@
+From c46150c37583fa4ec48ab5aa1ef4f0036becb848 Mon Sep 17 00:00:00 2001
+From: Thiago Macieira <thiago.macieira@intel.com>
+Date: Mon, 16 Oct 2017 21:37:39 -0700
+Subject: [PATCH 1/1] Make sure we don't use INCLUDEPATH += /usr/include for
+ all LLVM
+
+Not just for version 3.9. The issue is with qmake + GCC, not LLVM.
+
+Change-Id: Icaa86fc7b54d4b368c0efffd14ee419b009e10f2
+---
+ src/shared/clang/clang_installation.pri | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/shared/clang/clang_installation.pri b/src/shared/clang/clang_installation.pri
+index 63ad0ad538..0769e9cd38 100644
+--- a/src/shared/clang/clang_installation.pri
++++ b/src/shared/clang/clang_installation.pri
+@@ -135,6 +135,7 @@ isEmpty(LLVM_VERSION) {
+         $$llvmWarningOrError("Cannot find Clang shared library in $$LLVM_LIBDIR")
+     }
+ 
++    contains(QMAKE_DEFAULT_INCDIRS, $$LLVM_INCLUDEPATH): LLVM_INCLUDEPATH =
+     !contains(QMAKE_DEFAULT_LIBDIRS, $$LLVM_LIBDIR): LIBCLANG_LIBS = -L$${LLVM_LIBDIR}
+     LIBCLANG_LIBS += $${CLANG_LIB}
+ 
+@@ -142,7 +143,6 @@ isEmpty(LLVM_VERSION) {
+     isEmpty(QTC_NO_CLANG_LIBTOOLING) {
+         QTC_FORCE_CLANG_LIBTOOLING = $$(QTC_FORCE_CLANG_LIBTOOLING)
+         versionIsEqual($$LLVM_VERSION, 5, 0)|!isEmpty(QTC_FORCE_CLANG_LIBTOOLING) {
+-            !contains(QMAKE_DEFAULT_LIBDIRS, $$LLVM_LIBDIR): LIBTOOLING_LIBS = -L$${LLVM_LIBDIR}
+             LIBTOOLING_LIBS += $$CLANGTOOLING_LIBS $$LLVM_STATIC_LIBS
+             contains(QMAKE_DEFAULT_INCDIRS, $$LLVM_INCLUDEPATH): LLVM_INCLUDEPATH =
+         } else {
+-- 
+2.18.0
+
