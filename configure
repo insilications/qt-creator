@@ -1,3 +1,5 @@
+-config nostrip
+-config use_system_botan
 LLVM_INSTALL_DIR=/usr
 QTC_PREFIX=/usr
--config nostrip
+IDE_LIBRARY_BASENAME=lib64

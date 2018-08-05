@@ -4,7 +4,7 @@
 #
 Name     : qt-creator
 Version  : 4.7.0
-Release  : 6
+Release  : 7
 URL      : http://download.qt.io/official_releases/qtcreator/4.7/4.7.0/qt-creator-opensource-src-4.7.0.tar.xz
 Source0  : http://download.qt.io/official_releases/qtcreator/4.7/4.7.0/qt-creator-opensource-src-4.7.0.tar.xz
 Summary  : dummy2 package
@@ -14,7 +14,9 @@ Requires: qt-creator-bin
 Requires: qt-creator-lib
 Requires: qt-creator-data
 Requires: qt-creator-license
-BuildRequires : cmake
+BuildRequires : Botan-dev
+BuildRequires : buildreq-cmake
+BuildRequires : buildreq-qmake
 BuildRequires : llvm-dev
 BuildRequires : mesa-dev
 BuildRequires : pkgconfig(Qt5Concurrent)
@@ -36,8 +38,8 @@ BuildRequires : pkgconfig(Qt5Svg)
 BuildRequires : pkgconfig(Qt5Test)
 BuildRequires : pkgconfig(Qt5Widgets)
 BuildRequires : pkgconfig(Qt5Xml)
-BuildRequires : qtbase-dev
-BuildRequires : qtbase-extras
+BuildRequires : qtbase-dev qtbase-extras mesa-dev
+Patch1: 0001-Build-with-Botan-2.patch
 
 %description
 Prerequisites - general information
@@ -90,42 +92,45 @@ license components for the qt-creator package.
 
 %prep
 %setup -q -n qt-creator-opensource-src-4.7.0
+%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-%qmake -config ltcg LLVM_INSTALL_DIR=/usr \
+%qmake -config ltcg -config nostrip \
+-config use_system_botan \
+LLVM_INSTALL_DIR=/usr \
 QTC_PREFIX=/usr \
--config nostrip
+IDE_LIBRARY_BASENAME=lib64
 test -r config.log && cat config.log
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1531936333
+export SOURCE_DATE_EPOCH=1533501362
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/qt-creator
 cp LICENSE.GPL3-EXCEPT %{buildroot}/usr/share/doc/qt-creator/LICENSE.GPL3-EXCEPT
-cp src/shared/qbs/LICENSE.LGPLv3 %{buildroot}/usr/share/doc/qt-creator/src_shared_qbs_LICENSE.LGPLv3
-cp src/shared/qbs/LICENSE.LGPLv21 %{buildroot}/usr/share/doc/qt-creator/src_shared_qbs_LICENSE.LGPLv21
-cp src/shared/qbs/LICENSE.GPL3-EXCEPT %{buildroot}/usr/share/doc/qt-creator/src_shared_qbs_LICENSE.GPL3-EXCEPT
-cp src/shared/qbs/src/3rdparty/python/lib/python2.7/site-packages/mac_alias/LICENSE %{buildroot}/usr/share/doc/qt-creator/src_shared_qbs_src_3rdparty_python_lib_python2.7_site-packages_mac_alias_LICENSE
-cp src/shared/qbs/src/3rdparty/python/lib/python2.7/site-packages/ds_store/LICENSE %{buildroot}/usr/share/doc/qt-creator/src_shared_qbs_src_3rdparty_python_lib_python2.7_site-packages_ds_store_LICENSE
-cp src/shared/qbs/src/3rdparty/python/lib/python2.7/site-packages/dmgbuild/LICENSE %{buildroot}/usr/share/doc/qt-creator/src_shared_qbs_src_3rdparty_python_lib_python2.7_site-packages_dmgbuild_LICENSE
-cp src/shared/qbs/src/3rdparty/python/lib/python2.7/site-packages/biplist/LICENSE %{buildroot}/usr/share/doc/qt-creator/src_shared_qbs_src_3rdparty_python_lib_python2.7_site-packages_biplist_LICENSE
-cp src/shared/qbs/examples/cocoa-application/CocoaApplication/en.lproj/LICENSE %{buildroot}/usr/share/doc/qt-creator/src_shared_qbs_examples_cocoa-application_CocoaApplication_en.lproj_LICENSE
-cp src/libs/3rdparty/variant/LICENSE.md %{buildroot}/usr/share/doc/qt-creator/src_libs_3rdparty_variant_LICENSE.md
-cp src/libs/3rdparty/optional/copyright.txt %{buildroot}/usr/share/doc/qt-creator/src_libs_3rdparty_optional_copyright.txt
-cp src/libs/3rdparty/optional/LICENSE_1_0.txt %{buildroot}/usr/share/doc/qt-creator/src_libs_3rdparty_optional_LICENSE_1_0.txt
-cp src/libs/3rdparty/botan/doc/license.txt %{buildroot}/usr/share/doc/qt-creator/src_libs_3rdparty_botan_doc_license.txt
 cp share/qtcreator/debugger/LICENSE.GPL3-EXCEPT %{buildroot}/usr/share/doc/qt-creator/share_qtcreator_debugger_LICENSE.GPL3-EXCEPT
+cp src/libs/3rdparty/botan/doc/license.txt %{buildroot}/usr/share/doc/qt-creator/src_libs_3rdparty_botan_doc_license.txt
+cp src/libs/3rdparty/optional/LICENSE_1_0.txt %{buildroot}/usr/share/doc/qt-creator/src_libs_3rdparty_optional_LICENSE_1_0.txt
+cp src/libs/3rdparty/optional/copyright.txt %{buildroot}/usr/share/doc/qt-creator/src_libs_3rdparty_optional_copyright.txt
+cp src/libs/3rdparty/variant/LICENSE.md %{buildroot}/usr/share/doc/qt-creator/src_libs_3rdparty_variant_LICENSE.md
+cp src/shared/qbs/LICENSE.GPL3-EXCEPT %{buildroot}/usr/share/doc/qt-creator/src_shared_qbs_LICENSE.GPL3-EXCEPT
+cp src/shared/qbs/LICENSE.LGPLv21 %{buildroot}/usr/share/doc/qt-creator/src_shared_qbs_LICENSE.LGPLv21
+cp src/shared/qbs/LICENSE.LGPLv3 %{buildroot}/usr/share/doc/qt-creator/src_shared_qbs_LICENSE.LGPLv3
+cp src/shared/qbs/examples/cocoa-application/CocoaApplication/en.lproj/LICENSE %{buildroot}/usr/share/doc/qt-creator/src_shared_qbs_examples_cocoa-application_CocoaApplication_en.lproj_LICENSE
+cp src/shared/qbs/src/3rdparty/python/lib/python2.7/site-packages/biplist/LICENSE %{buildroot}/usr/share/doc/qt-creator/src_shared_qbs_src_3rdparty_python_lib_python2.7_site-packages_biplist_LICENSE
+cp src/shared/qbs/src/3rdparty/python/lib/python2.7/site-packages/dmgbuild/LICENSE %{buildroot}/usr/share/doc/qt-creator/src_shared_qbs_src_3rdparty_python_lib_python2.7_site-packages_dmgbuild_LICENSE
+cp src/shared/qbs/src/3rdparty/python/lib/python2.7/site-packages/ds_store/LICENSE %{buildroot}/usr/share/doc/qt-creator/src_shared_qbs_src_3rdparty_python_lib_python2.7_site-packages_ds_store_LICENSE
+cp src/shared/qbs/src/3rdparty/python/lib/python2.7/site-packages/mac_alias/LICENSE %{buildroot}/usr/share/doc/qt-creator/src_shared_qbs_src_3rdparty_python_lib_python2.7_site-packages_mac_alias_LICENSE
 %make_install
 
 %files
 %defattr(-,root,root,-)
-%exclude /usr/lib/qtcreator/libqbscore.prl
-%exclude /usr/lib/qtcreator/libqbsqtprofilesetup.prl
+/usr/lib64/qtcreator/libqbscore.prl
+/usr/lib64/qtcreator/libqbsqtprofilesetup.prl
 
 %files bin
 %defattr(-,root,root,-)
@@ -1022,137 +1027,137 @@ cp share/qtcreator/debugger/LICENSE.GPL3-EXCEPT %{buildroot}/usr/share/doc/qt-cr
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib/qtcreator/libAggregation.so
-/usr/lib/qtcreator/libAggregation.so.4
-/usr/lib/qtcreator/libAggregation.so.4.7
-/usr/lib/qtcreator/libAggregation.so.4.7.0
-/usr/lib/qtcreator/libCPlusPlus.so
-/usr/lib/qtcreator/libCPlusPlus.so.4
-/usr/lib/qtcreator/libCPlusPlus.so.4.7
-/usr/lib/qtcreator/libCPlusPlus.so.4.7.0
-/usr/lib/qtcreator/libClangsupport.so
-/usr/lib/qtcreator/libClangsupport.so.4
-/usr/lib/qtcreator/libClangsupport.so.4.7
-/usr/lib/qtcreator/libClangsupport.so.4.7.0
-/usr/lib/qtcreator/libExtensionSystem.so
-/usr/lib/qtcreator/libExtensionSystem.so.4
-/usr/lib/qtcreator/libExtensionSystem.so.4.7
-/usr/lib/qtcreator/libExtensionSystem.so.4.7.0
-/usr/lib/qtcreator/libGLSL.so
-/usr/lib/qtcreator/libGLSL.so.4
-/usr/lib/qtcreator/libGLSL.so.4.7
-/usr/lib/qtcreator/libGLSL.so.4.7.0
-/usr/lib/qtcreator/libLanguageUtils.so
-/usr/lib/qtcreator/libLanguageUtils.so.4
-/usr/lib/qtcreator/libLanguageUtils.so.4.7
-/usr/lib/qtcreator/libLanguageUtils.so.4.7.0
-/usr/lib/qtcreator/libModeling.so
-/usr/lib/qtcreator/libModeling.so.4
-/usr/lib/qtcreator/libModeling.so.4.7
-/usr/lib/qtcreator/libModeling.so.4.7.0
-/usr/lib/qtcreator/libQmlDebug.so
-/usr/lib/qtcreator/libQmlDebug.so.4
-/usr/lib/qtcreator/libQmlDebug.so.4.7
-/usr/lib/qtcreator/libQmlDebug.so.4.7.0
-/usr/lib/qtcreator/libQmlEditorWidgets.so
-/usr/lib/qtcreator/libQmlEditorWidgets.so.4
-/usr/lib/qtcreator/libQmlEditorWidgets.so.4.7
-/usr/lib/qtcreator/libQmlEditorWidgets.so.4.7.0
-/usr/lib/qtcreator/libQmlJS.so
-/usr/lib/qtcreator/libQmlJS.so.4
-/usr/lib/qtcreator/libQmlJS.so.4.7
-/usr/lib/qtcreator/libQmlJS.so.4.7.0
-/usr/lib/qtcreator/libQtcSsh.so
-/usr/lib/qtcreator/libQtcSsh.so.4
-/usr/lib/qtcreator/libQtcSsh.so.4.7
-/usr/lib/qtcreator/libQtcSsh.so.4.7.0
-/usr/lib/qtcreator/libSqlite.so
-/usr/lib/qtcreator/libSqlite.so.4
-/usr/lib/qtcreator/libSqlite.so.4.7
-/usr/lib/qtcreator/libSqlite.so.4.7.0
-/usr/lib/qtcreator/libTracing.so
-/usr/lib/qtcreator/libTracing.so.4
-/usr/lib/qtcreator/libTracing.so.4.7
-/usr/lib/qtcreator/libTracing.so.4.7.0
-/usr/lib/qtcreator/libUtils.so
-/usr/lib/qtcreator/libUtils.so.4
-/usr/lib/qtcreator/libUtils.so.4.7
-/usr/lib/qtcreator/libUtils.so.4.7.0
-/usr/lib/qtcreator/libqbscore.so
-/usr/lib/qtcreator/libqbscore.so.1
-/usr/lib/qtcreator/libqbscore.so.1.12
-/usr/lib/qtcreator/libqbscore.so.1.12.0
-/usr/lib/qtcreator/libqbsqtprofilesetup.so
-/usr/lib/qtcreator/libqbsqtprofilesetup.so.1
-/usr/lib/qtcreator/libqbsqtprofilesetup.so.1.12
-/usr/lib/qtcreator/libqbsqtprofilesetup.so.1.12.0
-/usr/lib/qtcreator/plugins/libAndroid.so
-/usr/lib/qtcreator/plugins/libAutoTest.so
-/usr/lib/qtcreator/plugins/libAutotoolsProjectManager.so
-/usr/lib/qtcreator/plugins/libBareMetal.so
-/usr/lib/qtcreator/plugins/libBazaar.so
-/usr/lib/qtcreator/plugins/libBeautifier.so
-/usr/lib/qtcreator/plugins/libBinEditor.so
-/usr/lib/qtcreator/plugins/libBookmarks.so
-/usr/lib/qtcreator/plugins/libCMakeProjectManager.so
-/usr/lib/qtcreator/plugins/libCVS.so
-/usr/lib/qtcreator/plugins/libClangCodeModel.so
-/usr/lib/qtcreator/plugins/libClangPchManager.so
-/usr/lib/qtcreator/plugins/libClangRefactoring.so
-/usr/lib/qtcreator/plugins/libClangTools.so
-/usr/lib/qtcreator/plugins/libClassView.so
-/usr/lib/qtcreator/plugins/libClearCase.so
-/usr/lib/qtcreator/plugins/libCodePaster.so
-/usr/lib/qtcreator/plugins/libCore.so
-/usr/lib/qtcreator/plugins/libCppEditor.so
-/usr/lib/qtcreator/plugins/libCppTools.so
-/usr/lib/qtcreator/plugins/libDebugger.so
-/usr/lib/qtcreator/plugins/libDesigner.so
-/usr/lib/qtcreator/plugins/libDiffEditor.so
-/usr/lib/qtcreator/plugins/libEmacsKeys.so
-/usr/lib/qtcreator/plugins/libFakeVim.so
-/usr/lib/qtcreator/plugins/libGLSLEditor.so
-/usr/lib/qtcreator/plugins/libGenericProjectManager.so
-/usr/lib/qtcreator/plugins/libGit.so
-/usr/lib/qtcreator/plugins/libHelloWorld.so
-/usr/lib/qtcreator/plugins/libHelp.so
-/usr/lib/qtcreator/plugins/libImageViewer.so
-/usr/lib/qtcreator/plugins/libIos.so
-/usr/lib/qtcreator/plugins/libMacros.so
-/usr/lib/qtcreator/plugins/libMercurial.so
-/usr/lib/qtcreator/plugins/libModelEditor.so
-/usr/lib/qtcreator/plugins/libNim.so
-/usr/lib/qtcreator/plugins/libPerforce.so
-/usr/lib/qtcreator/plugins/libProjectExplorer.so
-/usr/lib/qtcreator/plugins/libPythonEditor.so
-/usr/lib/qtcreator/plugins/libQbsProjectManager.so
-/usr/lib/qtcreator/plugins/libQmakeAndroidSupport.so
-/usr/lib/qtcreator/plugins/libQmakeProjectManager.so
-/usr/lib/qtcreator/plugins/libQmlJSEditor.so
-/usr/lib/qtcreator/plugins/libQmlJSTools.so
-/usr/lib/qtcreator/plugins/libQmlProfiler.so
-/usr/lib/qtcreator/plugins/libQmlProjectManager.so
-/usr/lib/qtcreator/plugins/libQnx.so
-/usr/lib/qtcreator/plugins/libQtSupport.so
-/usr/lib/qtcreator/plugins/libRemoteLinux.so
-/usr/lib/qtcreator/plugins/libResourceEditor.so
-/usr/lib/qtcreator/plugins/libScxmlEditor.so
-/usr/lib/qtcreator/plugins/libSerialTerminal.so
-/usr/lib/qtcreator/plugins/libSilverSearcher.so
-/usr/lib/qtcreator/plugins/libSubversion.so
-/usr/lib/qtcreator/plugins/libTaskList.so
-/usr/lib/qtcreator/plugins/libTextEditor.so
-/usr/lib/qtcreator/plugins/libTodo.so
-/usr/lib/qtcreator/plugins/libUpdateInfo.so
-/usr/lib/qtcreator/plugins/libValgrind.so
-/usr/lib/qtcreator/plugins/libVcsBase.so
-/usr/lib/qtcreator/plugins/libWelcome.so
-/usr/lib/qtcreator/plugins/libWinRt.so
-/usr/lib/qtcreator/plugins/qbs/plugins/libclangcompilationdbgenerator.so
-/usr/lib/qtcreator/plugins/qbs/plugins/libmakefilegenerator.so
-/usr/lib/qtcreator/plugins/qbs/plugins/libqbs_cpp_scanner.so
-/usr/lib/qtcreator/plugins/qbs/plugins/libqbs_qt_scanner.so
-/usr/lib/qtcreator/plugins/qbs/plugins/libvisualstudiogenerator.so
+/usr/lib64/qtcreator/libAggregation.so
+/usr/lib64/qtcreator/libAggregation.so.4
+/usr/lib64/qtcreator/libAggregation.so.4.7
+/usr/lib64/qtcreator/libAggregation.so.4.7.0
+/usr/lib64/qtcreator/libCPlusPlus.so
+/usr/lib64/qtcreator/libCPlusPlus.so.4
+/usr/lib64/qtcreator/libCPlusPlus.so.4.7
+/usr/lib64/qtcreator/libCPlusPlus.so.4.7.0
+/usr/lib64/qtcreator/libClangsupport.so
+/usr/lib64/qtcreator/libClangsupport.so.4
+/usr/lib64/qtcreator/libClangsupport.so.4.7
+/usr/lib64/qtcreator/libClangsupport.so.4.7.0
+/usr/lib64/qtcreator/libExtensionSystem.so
+/usr/lib64/qtcreator/libExtensionSystem.so.4
+/usr/lib64/qtcreator/libExtensionSystem.so.4.7
+/usr/lib64/qtcreator/libExtensionSystem.so.4.7.0
+/usr/lib64/qtcreator/libGLSL.so
+/usr/lib64/qtcreator/libGLSL.so.4
+/usr/lib64/qtcreator/libGLSL.so.4.7
+/usr/lib64/qtcreator/libGLSL.so.4.7.0
+/usr/lib64/qtcreator/libLanguageUtils.so
+/usr/lib64/qtcreator/libLanguageUtils.so.4
+/usr/lib64/qtcreator/libLanguageUtils.so.4.7
+/usr/lib64/qtcreator/libLanguageUtils.so.4.7.0
+/usr/lib64/qtcreator/libModeling.so
+/usr/lib64/qtcreator/libModeling.so.4
+/usr/lib64/qtcreator/libModeling.so.4.7
+/usr/lib64/qtcreator/libModeling.so.4.7.0
+/usr/lib64/qtcreator/libQmlDebug.so
+/usr/lib64/qtcreator/libQmlDebug.so.4
+/usr/lib64/qtcreator/libQmlDebug.so.4.7
+/usr/lib64/qtcreator/libQmlDebug.so.4.7.0
+/usr/lib64/qtcreator/libQmlEditorWidgets.so
+/usr/lib64/qtcreator/libQmlEditorWidgets.so.4
+/usr/lib64/qtcreator/libQmlEditorWidgets.so.4.7
+/usr/lib64/qtcreator/libQmlEditorWidgets.so.4.7.0
+/usr/lib64/qtcreator/libQmlJS.so
+/usr/lib64/qtcreator/libQmlJS.so.4
+/usr/lib64/qtcreator/libQmlJS.so.4.7
+/usr/lib64/qtcreator/libQmlJS.so.4.7.0
+/usr/lib64/qtcreator/libQtcSsh.so
+/usr/lib64/qtcreator/libQtcSsh.so.4
+/usr/lib64/qtcreator/libQtcSsh.so.4.7
+/usr/lib64/qtcreator/libQtcSsh.so.4.7.0
+/usr/lib64/qtcreator/libSqlite.so
+/usr/lib64/qtcreator/libSqlite.so.4
+/usr/lib64/qtcreator/libSqlite.so.4.7
+/usr/lib64/qtcreator/libSqlite.so.4.7.0
+/usr/lib64/qtcreator/libTracing.so
+/usr/lib64/qtcreator/libTracing.so.4
+/usr/lib64/qtcreator/libTracing.so.4.7
+/usr/lib64/qtcreator/libTracing.so.4.7.0
+/usr/lib64/qtcreator/libUtils.so
+/usr/lib64/qtcreator/libUtils.so.4
+/usr/lib64/qtcreator/libUtils.so.4.7
+/usr/lib64/qtcreator/libUtils.so.4.7.0
+/usr/lib64/qtcreator/libqbscore.so
+/usr/lib64/qtcreator/libqbscore.so.1
+/usr/lib64/qtcreator/libqbscore.so.1.12
+/usr/lib64/qtcreator/libqbscore.so.1.12.0
+/usr/lib64/qtcreator/libqbsqtprofilesetup.so
+/usr/lib64/qtcreator/libqbsqtprofilesetup.so.1
+/usr/lib64/qtcreator/libqbsqtprofilesetup.so.1.12
+/usr/lib64/qtcreator/libqbsqtprofilesetup.so.1.12.0
+/usr/lib64/qtcreator/plugins/libAndroid.so
+/usr/lib64/qtcreator/plugins/libAutoTest.so
+/usr/lib64/qtcreator/plugins/libAutotoolsProjectManager.so
+/usr/lib64/qtcreator/plugins/libBareMetal.so
+/usr/lib64/qtcreator/plugins/libBazaar.so
+/usr/lib64/qtcreator/plugins/libBeautifier.so
+/usr/lib64/qtcreator/plugins/libBinEditor.so
+/usr/lib64/qtcreator/plugins/libBookmarks.so
+/usr/lib64/qtcreator/plugins/libCMakeProjectManager.so
+/usr/lib64/qtcreator/plugins/libCVS.so
+/usr/lib64/qtcreator/plugins/libClangCodeModel.so
+/usr/lib64/qtcreator/plugins/libClangPchManager.so
+/usr/lib64/qtcreator/plugins/libClangRefactoring.so
+/usr/lib64/qtcreator/plugins/libClangTools.so
+/usr/lib64/qtcreator/plugins/libClassView.so
+/usr/lib64/qtcreator/plugins/libClearCase.so
+/usr/lib64/qtcreator/plugins/libCodePaster.so
+/usr/lib64/qtcreator/plugins/libCore.so
+/usr/lib64/qtcreator/plugins/libCppEditor.so
+/usr/lib64/qtcreator/plugins/libCppTools.so
+/usr/lib64/qtcreator/plugins/libDebugger.so
+/usr/lib64/qtcreator/plugins/libDesigner.so
+/usr/lib64/qtcreator/plugins/libDiffEditor.so
+/usr/lib64/qtcreator/plugins/libEmacsKeys.so
+/usr/lib64/qtcreator/plugins/libFakeVim.so
+/usr/lib64/qtcreator/plugins/libGLSLEditor.so
+/usr/lib64/qtcreator/plugins/libGenericProjectManager.so
+/usr/lib64/qtcreator/plugins/libGit.so
+/usr/lib64/qtcreator/plugins/libHelloWorld.so
+/usr/lib64/qtcreator/plugins/libHelp.so
+/usr/lib64/qtcreator/plugins/libImageViewer.so
+/usr/lib64/qtcreator/plugins/libIos.so
+/usr/lib64/qtcreator/plugins/libMacros.so
+/usr/lib64/qtcreator/plugins/libMercurial.so
+/usr/lib64/qtcreator/plugins/libModelEditor.so
+/usr/lib64/qtcreator/plugins/libNim.so
+/usr/lib64/qtcreator/plugins/libPerforce.so
+/usr/lib64/qtcreator/plugins/libProjectExplorer.so
+/usr/lib64/qtcreator/plugins/libPythonEditor.so
+/usr/lib64/qtcreator/plugins/libQbsProjectManager.so
+/usr/lib64/qtcreator/plugins/libQmakeAndroidSupport.so
+/usr/lib64/qtcreator/plugins/libQmakeProjectManager.so
+/usr/lib64/qtcreator/plugins/libQmlJSEditor.so
+/usr/lib64/qtcreator/plugins/libQmlJSTools.so
+/usr/lib64/qtcreator/plugins/libQmlProfiler.so
+/usr/lib64/qtcreator/plugins/libQmlProjectManager.so
+/usr/lib64/qtcreator/plugins/libQnx.so
+/usr/lib64/qtcreator/plugins/libQtSupport.so
+/usr/lib64/qtcreator/plugins/libRemoteLinux.so
+/usr/lib64/qtcreator/plugins/libResourceEditor.so
+/usr/lib64/qtcreator/plugins/libScxmlEditor.so
+/usr/lib64/qtcreator/plugins/libSerialTerminal.so
+/usr/lib64/qtcreator/plugins/libSilverSearcher.so
+/usr/lib64/qtcreator/plugins/libSubversion.so
+/usr/lib64/qtcreator/plugins/libTaskList.so
+/usr/lib64/qtcreator/plugins/libTextEditor.so
+/usr/lib64/qtcreator/plugins/libTodo.so
+/usr/lib64/qtcreator/plugins/libUpdateInfo.so
+/usr/lib64/qtcreator/plugins/libValgrind.so
+/usr/lib64/qtcreator/plugins/libVcsBase.so
+/usr/lib64/qtcreator/plugins/libWelcome.so
+/usr/lib64/qtcreator/plugins/libWinRt.so
+/usr/lib64/qtcreator/plugins/qbs/plugins/libclangcompilationdbgenerator.so
+/usr/lib64/qtcreator/plugins/qbs/plugins/libmakefilegenerator.so
+/usr/lib64/qtcreator/plugins/qbs/plugins/libqbs_cpp_scanner.so
+/usr/lib64/qtcreator/plugins/qbs/plugins/libqbs_qt_scanner.so
+/usr/lib64/qtcreator/plugins/qbs/plugins/libvisualstudiogenerator.so
 
 %files license
 %defattr(-,root,root,-)

@@ -17,6 +17,7 @@ libQt5Sql.so.5
 libQt5Svg.so.5
 libQt5Widgets.so.5
 libQt5Xml.so.5
+libbotan-2.so.7
 libc.so.6
 libclang.so.6
 libclangAST.so.6
