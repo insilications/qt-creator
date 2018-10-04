@@ -1,5 +1,4 @@
 ld-linux-x86-64.so.2
-libLLVMSupport.so.6
 libQt5Concurrent.so.5
 libQt5Core.so.5
 libQt5Designer.so.5
@@ -19,15 +18,7 @@ libQt5Widgets.so.5
 libQt5Xml.so.5
 libbotan-2.so.7
 libc.so.6
-libclang.so.6
-libclangAST.so.6
-libclangASTMatchers.so.6
-libclangBasic.so.6
-libclangDynamicASTMatchers.so.6
-libclangFrontend.so.6
-libclangIndex.so.6
-libclangLex.so.6
-libclangTooling.so.6
+libclang.so.7
 libdl.so.2
 libgcc_s.so.1
 libm.so.6
