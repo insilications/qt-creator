@@ -4,7 +4,7 @@
 #
 Name     : qt-creator
 Version  : 4.7.1
-Release  : 10
+Release  : 11
 URL      : http://download.qt.io/official_releases/qtcreator/4.7/4.7.1/qt-creator-opensource-src-4.7.1.tar.xz
 Source0  : http://download.qt.io/official_releases/qtcreator/4.7/4.7.1/qt-creator-opensource-src-4.7.1.tar.xz
 Summary  : dummy2 package
