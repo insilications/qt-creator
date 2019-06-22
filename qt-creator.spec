@@ -4,7 +4,7 @@
 #
 Name     : qt-creator
 Version  : 4.9.1
-Release  : 19
+Release  : 20
 URL      : https://download.qt.io/official_releases/qtcreator/4.9/4.9.1/qt-creator-opensource-src-4.9.1.tar.xz
 Source0  : https://download.qt.io/official_releases/qtcreator/4.9/4.9.1/qt-creator-opensource-src-4.9.1.tar.xz
 Summary  : No detailed summary available
@@ -111,7 +111,7 @@ test -r config.log && cat config.log
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1560967319
+export SOURCE_DATE_EPOCH=1561218720
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/qt-creator
 cp LICENSE.GPL3-EXCEPT %{buildroot}/usr/share/package-licenses/qt-creator/LICENSE.GPL3-EXCEPT
@@ -473,6 +473,7 @@ cp src/tools/perfparser/LICENSE.GPLv3 %{buildroot}/usr/share/package-licenses/qt
 /usr/share/qtcreator/qbs/share/qbs/modules/qnx/qnx.qbs
 /usr/share/qtcreator/qbs/share/qbs/modules/texttemplate/texttemplate.qbs
 /usr/share/qtcreator/qbs/share/qbs/modules/typescript/TypeScriptModule.qbs
+/usr/share/qtcreator/qbs/share/qbs/modules/typescript/qbs-tsc-scan/.gitignore
 /usr/share/qtcreator/qbs/share/qbs/modules/typescript/qbs-tsc-scan/qbs-tsc-scan.ts
 /usr/share/qtcreator/qbs/share/qbs/modules/typescript/typescript.js
 /usr/share/qtcreator/qbs/share/qbs/modules/vcs/vcs-module.qbs
