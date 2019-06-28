@@ -1,0 +1,31 @@
+From 853222546976bef07666884b55d705aa3a09ed86 Mon Sep 17 00:00:00 2001
+From: Thiago Macieira <thiago.macieira@intel.com>
+Date: Thu, 27 Jun 2019 18:54:57 -0700
+Subject: [PATCH] Work around QTCREATORBUG-22636 by using the copy we already
+ ship
+
+Change-Id: Ie7ae7616eadf4035bec6fffd15ac39fb8d174520
+---
+ src/libs/utils/mimetypes/mimeprovider.cpp | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/src/libs/utils/mimetypes/mimeprovider.cpp b/src/libs/utils/mimetypes/mimeprovider.cpp
+index d444aa899c..587d6f0eda 100644
+--- a/src/libs/utils/mimetypes/mimeprovider.cpp
++++ b/src/libs/utils/mimetypes/mimeprovider.cpp
+@@ -803,11 +803,7 @@ void MimeXMLProvider::ensureLoaded()
+ 
+ //        if (!fdoXmlFound) {
+ //            // We could instead install the file as part of installing Qt?
+-#if (QT_VERSION >= QT_VERSION_CHECK(5, 11, 0))
+-              const char freedesktopOrgXml[] = ":/qt-project.org/qmime/packages/freedesktop.org.xml";
+-#else
+-              const char freedesktopOrgXml[] = ":/qt-project.org/qmime/freedesktop.org.xml";
+-#endif
++              const char freedesktopOrgXml[] = "/usr/share/mime/packages/freedesktop.org.xml";
+             allFiles.prepend(QLatin1String(freedesktopOrgXml));
+ //        }
+ 
+-- 
+2.21.0
+
