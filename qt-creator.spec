@@ -4,7 +4,7 @@
 #
 Name     : qt-creator
 Version  : 4.9.1
-Release  : 22
+Release  : 23
 URL      : https://download.qt.io/official_releases/qtcreator/4.9/4.9.1/qt-creator-opensource-src-4.9.1.tar.xz
 Source0  : https://download.qt.io/official_releases/qtcreator/4.9/4.9.1/qt-creator-opensource-src-4.9.1.tar.xz
 Summary  : No detailed summary available
@@ -39,7 +39,7 @@ BuildRequires : pkgconfig(Qt5Test)
 BuildRequires : pkgconfig(Qt5Widgets)
 BuildRequires : pkgconfig(Qt5Xml)
 Patch1: 0001-Work-around-QTCREATORBUG-22636-by-using-the-copy-we-.patch
-Patch2: 0001-Update-sqlite3-3.26.0-to-3.28.0.patch
+Patch2: 0001-Sqlite-Use-newest-version.patch
 
 %description
 Qbs
@@ -104,7 +104,7 @@ license components for the qt-creator package.
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
+export LANG=C.UTF-8
 export GCC_IGNORE_WERROR=1
 %qmake -config ltcg -config fat-static-lto -config nostrip \
 -config use_system_botan \
@@ -115,7 +115,7 @@ test -r config.log && cat config.log
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1562484128
+export SOURCE_DATE_EPOCH=1563572079
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/qt-creator
 cp LICENSE.GPL3-EXCEPT %{buildroot}/usr/share/package-licenses/qt-creator/LICENSE.GPL3-EXCEPT

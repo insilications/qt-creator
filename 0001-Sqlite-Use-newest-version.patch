@@ -1,11 +1,10 @@
-From b727f5a219c5b02df261877a679c16d6a95fc16b Mon Sep 17 00:00:00 2001
-From: "Choong, Yin Thong" <yin.thong.choong@intel.com>
-Date: Sun, 7 Jul 2019 14:36:14 +0800
-Subject: [PATCH] Update sqlite3 3.26.0 to 3.28.0
+From b16b8db48b934a87c3a16371eed010bfb4feb9ef Mon Sep 17 00:00:00 2001
+From: Marco Bubke <marco.bubke@qt.io>
+Date: Wed, 10 Jul 2019 10:51:54 +0200
+Subject: [PATCH] Sqlite: Use newest version
 
-Fixed CVE-2019-5018
-
-Signed-off-by: Choong, Yin Thong <yin.thong.choong@intel.com>
+Change-Id: Ic3951b9b38d5bc8cfa658e9cce0d6effaaa329c1
+Reviewed-by: Tim Jenssen <tim.jenssen@qt.io>
 ---
  src/libs/3rdparty/sqlite/sqlite3.c    | 14275 ++++++++++++++----------
  src/libs/3rdparty/sqlite/sqlite3.h    |   134 +-
@@ -13,7 +12,7 @@ Signed-off-by: Choong, Yin Thong <yin.thong.choong@intel.com>
  3 files changed, 8413 insertions(+), 6002 deletions(-)
 
 diff --git a/src/libs/3rdparty/sqlite/sqlite3.c b/src/libs/3rdparty/sqlite/sqlite3.c
-index d015df2..4404295 100644
+index d015df2c31..440429527d 100644
 --- a/src/libs/3rdparty/sqlite/sqlite3.c
 +++ b/src/libs/3rdparty/sqlite/sqlite3.c
 @@ -1,6 +1,6 @@
@@ -23986,7 +23985,7 @@ index d015df2..4404295 100644
  /* Return the source-id for this library */
  SQLITE_API const char *sqlite3_sourceid(void){ return SQLITE_SOURCE_ID; }
 diff --git a/src/libs/3rdparty/sqlite/sqlite3.h b/src/libs/3rdparty/sqlite/sqlite3.h
-index f36ae57..fadfe1e 100644
+index f36ae57a64..fadfe1e152 100644
 --- a/src/libs/3rdparty/sqlite/sqlite3.h
 +++ b/src/libs/3rdparty/sqlite/sqlite3.h
 @@ -123,9 +123,9 @@ extern "C" {
@@ -24310,7 +24309,7 @@ index f36ae57..fadfe1e 100644
  **            'first + place' or '1st + place', as there are entries in the
  **            FTS index corresponding to both forms of the first token.
 diff --git a/src/libs/3rdparty/sqlite/sqlite3ext.h b/src/libs/3rdparty/sqlite/sqlite3ext.h
-index 34c41fd..088148b 100644
+index 34c41fd5a9..088148b936 100644
 --- a/src/libs/3rdparty/sqlite/sqlite3ext.h
 +++ b/src/libs/3rdparty/sqlite/sqlite3ext.h
 @@ -319,6 +319,9 @@ struct sqlite3_api_routines {
