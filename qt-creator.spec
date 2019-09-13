@@ -4,7 +4,7 @@
 #
 Name     : qt-creator
 Version  : 4.9.1
-Release  : 23
+Release  : 24
 URL      : https://download.qt.io/official_releases/qtcreator/4.9/4.9.1/qt-creator-opensource-src-4.9.1.tar.xz
 Source0  : https://download.qt.io/official_releases/qtcreator/4.9/4.9.1/qt-creator-opensource-src-4.9.1.tar.xz
 Summary  : No detailed summary available
