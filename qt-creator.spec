@@ -4,7 +4,7 @@
 #
 Name     : qt-creator
 Version  : 4.10.0
-Release  : 25
+Release  : 26
 URL      : https://download.qt.io/official_releases/qtcreator/4.10/4.10.0/qt-creator-opensource-src-4.10.0.tar.xz
 Source0  : https://download.qt.io/official_releases/qtcreator/4.10/4.10.0/qt-creator-opensource-src-4.10.0.tar.xz
 Summary  : No detailed summary available
