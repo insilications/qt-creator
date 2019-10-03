@@ -1,0 +1,27 @@
+From 07c728ef3aef5cc04addbeeec1c299e4c58d41b4 Mon Sep 17 00:00:00 2001
+From: Thiago Macieira <thiago.macieira@intel.com>
+Date: Thu, 3 Oct 2019 15:13:45 -0700
+Subject: [PATCH] Fix build: shortIfStyle is an enum in LLVM 9
+
+Fixes: QTCREATORBUG-23038
+Change-Id: I1496b069cc534f1a838dfffd15ca42c9a1bfe07c
+---
+ src/plugins/clangformat/clangformatutils.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/plugins/clangformat/clangformatutils.cpp b/src/plugins/clangformat/clangformatutils.cpp
+index 59c2b592d7..2ff79b44c2 100644
+--- a/src/plugins/clangformat/clangformatutils.cpp
++++ b/src/plugins/clangformat/clangformatutils.cpp
+@@ -60,7 +60,7 @@ static clang::format::FormatStyle qtcStyle()
+     style.AllowShortBlocksOnASingleLine = false;
+     style.AllowShortCaseLabelsOnASingleLine = false;
+     style.AllowShortFunctionsOnASingleLine = FormatStyle::SFS_Inline;
+-    style.AllowShortIfStatementsOnASingleLine = false;
++    style.AllowShortIfStatementsOnASingleLine = FormatStyle::SIS_Never;
+     style.AllowShortLoopsOnASingleLine = false;
+     style.AlwaysBreakAfterReturnType = FormatStyle::RTBS_None;
+     style.AlwaysBreakBeforeMultilineStrings = false;
+-- 
+2.23.0
+

@@ -4,7 +4,7 @@
 #
 Name     : qt-creator
 Version  : 4.10.0
-Release  : 27
+Release  : 28
 URL      : https://download.qt.io/official_releases/qtcreator/4.10/4.10.0/qt-creator-opensource-src-4.10.0.tar.xz
 Source0  : https://download.qt.io/official_releases/qtcreator/4.10/4.10.0/qt-creator-opensource-src-4.10.0.tar.xz
 Summary  : No detailed summary available
@@ -38,6 +38,7 @@ BuildRequires : pkgconfig(Qt5Svg)
 BuildRequires : pkgconfig(Qt5Test)
 BuildRequires : pkgconfig(Qt5Widgets)
 BuildRequires : pkgconfig(Qt5Xml)
+Patch1: 0001-Fix-build-shortIfStyle-is-an-enum-in-LLVM-9.patch
 
 %description
 Qbs
@@ -95,6 +96,7 @@ license components for the qt-creator package.
 
 %prep
 %setup -q -n qt-creator-opensource-src-4.10.0
+%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
@@ -111,7 +113,7 @@ test -r config.log && cat config.log
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1569718605
+export SOURCE_DATE_EPOCH=1570141931
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/qt-creator
 cp LICENSE.GPL3-EXCEPT %{buildroot}/usr/share/package-licenses/qt-creator/LICENSE.GPL3-EXCEPT
