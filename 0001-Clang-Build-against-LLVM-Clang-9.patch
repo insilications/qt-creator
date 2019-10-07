@@ -1,0 +1,31 @@
+From 6ec8017bc675692f3d325c0cd95c9c4c7a79db7d Mon Sep 17 00:00:00 2001
+From: Nikolai Kosjar <nikolai.kosjar@qt.io>
+Date: Wed, 2 Oct 2019 09:28:43 +0200
+Subject: [PATCH] Clang: Build against LLVM/Clang 9
+
+Change-Id: I3608bca6541614bb55e67d35c87334957cd02761
+Reviewed-by: Cristian Adam <cristian.adam@qt.io>
+Reviewed-by: Konstantin Tokarev <annulen@yandex.ru>
+---
+ src/plugins/clangformat/clangformatutils.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/plugins/clangformat/clangformatutils.cpp b/src/plugins/clangformat/clangformatutils.cpp
+index 59c2b592d7..f087f77a94 100644
+--- a/src/plugins/clangformat/clangformatutils.cpp
++++ b/src/plugins/clangformat/clangformatutils.cpp
+@@ -60,7 +60,11 @@ static clang::format::FormatStyle qtcStyle()
+     style.AllowShortBlocksOnASingleLine = false;
+     style.AllowShortCaseLabelsOnASingleLine = false;
+     style.AllowShortFunctionsOnASingleLine = FormatStyle::SFS_Inline;
++#if LLVM_VERSION_MAJOR >= 9
++    style.AllowShortIfStatementsOnASingleLine = FormatStyle::SIS_Never;
++#else
+     style.AllowShortIfStatementsOnASingleLine = false;
++#endif
+     style.AllowShortLoopsOnASingleLine = false;
+     style.AlwaysBreakAfterReturnType = FormatStyle::RTBS_None;
+     style.AlwaysBreakBeforeMultilineStrings = false;
+-- 
+2.23.0
+
