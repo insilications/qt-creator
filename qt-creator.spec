@@ -4,7 +4,7 @@
 #
 Name     : qt-creator
 Version  : 4.11.0
-Release  : 33
+Release  : 34
 URL      : https://download.qt.io/official_releases/qtcreator/4.11/4.11.0/qt-creator-opensource-src-4.11.0.tar.xz
 Source0  : https://download.qt.io/official_releases/qtcreator/4.11/4.11.0/qt-creator-opensource-src-4.11.0.tar.xz
 Summary  : No detailed summary available
@@ -112,7 +112,7 @@ test -r config.log && cat config.log
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1576288804
+export SOURCE_DATE_EPOCH=1580254113
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/qt-creator
 cp %{_builddir}/qt-creator-opensource-src-4.11.0/LICENSE.GPL3-EXCEPT %{buildroot}/usr/share/package-licenses/qt-creator/e93757aefa405f2c9a8a55e780ae9c39542dfc3a
