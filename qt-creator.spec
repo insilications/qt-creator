@@ -4,7 +4,7 @@
 #
 Name     : qt-creator
 Version  : 4.11.2
-Release  : 37
+Release  : 38
 URL      : https://download.qt.io/official_releases/qtcreator/4.11/4.11.2/qt-creator-opensource-src-4.11.2.tar.xz
 Source0  : https://download.qt.io/official_releases/qtcreator/4.11/4.11.2/qt-creator-opensource-src-4.11.2.tar.xz
 Summary  : No detailed summary available
@@ -38,6 +38,7 @@ BuildRequires : pkgconfig(Qt5Svg)
 BuildRequires : pkgconfig(Qt5Test)
 BuildRequires : pkgconfig(Qt5Widgets)
 BuildRequires : pkgconfig(Qt5Xml)
+Patch1: 0001-Clang-Fix-build-with-Clang-LLVM-10.patch
 
 %description
 Qbs
@@ -96,6 +97,7 @@ license components for the qt-creator package.
 %prep
 %setup -q -n qt-creator-opensource-src-4.11.2
 cd %{_builddir}/qt-creator-opensource-src-4.11.2
+%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
@@ -112,7 +114,7 @@ test -r config.log && cat config.log
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1586273012
+export SOURCE_DATE_EPOCH=1587162681
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/qt-creator
 cp %{_builddir}/qt-creator-opensource-src-4.11.2/LICENSE.GPL3-EXCEPT %{buildroot}/usr/share/package-licenses/qt-creator/e93757aefa405f2c9a8a55e780ae9c39542dfc3a
