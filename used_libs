@@ -18,16 +18,8 @@ libQt5Svg.so.5
 libQt5Widgets.so.5
 libQt5Xml.so.5
 libc.so.6
+libclang-cpp.so.10
 libclang.so.10
-libclangAST.so.10
-libclangASTMatchers.so.10
-libclangBasic.so.10
-libclangDynamicASTMatchers.so.10
-libclangFrontend.so.10
-libclangIndex.so.10
-libclangLex.so.10
-libclangSerialization.so.10
-libclangTooling.so.10
 libdl.so.2
 libgcc_s.so.1
 libm.so.6
