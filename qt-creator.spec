@@ -6,8 +6,8 @@
 Name     : qt-creator
 Version  : 4.14.1
 Release  : 51
-URL      : file:///aot/build/clearlinux/packages/qt-creator/qt-creator-v4.14.1.tar.gz
-Source0  : file:///aot/build/clearlinux/packages/qt-creator/qt-creator-v4.14.1.tar.gz
+URL      : file:///insilications/build/git-clr/qt-creator.tar.gz
+Source0  : file:///insilications/build/git-clr/qt-creator.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-3.0
@@ -155,6 +155,7 @@ BuildRequires : pkgconfig(Qt5Test)
 BuildRequires : pkgconfig(Qt5WebChannel)
 BuildRequires : pkgconfig(Qt5WebEngine)
 BuildRequires : pkgconfig(Qt5WebEngineCore)
+BuildRequires : pkgconfig(Qt5WebEngineWidgets)
 BuildRequires : pkgconfig(Qt5WebSockets)
 BuildRequires : pkgconfig(Qt5Widgets)
 BuildRequires : pkgconfig(Qt5X11Extras)
@@ -196,21 +197,57 @@ BuildRequires : pulseaudio-dev
 BuildRequires : python3
 BuildRequires : python3-dev
 BuildRequires : python3-staticdev
+BuildRequires : qca-qt5
+BuildRequires : qca-qt5-dev
+BuildRequires : qt3d
+BuildRequires : qt3d-dev
+BuildRequires : qt5ct
 BuildRequires : qtbase
 BuildRequires : qtbase-dev
 BuildRequires : qtbase-dev mesa-dev
+BuildRequires : qtcanvas3d
+BuildRequires : qtdatavis3d
+BuildRequires : qtdatavis3d-dev
 BuildRequires : qtdeclarative
 BuildRequires : qtdeclarative-dev
+BuildRequires : qtgamepad
+BuildRequires : qtgamepad-dev
+BuildRequires : qtgraphicaleffects
 BuildRequires : qtlocation
 BuildRequires : qtlocation-dev
+BuildRequires : qtmqtt
+BuildRequires : qtmqtt-dev
+BuildRequires : qtnetworkauth
+BuildRequires : qtnetworkauth-dev
+BuildRequires : qtquickcontrols
+BuildRequires : qtquickcontrols2
+BuildRequires : qtquickcontrols2-dev
+BuildRequires : qtscript
+BuildRequires : qtscript-dev
+BuildRequires : qtscxml
+BuildRequires : qtscxml-dev
+BuildRequires : qtsensors
+BuildRequires : qtsensors-dev
+BuildRequires : qtserialbus
+BuildRequires : qtserialbus-dev
+BuildRequires : qtspeech
+BuildRequires : qtspeech-dev
 BuildRequires : qtsvg
 BuildRequires : qtsvg-dev
 BuildRequires : qttools
 BuildRequires : qttools-dev
+BuildRequires : qttranslations
+BuildRequires : qtvirtualkeyboard
+BuildRequires : qtvirtualkeyboard-dev
 BuildRequires : qtwebchannel
 BuildRequires : qtwebchannel-dev
 BuildRequires : qtwebengine
 BuildRequires : qtwebengine-dev
+BuildRequires : qtx11extras
+BuildRequires : qtx11extras-dev
+BuildRequires : sqlite-autoconf
+BuildRequires : sqlite-autoconf-dev
+BuildRequires : sqlite-autoconf-staticdev
 BuildRequires : syntax-highlighting
 BuildRequires : syntax-highlighting-dev
 BuildRequires : syntax-highlighting-lib
@@ -219,6 +256,7 @@ BuildRequires : systemd-dev
 BuildRequires : util-linux
 BuildRequires : util-linux-dev
 BuildRequires : util-linux-staticdev
+BuildRequires : valgrind
 BuildRequires : valgrind-dev
 BuildRequires : wmctrl
 BuildRequires : xauth
@@ -328,27 +366,28 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1615764006
+export SOURCE_DATE_EPOCH=1616114429
+unset LD_AS_NEEDED
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
 ## altflags_pgo content
 ## pgo generate
 export PGO_GEN="-fprofile-generate=/var/tmp/pgo -fprofile-dir=/var/tmp/pgo -fprofile-abs-path -fprofile-update=atomic -fprofile-arcs -ftest-coverage --coverage -fprofile-partial-training"
-export CFLAGS_GENERATE="-O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -flto=16 -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -fno-plt -ffat-lto-objects -fPIC -static-libstdc++ -static-libgcc -pthread $PGO_GEN"
-export FCFLAGS_GENERATE="-O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -flto=16 -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -fno-plt -ffat-lto-objects -fPIC -static-libstdc++ -static-libgcc -pthread $PGO_GEN"
-export FFLAGS_GENERATE="-O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -flto=16 -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -fno-plt -ffat-lto-objects -fPIC -static-libstdc++ -static-libgcc -pthread $PGO_GEN"
-export CXXFLAGS_GENERATE="-O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -flto=16 -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -fvisibility-inlines-hidden -pipe -fno-plt -ffat-lto-objects -fPIC -static-libstdc++ -static-libgcc -pthread $PGO_GEN"
-export LDFLAGS_GENERATE="-O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -flto=16 -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -fno-plt -ffat-lto-objects -fPIC -pthread -lpthread -static-libstdc++ -static-libgcc $PGO_GEN"
+export CFLAGS_GENERATE="-std=c17 -O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -Wall -Wl,--no-as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -flto=16 -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -fno-plt -ffat-lto-objects -fPIC -static-libstdc++ -static-libgcc -pthread $PGO_GEN"
+export FCFLAGS_GENERATE="-O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -Wall -Wl,--no-as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -flto=16 -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -fno-plt -ffat-lto-objects -fPIC -static-libstdc++ -static-libgcc -pthread $PGO_GEN"
+export FFLAGS_GENERATE="-O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -Wall -Wl,--no-as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -flto=16 -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -fno-plt -ffat-lto-objects -fPIC -static-libstdc++ -static-libgcc -pthread $PGO_GEN"
+export CXXFLAGS_GENERATE="-std=c++17 -O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -Wall -Wl,--no-as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -flto=16 -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -fvisibility-inlines-hidden -pipe -fno-plt -ffat-lto-objects -fPIC -static-libstdc++ -static-libgcc -pthread $PGO_GEN"
+export LDFLAGS_GENERATE="-O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -Wall -Wl,--no-as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -flto=16 -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -fno-plt -ffat-lto-objects -fPIC -pthread -lpthread -static-libstdc++ -static-libgcc $PGO_GEN"
 ## pgo use
 ## -ffat-lto-objects -fno-PIE -fno-PIE -m64 -no-pie -fpic -fvisibility=hidden -flto-partition=none
 ## gcc: -feliminate-unused-debug-types -fipa-pta -flto=16 -Wno-error -Wp,-D_REENTRANT -fno-common
 export PGO_USE="-fprofile-use=/var/tmp/pgo -fprofile-dir=/var/tmp/pgo -fprofile-abs-path -fprofile-correction -fprofile-partial-training"
-export CFLAGS_USE="-O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -fno-plt -ffat-lto-objects -fPIC -static-libstdc++ -static-libgcc -pthread $PGO_USE"
-export FCFLAGS_USE="-O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -fno-plt -ffat-lto-objects -fPIC -static-libstdc++ -static-libgcc -pthread $PGO_USE"
-export FFLAGS_USE="-O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -fno-plt -ffat-lto-objects -fPIC -static-libstdc++ -static-libgcc -pthread $PGO_USE"
-export CXXFLAGS_USE="-O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -fvisibility-inlines-hidden -pipe -fno-plt -ffat-lto-objects -fPIC -static-libstdc++ -static-libgcc -pthread $PGO_USE"
-export LDFLAGS_USE="-O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -fno-plt -ffat-lto-objects -fPIC -pthread -lpthread -static-libstdc++ -static-libgcc $PGO_USE"
+export CFLAGS_USE="-std=c17 -O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--no-as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -fno-plt -ffat-lto-objects -fPIC -static-libstdc++ -static-libgcc -pthread $PGO_USE"
+export FCFLAGS_USE="-O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--no-as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -fno-plt -ffat-lto-objects -fPIC -static-libstdc++ -static-libgcc -pthread $PGO_USE"
+export FFLAGS_USE="-O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--no-as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -fno-plt -ffat-lto-objects -fPIC -static-libstdc++ -static-libgcc -pthread $PGO_USE"
+export CXXFLAGS_USE="-std=c++17 -O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--no-as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -fvisibility-inlines-hidden -pipe -fno-plt -ffat-lto-objects -fPIC -static-libstdc++ -static-libgcc -pthread $PGO_USE"
+export LDFLAGS_USE="-O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--no-as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -fno-plt -ffat-lto-objects -fPIC -pthread -lpthread -static-libstdc++ -static-libgcc $PGO_USE"
 #
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -384,6 +423,8 @@ export VDPAU_DRIVER=nvidia
 export LIBVA_DRIVER_NAME=vdpau
 export LIBVA_DRIVERS_PATH=/usr/lib64/dri
 ## altflags_pgo end
+if [ ! -f status.pgo ]; then
+echo PGO Phase 1
 export CFLAGS="${CFLAGS_GENERATE}"
 export CXXFLAGS="${CXXFLAGS_GENERATE}"
 export FFLAGS="${FFLAGS_GENERATE}"
@@ -401,7 +442,7 @@ export LDFLAGS="${LDFLAGS_GENERATE}"
 -DCMAKE_INSTALL_LIBEXECDIR=libexec \
 -DCMAKE_PREFIX_PATH=/usr \
 -DWITH_TESTS:BOOL=ON
-make  %{?_smp_mflags}  -j12 V=1 VERBOSE=1
+make  %{?_smp_mflags}  -j16 V=1 VERBOSE=1
 ## ccache stats
 ccache -s
 ## ccache stats
@@ -419,8 +460,12 @@ export __GL_ALLOW_UNOFFICIAL_PROTOCOL=1
 export __GL_SYNC_TO_VBLANK=0
 export LD_LIBRARY_PATH="/usr/cuda/lib64:/usr/cuda/targets/x86_64-linux/lib:/usr/nvidia/lib64:/usr/nvidia/lib:/usr/nvidia/lib/vdpau:/usr/nvidia/lib64/xorg/modules/drivers:/usr/nvidia/lib64/xorg/modules/extensions:/usr/lib64/dri:/usr/lib64/haswell:/usr/lib64:/usr/lib:/usr/share"
 export PKG_CONFIG_PATH="/usr/lib64/pkgconfig:../"
-ctest -j12 -V --progress --timeout 30 || :
-find . -type f,l -not -name '*.gcno' -delete -print
+ctest --parallel 12 -V --progress --timeout 30 || :
+find . -type f,l -not -name '*.gcno' -not -name 'status.pgo' -delete -print
+echo USED > status.pgo
+fi
+if [ -f status.pgo ]; then
+echo PGO Phase 2
 export CFLAGS="${CFLAGS_USE}"
 export CXXFLAGS="${CXXFLAGS_USE}"
 export FFLAGS="${FFLAGS_USE}"
@@ -437,15 +482,16 @@ export LDFLAGS="${LDFLAGS_USE}"
 -DCMAKE_INSTALL_LIBDIR=lib64 \
 -DCMAKE_INSTALL_LIBEXECDIR=libexec \
 -DCMAKE_PREFIX_PATH=/usr \
--DWITH_TESTS:BOOL=ON
-make  %{?_smp_mflags}  -j12 V=1 VERBOSE=1
+-DWITH_TESTS:BOOL=OFF
+make  %{?_smp_mflags}  -j16 V=1 VERBOSE=1
 ## ccache stats
 ccache -s
 ## ccache stats
+fi
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1615764006
+export SOURCE_DATE_EPOCH=1616114429
 rm -rf %{buildroot}
 pushd clr-build
 %make_install
@@ -969,6 +1015,7 @@ popd
 /usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/StudioControls/ItemDelegate.qml
 /usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/StudioControls/Menu.qml
 /usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/StudioControls/MenuItem.qml
+/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/StudioControls/MenuItemWithIcon.qml
 /usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/StudioControls/MenuSeparator.qml
 /usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/StudioControls/RealSliderPopup.qml
 /usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/StudioControls/RealSpinBox.qml
@@ -1001,6 +1048,7 @@ popd
 /usr/share/qtcreator/qmldesigner/qt4mcu/qul-17.qml
 /usr/share/qtcreator/qmldesigner/statesEditorQmlSources/StatesDelegate.qml
 /usr/share/qtcreator/qmldesigner/statesEditorQmlSources/StatesList.qml
+/usr/share/qtcreator/qmldesigner/statesEditorQmlSources/images/checkers.png
 /usr/share/qtcreator/qmldesigner/workspacePresets/3D_Preset.wrk
 /usr/share/qtcreator/qmldesigner/workspacePresets/Essentials.wrk
 /usr/share/qtcreator/qmlicons/Qt/16x16/BorderImage.png
@@ -1395,6 +1443,7 @@ popd
 /usr/lib64/qtcreator/plugins/libDebugger.so
 /usr/lib64/qtcreator/plugins/libDesigner.so
 /usr/lib64/qtcreator/plugins/libDiffEditor.so
+/usr/lib64/qtcreator/plugins/libDocker.so
 /usr/lib64/qtcreator/plugins/libEmacsKeys.so
 /usr/lib64/qtcreator/plugins/libFakeVim.so
 /usr/lib64/qtcreator/plugins/libGLSLEditor.so
@@ -1464,6 +1513,3 @@ popd
 /usr/libexec/qtcreator/qtcreator_process_stub
 /usr/libexec/qtcreator/qtpromaker
 /usr/libexec/qtcreator/sdktool
-/usr/libexec/qtcreator/tst_manual_widgets_crumblepath
-/usr/libexec/qtcreator/tst_manual_widgets_infolabel
-/usr/libexec/qtcreator/tst_manual_widgets_manhattanstyle
