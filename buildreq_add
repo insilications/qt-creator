@@ -50,12 +50,9 @@ libstdc++
 libstdc++-dev
 libunwind
 libunwind-dev
-libunwind-dev32
 libunwind-staticdev
-libunwind-staticdev32
 libusb
 libusb-dev
-libusb-dev32
 libX11-data
 libX11-dev
 libX11-lib
@@ -76,7 +73,6 @@ libXScrnSaver-lib
 libXtst-lib
 libxvid-staticdev
 libXxf86vm-dev
-libXxf86vm-dev32
 libXxf86vm-lib
 libzimg-dev
 libzimg-staticdev
