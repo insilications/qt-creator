@@ -1,4 +1,5 @@
 export DISPLAY=:0
+export LANG=en_US.UTF-8
 export XDG_CONFIG_DIRS=/usr/share/xdg:/etc/xdg
 export XDG_SEAT=seat0
 export XDG_SESSION_TYPE=tty
@@ -7,8 +8,16 @@ export XDG_SESSION_CLASS=user
 export XDG_VTNR=1
 export XDG_SESSION_ID=1
 export XDG_RUNTIME_DIR=/run/user/1000
-export __GL_ALLOW_UNOFFICIAL_PROTOCOL=1
-export __GL_SYNC_TO_VBLANK=0
-export LD_LIBRARY_PATH="/usr/cuda/lib64:/usr/cuda/targets/x86_64-linux/lib:/usr/nvidia/lib64:/usr/nvidia/lib:/usr/nvidia/lib/vdpau:/usr/nvidia/lib64/xorg/modules/drivers:/usr/nvidia/lib64/xorg/modules/extensions:/usr/lib64/dri:/usr/lib64/haswell:/usr/lib64:/usr/lib:/usr/share"
+export VDPAU_DRIVER=nvidia
+export LIBVA_DRIVER_NAME=vdpau
+export LIBVA_DRIVERS_PATH=/usr/lib64/dri
+export KDE_SESSION_VERSION=5
+export GTK_RC_FILES=/etc/gtk/gtkrc:/home/boni/.gtkrc:/home/boni/.config/gtkrc
+export FONTCONFIG_PATH=/usr/share/defaults/fonts
+export XDG_DATA_DIRS=/home/boni/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share
+export LD_LIBRARY_PATH="/builddir/build/BUILD/qt-creator-clr/clr-build/lib64:/builddir/build/BUILD/qt-creator-clr/clr-build/lib64/qtcreator:/builddir/build/BUILD/qt-creator-clr/clr-build/lib64/qtcreator/plugins:/usr/cuda/lib64:/usr/cuda/targets/x86_64-linux/lib:/usr/nvidia/lib64:/usr/nvidia/lib:/usr/nvidia/lib/vdpau:/usr/nvidia/lib64/xorg/modules/drivers:/usr/nvidia/lib64/xorg/modules/extensions:/usr/lib64/dri:/usr/lib64/haswell:/usr/lib64:/usr/lib:/usr/share"
 export PKG_CONFIG_PATH="/usr/lib64/pkgconfig:../"
-ctest --parallel 1 -V --progress --timeout 30 || :
+export PATH="/builddir/build/BUILD/qt-creator-clr/clr-build/bin:/builddir/build/BUILD/qt-creator-clr/clr-build/libexec/qtcreator:/opt/nvidia/bin:/usr/bin/haswell:/usr/bin:/usr/sbin"
+#ctest --parallel 16 -V --progress --timeout 100 || :
+/builddir/build/BUILD/qt-creator-clr/clr-build/bin/qtcreator -settingspath /builddir/ -installsettingspath /builddir/ -pluginpath /builddir/build/BUILD/qt-creator-clr/clr-build/lib64/qtcreator/plugins -load all
+exit 1
