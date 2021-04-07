@@ -1,4 +1,4 @@
-cmake ../llvm -G Ninja \
+cmake . -G Ninja \
 -DCMAKE_BUILD_TYPE=Release \
 -DCLANGTOOLING_LINK_CLANG_DYLIB=NO \
 -DBUILD_CPLUSPLUS_TOOLS=ON \
