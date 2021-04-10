@@ -11,7 +11,7 @@ cmake ../ -G Ninja \
 -DCMAKE_INSTALL_LIBEXECDIR=libexec \
 -DCMAKE_PREFIX_PATH=/usr \
 -DWITH_TESTS:BOOL=OFF \
--DCMAKE_JOB_POOLS="full_jobs=6" \
+-DCMAKE_JOB_POOLS="full_jobs=7" \
 -DCMAKE_JOB_POOL_COMPILE="full_jobs" \
 -DCMAKE_JOB_POOL_LINK="full_jobs" \
 -Wno-dev
