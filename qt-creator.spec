@@ -10,7 +10,7 @@ URL      : file:///insilications/build/git-clr/qt-creator-clr.tar.gz
 Source0  : file:///insilications/build/git-clr/qt-creator-clr.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
-License  : GPL-2.0 GPL-3.0 LGPL-2.1
+License  : GPL-2.0 GPL-3.0
 BuildRequires : GoogleBenchmark
 BuildRequires : GoogleBenchmark-dev
 BuildRequires : ImageMagick-dev
@@ -47,7 +47,9 @@ BuildRequires : cairo-dev
 BuildRequires : cairo-lib
 BuildRequires : ccache
 BuildRequires : clazy
-BuildRequires : clazy-dev
+BuildRequires : clazy-bin
+BuildRequires : clazy-data
+BuildRequires : clazy-staticdev
 BuildRequires : cmake
 BuildRequires : cppcheck
 BuildRequires : cuda
@@ -304,6 +306,7 @@ BuildRequires : ncurses-dev
 BuildRequires : nettle
 BuildRequires : nettle-dev
 BuildRequires : nettle-staticdev
+BuildRequires : ninja
 BuildRequires : not-ffmpeg
 BuildRequires : not-ffmpeg-dev
 BuildRequires : numlockx
@@ -581,8 +584,9 @@ BuildRequires : zstd-staticdev
 %define debug_package %{nil}
 
 %description
-Qt is provided with a powerful embedded scripting environment through the Qt Script
-classes.
+fakevim is based on eventFilters installed on a QTextEdit or a QPlainTextEdit.
+It basically catches all keystrokes and modifies some internal state that
+make the resulting text in the editor look like it was using vim.
 
 %prep
 %setup -q -n qt-creator-clr
@@ -594,7 +598,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1618065931
+export SOURCE_DATE_EPOCH=1618071310
 unset LD_AS_NEEDED
 mkdir -p clr-build
 pushd clr-build
@@ -663,8 +667,7 @@ export CXXFLAGS="${CXXFLAGS_GENERATE}"
 export FFLAGS="${FFLAGS_GENERATE}"
 export FCFLAGS="${FCFLAGS_GENERATE}"
 export LDFLAGS="${LDFLAGS_GENERATE}"
-cmake ../ -G Ninja \
--DCMAKE_BUILD_TYPE=Release \
+%cmake .. -DCMAKE_BUILD_TYPE=Release \
 -DCLANGTOOLING_LINK_CLANG_DYLIB=NO \
 -DBUILD_CPLUSPLUS_TOOLS=ON \
 -DSHOW_BUILD_DATE=ON \
@@ -676,11 +679,8 @@ cmake ../ -G Ninja \
 -DCMAKE_INSTALL_LIBEXECDIR=libexec \
 -DCMAKE_PREFIX_PATH=/usr \
 -DWITH_TESTS:BOOL=ON \
--DCMAKE_JOB_POOLS="full_jobs=7" \
--DCMAKE_JOB_POOL_COMPILE="full_jobs" \
--DCMAKE_JOB_POOL_LINK="full_jobs" \
 -Wno-dev
-cmake --build .
+VERBOSE=1 V=1 make -j8
 ## ccache stats
 ccache -s
 ## ccache stats
@@ -724,8 +724,7 @@ export CXXFLAGS="${CXXFLAGS_USE}"
 export FFLAGS="${FFLAGS_USE}"
 export FCFLAGS="${FCFLAGS_USE}"
 export LDFLAGS="${LDFLAGS_USE}"
-cmake ../ -G Ninja \
--DCMAKE_BUILD_TYPE=Release \
+%cmake .. -DCMAKE_BUILD_TYPE=Release \
 -DCLANGTOOLING_LINK_CLANG_DYLIB=NO \
 -DBUILD_CPLUSPLUS_TOOLS=ON \
 -DSHOW_BUILD_DATE=ON \
@@ -737,11 +736,8 @@ cmake ../ -G Ninja \
 -DCMAKE_INSTALL_LIBEXECDIR=libexec \
 -DCMAKE_PREFIX_PATH=/usr \
 -DWITH_TESTS:BOOL=OFF \
--DCMAKE_JOB_POOLS="full_jobs=7" \
--DCMAKE_JOB_POOL_COMPILE="full_jobs" \
--DCMAKE_JOB_POOL_LINK="full_jobs" \
 -Wno-dev
-cmake --build .
+VERBOSE=1 V=1 make -j8
 ## ccache stats
 ccache -s
 ## ccache stats
@@ -749,7 +745,7 @@ fi
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1618065931
+export SOURCE_DATE_EPOCH=1618071310
 rm -rf %{buildroot}
 pushd clr-build
 %make_install

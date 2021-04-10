@@ -1,1 +1,1 @@
-cmake --build .
+VERBOSE=1 V=1 make -j8
