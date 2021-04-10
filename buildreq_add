@@ -14,6 +14,7 @@ brotli
 brotli-dev
 brotli-staticdev
 buildreq-cmake
+buildreq-qmake
 bzip2
 bzip2-dev
 bzip2-staticdev
@@ -70,6 +71,8 @@ gmp-dev
 gmp-staticdev
 gnutls
 gnutls-dev
+GoogleBenchmark
+GoogleBenchmark-dev
 graphite
 graphite-dev
 graphite-staticdev
@@ -415,6 +418,7 @@ sqlite-autoconf-staticdev
 SVT-AV1-dev
 SVT-AV1-staticdev
 syntax-highlighting
+syntax-highlighting-data
 syntax-highlighting-dev
 syntax-highlighting-lib
 systemd

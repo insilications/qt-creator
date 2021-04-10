@@ -1,4 +1,4 @@
-cmake . -G Ninja \
+cmake ../ -G Ninja \
 -DCMAKE_BUILD_TYPE=Release \
 -DCLANGTOOLING_LINK_CLANG_DYLIB=NO \
 -DBUILD_CPLUSPLUS_TOOLS=ON \
@@ -11,7 +11,7 @@ cmake . -G Ninja \
 -DCMAKE_INSTALL_LIBEXECDIR=libexec \
 -DCMAKE_PREFIX_PATH=/usr \
 -DWITH_TESTS:BOOL=ON \
--DCMAKE_JOB_POOLS="full_jobs=8" \
+-DCMAKE_JOB_POOLS="full_jobs=6" \
 -DCMAKE_JOB_POOL_COMPILE="full_jobs" \
 -DCMAKE_JOB_POOL_LINK="full_jobs" \
 -Wno-dev
