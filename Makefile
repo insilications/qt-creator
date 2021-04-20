@@ -1,5 +1,5 @@
 PKG_NAME := qt-creator
-URL = https://download.qt.io/official_releases/qtcreator/4.12/4.12.4/qt-creator-opensource-src-4.12.4.tar.xz
+URL = https://download.qt.io/official_releases/qtcreator/4.14/4.14.2/qt-creator-opensource-src-4.14.2.tar.xz
 ARCHIVES = 
 
 include ../common/Makefile.common
