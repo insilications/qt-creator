@@ -311,6 +311,10 @@ BuildRequires : pkgconfig(gbm)
 BuildRequires : pkgconfig(gl)
 BuildRequires : pkgconfig(glesv1_cm)
 BuildRequires : pkgconfig(glesv2)
+BuildRequires : pkgconfig(gmock)
+BuildRequires : pkgconfig(gmock_main)
+BuildRequires : pkgconfig(gtest)
+BuildRequires : pkgconfig(gtest_main)
 BuildRequires : pkgconfig(libdrm)
 BuildRequires : pkgconfig(libpulse-simple)
 BuildRequires : pkgconfig(libudev)
@@ -502,7 +506,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1620312383
+export SOURCE_DATE_EPOCH=1620314991
 unset LD_AS_NEEDED
 mkdir -p clr-build
 pushd clr-build
@@ -580,31 +584,30 @@ export CXXFLAGS="${CXXFLAGS_GENERATE}"
 export FFLAGS="${FFLAGS_GENERATE}"
 export FCFLAGS="${FCFLAGS_GENERATE}"
 export LDFLAGS="${LDFLAGS_GENERATE}"
-%cmake .. -G Ninja \
+%cmake .. -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \
+-DCMAKE_INSTALL_BINDIR=bin \
+-DCMAKE_INSTALL_LIBDIR=lib64 \
+-DCMAKE_INSTALL_LIBEXECDIR=libexec \
+-DCMAKE_PREFIX_PATH=/usr \
 -DCMAKE_BUILD_TYPE=Release \
 -DCMAKE_C_COMPILER=gcc \
 -DCMAKE_CXX_COMPILER=g++ \
 -DPYTHON_EXECUTABLE="/usr/bin/python3" \
 -DPython3_EXECUTABLE="/usr/bin/python3" \
--DBUILD_WITH_PCH=OFF \
--DQT_BUILD_EXAMPLES=OFF \
--DCLANGTOOLING_LINK_CLANG_DYLIB=NO \
--DBUILD_CPLUSPLUS_TOOLS=ON \
--DSHOW_BUILD_DATE=ON \
+-DQT_BUILD_EXAMPLES:BOOL=OFF \
+-DCLANGTOOLING_LINK_CLANG_DYLIB:BOOL=NO \
+-DBUILD_CPLUSPLUS_TOOLS:BOOL=ON \
+-DSHOW_BUILD_DATE:BOOL=ON \
 -DWITH_DOCS:BOOL=OFF \
 -DLITEHTML_UTF8:BOOL=OFF \
--DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \
--DCMAKE_INSTALL_BINDIR=bin \
--DCMAKE_INSTALL_LIBDIR=lib64 \
--DCMAKE_INSTALL_LIBEXECDIR=libexec \
--DCMAKE_PREFIX_PATH=/usr \
 -DWITH_TESTS:BOOL=ON \
 -DBUILD_QBS:BOOL=OFF \
--DBUILD_LIBRARY_QLITEHTML=OFF \
--DENABLE_SVG_SUPPORT=ON \
+-DBUILD_LIBRARY_QLITEHTML:BOOL=OFF \
+-DENABLE_SVG_SUPPORT:BOOL=ON \
 -DENABLE_BUILD_QBS:BOOL=OFF \
 -DGOOGLE_BENCHMARK_SRC_DIR="../../GoogleBenchmark/src"
-ninja --verbose -j16
+#ninja --verbose -j16
+make -j16 V=1 VERBOSE=1
 ## ccache stats
 ccache -s
 ## ccache stats
@@ -649,31 +652,30 @@ export CXXFLAGS="${CXXFLAGS_USE}"
 export FFLAGS="${FFLAGS_USE}"
 export FCFLAGS="${FCFLAGS_USE}"
 export LDFLAGS="${LDFLAGS_USE}"
-%cmake .. -G Ninja \
+%cmake .. -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \
+-DCMAKE_INSTALL_BINDIR=bin \
+-DCMAKE_INSTALL_LIBDIR=lib64 \
+-DCMAKE_INSTALL_LIBEXECDIR=libexec \
+-DCMAKE_PREFIX_PATH=/usr \
 -DCMAKE_BUILD_TYPE=Release \
 -DCMAKE_C_COMPILER=gcc \
 -DCMAKE_CXX_COMPILER=g++ \
 -DPYTHON_EXECUTABLE="/usr/bin/python3" \
 -DPython3_EXECUTABLE="/usr/bin/python3" \
--DBUILD_WITH_PCH=OFF \
--DQT_BUILD_EXAMPLES=OFF \
--DCLANGTOOLING_LINK_CLANG_DYLIB=NO \
--DBUILD_CPLUSPLUS_TOOLS=ON \
--DSHOW_BUILD_DATE=ON \
+-DQT_BUILD_EXAMPLES:BOOL=OFF \
+-DCLANGTOOLING_LINK_CLANG_DYLIB:BOOL=NO \
+-DBUILD_CPLUSPLUS_TOOLS:BOOL=ON \
+-DSHOW_BUILD_DATE:BOOL=ON \
 -DWITH_DOCS:BOOL=OFF \
 -DLITEHTML_UTF8:BOOL=OFF \
--DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \
--DCMAKE_INSTALL_BINDIR=bin \
--DCMAKE_INSTALL_LIBDIR=lib64 \
--DCMAKE_INSTALL_LIBEXECDIR=libexec \
--DCMAKE_PREFIX_PATH=/usr \
 -DWITH_TESTS:BOOL=OFF \
 -DBUILD_QBS:BOOL=OFF \
--DBUILD_LIBRARY_QLITEHTML=OFF \
--DENABLE_SVG_SUPPORT=ON \
+-DBUILD_LIBRARY_QLITEHTML:BOOL=OFF \
+-DENABLE_SVG_SUPPORT:BOOL=ON \
 -DENABLE_BUILD_QBS:BOOL=OFF \
 -DGOOGLE_BENCHMARK_SRC_DIR="../../GoogleBenchmark/src"
-ninja --verbose -j16
+#ninja --verbose -j16
+make -j16 V=1 VERBOSE=1
 ## ccache stats
 ccache -s
 ## ccache stats
@@ -681,7 +683,7 @@ fi
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1620312383
+export SOURCE_DATE_EPOCH=1620314991
 rm -rf %{buildroot}
 pushd clr-build
 %make_install

@@ -9,6 +9,10 @@ egl
 gbm
 gl
 glesv1_cm
+gmock
+gmock_main
+gtest
+gtest_main
 glesv2
 libdrm
 libpulse-simple
