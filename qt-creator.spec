@@ -8,17 +8,15 @@ Version  : 1
 Release  : 1
 URL      : file:///insilications/build/git-clr/qt-creator-clr.tar.gz
 Source0  : file:///insilications/build/git-clr/qt-creator-clr.tar.gz
+Source1  : file:///aot/build/clearlinux/packages/GoogleBenchmark/GoogleBenchmark-1.5.3.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
-License  : GPL-2.0 GPL-3.0
+License  : Apache-2.0 GPL-2.0 GPL-3.0 LGPL-2.1
 BuildRequires : GoogleBenchmark
 BuildRequires : GoogleBenchmark-dev
 BuildRequires : ImageMagick-dev
 BuildRequires : SDL2
 BuildRequires : SDL2-dev
-BuildRequires : SDL2-staticdev
-BuildRequires : SVT-AV1-dev
-BuildRequires : SVT-AV1-staticdev
 BuildRequires : Sphinx
 BuildRequires : Vulkan-Headers-dev
 BuildRequires : Vulkan-Loader-dev
@@ -35,30 +33,22 @@ BuildRequires : binutils-dev
 BuildRequires : binutils-staticdev
 BuildRequires : brotli
 BuildRequires : brotli-dev
-BuildRequires : brotli-staticdev
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-meson
 BuildRequires : buildreq-qmake
 BuildRequires : bzip2
 BuildRequires : bzip2-dev
 BuildRequires : bzip2-staticdev
+BuildRequires : ca-certs
+BuildRequires : ca-certs-static
 BuildRequires : cairo
 BuildRequires : cairo-dev
 BuildRequires : cairo-lib
 BuildRequires : ccache
 BuildRequires : clazy
-BuildRequires : clazy-bin
-BuildRequires : clazy-data
-BuildRequires : clazy-staticdev
 BuildRequires : cmake
 BuildRequires : cppcheck
-BuildRequires : cuda
-BuildRequires : cuda-dev
-BuildRequires : cuda-lib
-BuildRequires : cuda-plugins
-BuildRequires : cuda-staticdev
 BuildRequires : curl-dev
-BuildRequires : curl-staticdev
 BuildRequires : dbus-dev
 BuildRequires : doxygen
 BuildRequires : e2fsprogs-dev
@@ -66,22 +56,19 @@ BuildRequires : elfutils-dev
 BuildRequires : evtest
 BuildRequires : expat-dev
 BuildRequires : expat-staticdev
-BuildRequires : fftw-dev
-BuildRequires : fftw-staticdev
 BuildRequires : findutils
-BuildRequires : flac
-BuildRequires : flac-dev
-BuildRequires : flac-staticdev
 BuildRequires : fontconfig-data
 BuildRequires : fontconfig-dev
 BuildRequires : fontconfig-lib
-BuildRequires : fontconfig-staticdev
 BuildRequires : freetype-dev
 BuildRequires : freetype-lib
-BuildRequires : freetype-staticdev
 BuildRequires : fribidi-dev
-BuildRequires : fribidi-staticdev
+BuildRequires : gcc
 BuildRequires : gcc-dev
+BuildRequires : gcc-libs-math
+BuildRequires : gcc-libstdc++32
+BuildRequires : gcc-libubsan
+BuildRequires : gcc-locale
 BuildRequires : gdb
 BuildRequires : gdb-dev
 BuildRequires : glib
@@ -91,23 +78,23 @@ BuildRequires : glib-dev
 BuildRequires : glib-lib
 BuildRequires : glibc
 BuildRequires : glibc-dev
+BuildRequires : glibc-lib-avx2
 BuildRequires : glibc-staticdev
 BuildRequires : gmp
 BuildRequires : gmp-dev
 BuildRequires : gmp-staticdev
 BuildRequires : gnutls
 BuildRequires : gnutls-dev
+BuildRequires : googletest
+BuildRequires : googletest-dev
 BuildRequires : graphite
 BuildRequires : graphite-dev
-BuildRequires : graphite-staticdev
 BuildRequires : gsm-dev
-BuildRequires : gsm-staticdev
 BuildRequires : gtk+-data
 BuildRequires : gtk+-lib
 BuildRequires : gtk3-lib
 BuildRequires : harfbuzz-dev
 BuildRequires : harfbuzz-lib
-BuildRequires : harfbuzz-staticdev
 BuildRequires : icu4c-lib
 BuildRequires : jsoncpp
 BuildRequires : jsoncpp-dev
@@ -116,16 +103,6 @@ BuildRequires : keyutils
 BuildRequires : keyutils-dev
 BuildRequires : krb5
 BuildRequires : krb5-dev
-BuildRequires : l-smash-dev
-BuildRequires : l-smash-staticdev
-BuildRequires : ladspa_sdk
-BuildRequires : ladspa_sdk-bin
-BuildRequires : ladspa_sdk-dev
-BuildRequires : ladspa_sdk-lib
-BuildRequires : ladspa_sdk-staticdev
-BuildRequires : lcms2
-BuildRequires : lcms2-dev
-BuildRequires : lcms2-staticdev
 BuildRequires : libX11-data
 BuildRequires : libX11-dev
 BuildRequires : libX11-lib
@@ -153,97 +130,49 @@ BuildRequires : libXtst-dev
 BuildRequires : libXtst-lib
 BuildRequires : libXxf86vm-dev
 BuildRequires : libXxf86vm-lib
-BuildRequires : libaom
-BuildRequires : libaom-dev
-BuildRequires : libaom-staticdev
 BuildRequires : libarchive
 BuildRequires : libarchive-dev
-BuildRequires : libarchive-staticdev
-BuildRequires : libass-dev
-BuildRequires : libass-lib
-BuildRequires : libass-staticdev
 BuildRequires : libatomic_ops-dev
 BuildRequires : libatomic_ops-staticdev
-BuildRequires : libbluray
-BuildRequires : libbluray-dev
-BuildRequires : libbluray-staticdev
 BuildRequires : libcap
 BuildRequires : libcap-dev
 BuildRequires : libcap-ng-dev
 BuildRequires : libconfig-dev
-BuildRequires : libconfig-staticdev
-BuildRequires : libdav1d
-BuildRequires : libdav1d-dev
-BuildRequires : libdav1d-staticdev
 BuildRequires : libdrm
 BuildRequires : libdrm-dev
 BuildRequires : libdrm-lib
-BuildRequires : libdrm-staticdev
-BuildRequires : libdvdnav
-BuildRequires : libdvdnav-dev
-BuildRequires : libdvdnav-staticdev
-BuildRequires : libdvdread
-BuildRequires : libdvdread-dev
-BuildRequires : libdvdread-staticdev
 BuildRequires : libedit
 BuildRequires : libedit-dev
 BuildRequires : libepoxy
 BuildRequires : libepoxy-dev
-BuildRequires : libfdk_aac
-BuildRequires : libfdk_aac-dev
-BuildRequires : libfdk_aac-staticdev
 BuildRequires : libffi
 BuildRequires : libffi-dev
 BuildRequires : libffi-staticdev
+BuildRequires : libgcc1
 BuildRequires : libgcrypt
 BuildRequires : libgcrypt-dev
 BuildRequires : libgpg-error
 BuildRequires : libgpg-error-dev
 BuildRequires : libidn2
 BuildRequires : libidn2-dev
-BuildRequires : libidn2-staticdev
 BuildRequires : libinput-data
 BuildRequires : libinput-lib
 BuildRequires : libinput-libexec
 BuildRequires : libjpeg-turbo-dev
-BuildRequires : libjpeg-turbo-staticdev
-BuildRequires : libmp3lame-dev
-BuildRequires : libmp3lame-lib
-BuildRequires : libmp3lame-staticdev
 BuildRequires : libogg
 BuildRequires : libogg-dev
-BuildRequires : libogg-staticdev
 BuildRequires : libpciaccess
 BuildRequires : libpciaccess-dev
 BuildRequires : libplacebo
 BuildRequires : libplacebo-dev
-BuildRequires : libplacebo-staticdev
 BuildRequires : libpng-dev
 BuildRequires : libpng-lib
-BuildRequires : libpng-staticdev
-BuildRequires : libsamplerate
-BuildRequires : libsamplerate-dev
-BuildRequires : libsamplerate-staticdev
-BuildRequires : libsndfile
-BuildRequires : libsndfile-dev
-BuildRequires : libsndfile-staticdev
-BuildRequires : libsrt-dev
-BuildRequires : libsrt-staticdev
 BuildRequires : libstdc++
 BuildRequires : libstdc++-dev
 BuildRequires : libtasn1-dev
-BuildRequires : libtasn1-staticdev
-BuildRequires : libtheora-dev
-BuildRequires : libtheora-staticdev
-BuildRequires : libudfread-dev
-BuildRequires : libudfread-staticdev
 BuildRequires : libunistring-dev
-BuildRequires : libunistring-staticdev
 BuildRequires : libunwind
 BuildRequires : libunwind-dev
-BuildRequires : libunwind-dev32
-BuildRequires : libunwind-staticdev
-BuildRequires : libunwind-staticdev32
 BuildRequires : libusb
 BuildRequires : libusb-dev
 BuildRequires : libva
@@ -251,41 +180,22 @@ BuildRequires : libva-dev
 BuildRequires : libva-lib
 BuildRequires : libvdpau
 BuildRequires : libvdpau-dev
-BuildRequires : libvidstab-dev
-BuildRequires : libvidstab-staticdev
 BuildRequires : libvorbis
 BuildRequires : libvorbis-dev
-BuildRequires : libvorbis-staticdev
-BuildRequires : libvpx
-BuildRequires : libvpx-dev
-BuildRequires : libvpx-staticdev
 BuildRequires : libwebp-dev
-BuildRequires : libwebp-staticdev
-BuildRequires : libx264-dev
-BuildRequires : libx264-staticdev
-BuildRequires : libx265
-BuildRequires : libx265-dev
-BuildRequires : libx265-lib
-BuildRequires : libx265-staticdev
 BuildRequires : libxcb-dev
 BuildRequires : libxcb-lib
 BuildRequires : libxml2-dev
 BuildRequires : libxml2-staticdev
-BuildRequires : libxvid
-BuildRequires : libxvid-dev
-BuildRequires : libxvid-staticdev
-BuildRequires : libzimg-dev
-BuildRequires : libzimg-staticdev
-BuildRequires : litehtml
-BuildRequires : litehtml-dev
-BuildRequires : llvm12-gcc
-BuildRequires : llvm12-gcc-bin
-BuildRequires : llvm12-gcc-data
-BuildRequires : llvm12-gcc-dev
-BuildRequires : llvm12-gcc-lib
-BuildRequires : llvm12-gcc-libexec
-BuildRequires : llvm12-gcc-man
-BuildRequires : llvm12-gcc-staticdev
+BuildRequires : llvm
+BuildRequires : llvm-abi
+BuildRequires : llvm-bin
+BuildRequires : llvm-data
+BuildRequires : llvm-dev
+BuildRequires : llvm-lib
+BuildRequires : llvm-libexec
+BuildRequires : llvm-man
+BuildRequires : llvm-staticdev
 BuildRequires : lz4
 BuildRequires : lz4-dev
 BuildRequires : lz4-staticdev
@@ -294,7 +204,6 @@ BuildRequires : lzo-dev
 BuildRequires : lzo-staticdev
 BuildRequires : md4c
 BuildRequires : md4c-dev
-BuildRequires : md4c-staticdev
 BuildRequires : mediasdk-dev
 BuildRequires : mesa
 BuildRequires : mesa-dev
@@ -305,26 +214,20 @@ BuildRequires : nasm-bin
 BuildRequires : ncurses-dev
 BuildRequires : nettle
 BuildRequires : nettle-dev
-BuildRequires : nettle-staticdev
 BuildRequires : ninja
 BuildRequires : not-ffmpeg
 BuildRequires : not-ffmpeg-dev
 BuildRequires : numlockx
-BuildRequires : nv-codec-headers
-BuildRequires : nv-codec-headers-dev
 BuildRequires : nvidia
 BuildRequires : nvidia-dev
 BuildRequires : nvidia-lib
 BuildRequires : opencl-headers
 BuildRequires : opencl-headers-dev
 BuildRequires : openjpeg-dev
-BuildRequires : openjpeg-staticdev
 BuildRequires : openssl
 BuildRequires : openssl-dev
 BuildRequires : openssl-lib
 BuildRequires : openssl-staticdev
-BuildRequires : opus-dev
-BuildRequires : opus-staticdev
 BuildRequires : orc-dev
 BuildRequires : orc-staticdev
 BuildRequires : p11-kit
@@ -445,7 +348,12 @@ BuildRequires : qt5ct
 BuildRequires : qtbase
 BuildRequires : qtbase-dev
 BuildRequires : qtbase-dev mesa-dev
+BuildRequires : qtbase-extras
 BuildRequires : qtcanvas3d
+BuildRequires : qtcharts
+BuildRequires : qtcharts-dev
+BuildRequires : qtconnectivity
+BuildRequires : qtconnectivity-dev
 BuildRequires : qtdatavis3d
 BuildRequires : qtdatavis3d-dev
 BuildRequires : qtdeclarative
@@ -453,23 +361,30 @@ BuildRequires : qtdeclarative-dev
 BuildRequires : qtgamepad
 BuildRequires : qtgamepad-dev
 BuildRequires : qtgraphicaleffects
+BuildRequires : qtimageformats
 BuildRequires : qtlocation
 BuildRequires : qtlocation-dev
 BuildRequires : qtmqtt
 BuildRequires : qtmqtt-dev
+BuildRequires : qtmultimedia
+BuildRequires : qtmultimedia-dev
 BuildRequires : qtnetworkauth
 BuildRequires : qtnetworkauth-dev
 BuildRequires : qtquickcontrols
 BuildRequires : qtquickcontrols2
 BuildRequires : qtquickcontrols2-dev
+BuildRequires : qtremoteobjects-dev
 BuildRequires : qtscript
 BuildRequires : qtscript-dev
+BuildRequires : qtscript-extras
 BuildRequires : qtscxml
 BuildRequires : qtscxml-dev
 BuildRequires : qtsensors
 BuildRequires : qtsensors-dev
 BuildRequires : qtserialbus
 BuildRequires : qtserialbus-dev
+BuildRequires : qtserialport
+BuildRequires : qtserialport-dev
 BuildRequires : qtspeech
 BuildRequires : qtspeech-dev
 BuildRequires : qtsvg
@@ -479,30 +394,23 @@ BuildRequires : qttools-dev
 BuildRequires : qttranslations
 BuildRequires : qtvirtualkeyboard
 BuildRequires : qtvirtualkeyboard-dev
+BuildRequires : qtwayland
+BuildRequires : qtwayland-dev
 BuildRequires : qtwebchannel
 BuildRequires : qtwebchannel-dev
 BuildRequires : qtwebengine
 BuildRequires : qtwebengine-dev
+BuildRequires : qtwebsockets
+BuildRequires : qtwebsockets-dev
 BuildRequires : qtx11extras
 BuildRequires : qtx11extras-dev
-BuildRequires : rtmpdump
-BuildRequires : rtmpdump-dev
-BuildRequires : rtmpdump-staticdev
-BuildRequires : rubberband-dev
-BuildRequires : rubberband-staticdev
+BuildRequires : qtxmlpatterns
+BuildRequires : qtxmlpatterns-dev
 BuildRequires : setxkbmap
-BuildRequires : shaderc
-BuildRequires : shaderc-dev
-BuildRequires : shaderc-staticdev
+BuildRequires : shared-mime-info
 BuildRequires : snappy-dev
-BuildRequires : snappy-staticdev
-BuildRequires : speex-dev
-BuildRequires : speex-staticdev
-BuildRequires : speexdsp-dev
-BuildRequires : speexdsp-staticdev
 BuildRequires : sqlite-autoconf
 BuildRequires : sqlite-autoconf-dev
-BuildRequires : sqlite-autoconf-staticdev
 BuildRequires : syntax-highlighting
 BuildRequires : syntax-highlighting-data
 BuildRequires : syntax-highlighting-dev
@@ -510,17 +418,10 @@ BuildRequires : syntax-highlighting-lib
 BuildRequires : systemd
 BuildRequires : systemd-dev
 BuildRequires : texinfo
-BuildRequires : uchardet
-BuildRequires : uchardet-dev
-BuildRequires : uchardet-staticdev
 BuildRequires : util-linux
 BuildRequires : util-linux-dev
-BuildRequires : util-linux-staticdev
 BuildRequires : valgrind
 BuildRequires : valgrind-dev
-BuildRequires : vamp-sdk
-BuildRequires : vamp-sdk-dev
-BuildRequires : vamp-sdk-staticdev
 BuildRequires : wayland
 BuildRequires : weston
 BuildRequires : wmctrl
@@ -584,13 +485,16 @@ BuildRequires : zstd-staticdev
 %define debug_package %{nil}
 
 %description
-fakevim is based on eventFilters installed on a QTextEdit or a QPlainTextEdit.
-It basically catches all keystrokes and modifies some internal state that
-make the resulting text in the editor look like it was using vim.
+Qt is provided with a powerful embedded scripting environment through the Qt Script
+classes.
 
 %prep
 %setup -q -n qt-creator-clr
+cd %{_builddir}
+tar xf %{_sourcedir}/GoogleBenchmark-1.5.3.tar.gz
 cd %{_builddir}/qt-creator-clr
+mkdir -p GoogleBenchmark
+cp -r %{_builddir}/GoogleBenchmark/* %{_builddir}/qt-creator-clr/GoogleBenchmark
 
 %build
 unset http_proxy
@@ -598,7 +502,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1618071310
+export SOURCE_DATE_EPOCH=1620304018
 unset LD_AS_NEEDED
 mkdir -p clr-build
 pushd clr-build
@@ -606,36 +510,44 @@ export GCC_IGNORE_WERROR=1
 ## altflags_pgo content
 ## pgo generate
 export PGO_GEN="-fprofile-generate=/var/tmp/pgo -fprofile-dir=/var/tmp/pgo -fprofile-abs-path -fprofile-update=atomic -fprofile-arcs -ftest-coverage --coverage -fprofile-partial-training"
-export CFLAGS_GENERATE="-O2 --param=lto-max-streaming-parallelism=4 -march=native -mtune=native -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -flto=4 -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -ffat-lto-objects -fPIC -pthread -static-libstdc++ -static-libgcc $PGO_GEN"
-export FCFLAGS_GENERATE="-O2 --param=lto-max-streaming-parallelism=4 -march=native -mtune=native -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -flto=4 -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -ffat-lto-objects -fPIC -pthread -static-libstdc++ -static-libgcc $PGO_GEN"
-export FFLAGS_GENERATE="-O2 --param=lto-max-streaming-parallelism=4 -march=native -mtune=native -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -flto=4 -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -ffat-lto-objects -fPIC -pthread -static-libstdc++ -static-libgcc $PGO_GEN"
-export CXXFLAGS_GENERATE="-O2 --param=lto-max-streaming-parallelism=4 -march=native -mtune=native -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -flto=4 -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -fvisibility-inlines-hidden -pipe -ffat-lto-objects -fPIC -pthread -static-libstdc++ -static-libgcc $PGO_GEN"
-export LDFLAGS_GENERATE="-O2 --param=lto-max-streaming-parallelism=4 -march=native -mtune=native -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -flto=4 -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -ffat-lto-objects -fPIC -pthread -static-libstdc++ -static-libgcc -lpthread $PGO_GEN"
+export CFLAGS_GENERATE="-g -O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -falign-functions=32 -flimit-function-alignment -fno-semantic-interposition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -mtls-dialect=gnu2 -fno-math-errno -fno-trapping-math -pipe -ffat-lto-objects -flto=16 -fPIC -Wl,-z,max-page-size=0x1000 -fomit-frame-pointer -pthread -static-libstdc++ -static-libgcc -Wl,--build-id=sha1 $PGO_GEN"
+export FCFLAGS_GENERATE="-g -O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -falign-functions=32 -flimit-function-alignment -fno-semantic-interposition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -mtls-dialect=gnu2 -fno-math-errno -fno-trapping-math -pipe -ffat-lto-objects -flto=16 -fPIC -Wl,-z,max-page-size=0x1000 -fomit-frame-pointer -pthread -static-libstdc++ -static-libgcc -Wl,--build-id=sha1 $PGO_GEN"
+export FFLAGS_GENERATE="-g -O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -falign-functions=32 -flimit-function-alignment -fno-semantic-interposition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -mtls-dialect=gnu2 -fno-math-errno -fno-trapping-math -pipe -ffat-lto-objects -flto=16 -fPIC -Wl,-z,max-page-size=0x1000 -fomit-frame-pointer -pthread -static-libstdc++ -static-libgcc -Wl,--build-id=sha1 $PGO_GEN"
+export CXXFLAGS_GENERATE="-g -O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -falign-functions=32 -flimit-function-alignment -fno-semantic-interposition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -mtls-dialect=gnu2 -fno-math-errno -fno-trapping-math -fvisibility-inlines-hidden -pipe -ffat-lto-objects -flto=16 -fPIC -Wl,-z,max-page-size=0x1000 -fomit-frame-pointer -pthread -static-libstdc++ -static-libgcc -Wl,--build-id=sha1 $PGO_GEN"
+export LDFLAGS_GENERATE="-g -O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -falign-functions=32 -flimit-function-alignment -fno-semantic-interposition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -mtls-dialect=gnu2 -fno-math-errno -fno-trapping-math -pipe -ffat-lto-objects -flto=16 -fPIC -Wl,-z,max-page-size=0x1000 -fomit-frame-pointer -pthread -static-libstdc++ -static-libgcc -lpthread -Wl,--build-id=sha1 $PGO_GEN"
 ## pgo use
+## -ffat-lto-objects -fno-PIE -fno-PIE -m64 -no-pie -fPIC -Wl,-z,max-page-size=0x1000 -fvisibility=hidden -flto-partition=none
+## gcc: -feliminate-unused-debug-types -fipa-pta -flto=16 -Wno-error -Wp,-D_REENTRANT -fno-common
 export PGO_USE="-fprofile-use=/var/tmp/pgo -fprofile-dir=/var/tmp/pgo -fprofile-abs-path -fprofile-correction -fprofile-partial-training"
-export CFLAGS_USE="-O3 --param=lto-max-streaming-parallelism=4 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=4 -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -ffat-lto-objects -fPIC -pthread -static-libstdc++ -static-libgcc $PGO_USE"
-export FCFLAGS_USE="-O3 --param=lto-max-streaming-parallelism=4 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=4 -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -ffat-lto-objects -fPIC -pthread -static-libstdc++ -static-libgcc $PGO_USE"
-export FFLAGS_USE="-O3 --param=lto-max-streaming-parallelism=4 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=4 -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -ffat-lto-objects -fPIC -pthread -static-libstdc++ -static-libgcc $PGO_USE"
-export CXXFLAGS_USE="-O3 --param=lto-max-streaming-parallelism=4 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=4 -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -fvisibility-inlines-hidden -pipe -ffat-lto-objects -fPIC -pthread -static-libstdc++ -static-libgcc $PGO_USE"
-export LDFLAGS_USE="-O3 --param=lto-max-streaming-parallelism=4 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=4 -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -ffat-lto-objects -fPIC -pthread -static-libstdc++ -static-libgcc -lpthread $PGO_USE"
+export CFLAGS_USE="-g -O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -floop-block -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -ffat-lto-objects -fPIC -Wl,-z,max-page-size=0x1000 -fomit-frame-pointer -pthread -static-libstdc++ -static-libgcc $PGO_USE"
+export FCFLAGS_USE="-g -O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -floop-block -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -ffat-lto-objects -fPIC -Wl,-z,max-page-size=0x1000 -fomit-frame-pointer -pthread -static-libstdc++ -static-libgcc $PGO_USE"
+export FFLAGS_USE="-g -O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -floop-block -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -ffat-lto-objects -fPIC -Wl,-z,max-page-size=0x1000 -fomit-frame-pointer -pthread -static-libstdc++ -static-libgcc $PGO_USE"
+export CXXFLAGS_USE="-g -O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -floop-block -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -fvisibility-inlines-hidden -pipe -ffat-lto-objects -fPIC -Wl,-z,max-page-size=0x1000 -fomit-frame-pointer -pthread -static-libstdc++ -static-libgcc $PGO_USE"
+export LDFLAGS_USE="-g -O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -floop-block -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -ffat-lto-objects -fPIC -Wl,-z,max-page-size=0x1000 -fomit-frame-pointer -pthread -static-libstdc++ -static-libgcc -lpthread $PGO_USE"
+#
 export AR=/usr/bin/gcc-ar
 export RANLIB=/usr/bin/gcc-ranlib
 export NM=/usr/bin/gcc-nm
 #
 export MAKEFLAGS=%{?_smp_mflags}
 #
-unset CCACHE_DISABLE
+%global _lto_cflags 1
+#global _lto_cflags %{nil}
+%global _disable_maintainer_mode 1
+#%global _disable_maintainer_mode %{nil}
+#
+export CCACHE_DISABLE=true
 export PATH="/usr/lib64/ccache/bin:$PATH"
 export CCACHE_NOHASHDIR=true
 export CCACHE_CPP2=true
-export CCACHE_SLOPPINESS=pch_defines,time_macros,locale,clang_index_store,file_macro
+export CCACHE_SLOPPINESS=pch_defines,time_macros,locale,file_stat_matches,file_stat_matches_ctime,include_file_ctime,include_file_mtime,modules,system_headers,clang_index_store,file_macro
+#export CCACHE_SLOPPINESS=modules,include_file_mtime,include_file_ctime,time_macros,pch_defines,file_stat_matches,clang_index_store,system_headers,locale
+#export CCACHE_SLOPPINESS=pch_defines,time_macros,locale,clang_index_store,file_macro
 export CCACHE_DIR=/var/tmp/ccache
 export CCACHE_BASEDIR=/builddir/build/BUILD
 #export CCACHE_LOGFILE=/var/tmp/ccache/cache.debug
 #export CCACHE_DEBUG=true
 #export CCACHE_NODIRECT=true
-export V=1
-export VERBOSE=1
 #
 export DISPLAY=:0
 export __GL_ALLOW_UNOFFICIAL_PROTOCOL=1
@@ -660,7 +572,7 @@ export LIBVA_DRIVERS_PATH=/usr/lib64/dri
 export GTK_RC_FILES=/etc/gtk/gtkrc
 export FONTCONFIG_PATH=/usr/share/defaults/fonts
 ## altflags_pgo end
-if [ ! -f status.pgo ]; then
+if [ ! -f statuspgo ]; then
 echo PGO Phase 1
 export CFLAGS="${CFLAGS_GENERATE}"
 export CXXFLAGS="${CXXFLAGS_GENERATE}"
@@ -679,8 +591,13 @@ export LDFLAGS="${LDFLAGS_GENERATE}"
 -DCMAKE_INSTALL_LIBEXECDIR=libexec \
 -DCMAKE_PREFIX_PATH=/usr \
 -DWITH_TESTS:BOOL=ON \
+-DBUILD_QBS:BOOL=ON \
+-DENABLE_BUILD_QBS:BOOL=ON \
+-DGOOGLE_BENCHMARK_SRC_DIR="../../GoogleBenchmark" \
+-DCMAKE_C_COMPILER=gcc \
+-DCMAKE_CXX_COMPILER=g++ \
 -Wno-dev
-VERBOSE=1 V=1 make -j8
+make -j16 VERBOSE=1 V=1
 ## ccache stats
 ccache -s
 ## ccache stats
@@ -714,10 +631,10 @@ export $(dbus-launch)
 ctest --parallel 16 -V --progress --timeout 100 || :
 #/builddir/build/BUILD/qt-creator-clr/clr-build/bin/qtcreator -temporarycleansettings -settingspath /builddir/ -installsettingspath /builddir/ -pluginpath /builddir/build/BUILD/qt-creator-clr/clr-build/lib64/qtcreator/plugins -noload ClangCodeModel ClangFormat
 /builddir/build/BUILD/qt-creator-clr/clr-build/bin/qtcreator -noload Help
-find . -type f,l -not -name '*.gcno' -not -name 'status.pgo' -delete -print
-echo USED > status.pgo
+find . -type f,l -not -name '*.gcno' -not -name 'statuspgo*' -delete -print
+echo USED > statuspgo
 fi
-if [ -f status.pgo ]; then
+if [ -f statuspgo ]; then
 echo PGO Phase 2
 export CFLAGS="${CFLAGS_USE}"
 export CXXFLAGS="${CXXFLAGS_USE}"
@@ -736,8 +653,13 @@ export LDFLAGS="${LDFLAGS_USE}"
 -DCMAKE_INSTALL_LIBEXECDIR=libexec \
 -DCMAKE_PREFIX_PATH=/usr \
 -DWITH_TESTS:BOOL=OFF \
+-DBUILD_QBS:BOOL=OFF \
+-DENABLE_BUILD_QBS:BOOL=OFF \
+-DGOOGLE_BENCHMARK_SRC_DIR="../../GoogleBenchmark" \
+-DCMAKE_C_COMPILER=gcc \
+-DCMAKE_CXX_COMPILER=g++ \
 -Wno-dev
-VERBOSE=1 V=1 make -j8
+make -j16 VERBOSE=1 V=1
 ## ccache stats
 ccache -s
 ## ccache stats
@@ -745,7 +667,7 @@ fi
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1618071310
+export SOURCE_DATE_EPOCH=1620304018
 rm -rf %{buildroot}
 pushd clr-build
 %make_install
