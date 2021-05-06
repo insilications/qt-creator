@@ -506,7 +506,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1620315789
+export SOURCE_DATE_EPOCH=1620316975
 unset LD_AS_NEEDED
 mkdir -p clr-build
 pushd clr-build
@@ -585,6 +585,12 @@ export FFLAGS="${FFLAGS_GENERATE}"
 export FCFLAGS="${FCFLAGS_GENERATE}"
 export LDFLAGS="${LDFLAGS_GENERATE}"
 %cmake .. -G Ninja \
+-DCMAKE_JOB_POOLS:STRING="compile=16;link=6" \
+-DCMAKE_JOB_POOL_COMPILE:STRING="compile" \
+-DCMAKE_JOB_POOL_LINK:STRING="link" \
+-DCMAKE_NM=/usr/bin/gcc-nm \
+-DCMAKE_RANLIB=/usr/bin/gcc-ranlib \
+-DCMAKE_AR=/usr/bin/gcc-ar \
 -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \
 -DCMAKE_INSTALL_BINDIR=bin \
 -DCMAKE_INSTALL_LIBDIR=lib64 \
@@ -593,7 +599,7 @@ export LDFLAGS="${LDFLAGS_GENERATE}"
 -DCMAKE_BUILD_TYPE=Release \
 -DCMAKE_C_COMPILER=gcc \
 -DCMAKE_CXX_COMPILER=g++ \
--DPYTHON_EXECUTABLE="/usr/bin/python3" \
+-DPYTHON_EXECUTABLE:FILEPATH=/usr/bin/python3 \
 -DPython3_EXECUTABLE="/usr/bin/python3" \
 -DQT_BUILD_EXAMPLES:BOOL=OFF \
 -DCLANGTOOLING_LINK_CLANG_DYLIB:BOOL=NO \
@@ -654,6 +660,12 @@ export FFLAGS="${FFLAGS_USE}"
 export FCFLAGS="${FCFLAGS_USE}"
 export LDFLAGS="${LDFLAGS_USE}"
 %cmake .. -G Ninja \
+-DCMAKE_JOB_POOLS:STRING="compile=16;link=6" \
+-DCMAKE_JOB_POOL_COMPILE:STRING="compile" \
+-DCMAKE_JOB_POOL_LINK:STRING="link" \
+-DCMAKE_NM=/usr/bin/gcc-nm \
+-DCMAKE_RANLIB=/usr/bin/gcc-ranlib \
+-DCMAKE_AR=/usr/bin/gcc-ar \
 -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \
 -DCMAKE_INSTALL_BINDIR=bin \
 -DCMAKE_INSTALL_LIBDIR=lib64 \
@@ -662,7 +674,7 @@ export LDFLAGS="${LDFLAGS_USE}"
 -DCMAKE_BUILD_TYPE=Release \
 -DCMAKE_C_COMPILER=gcc \
 -DCMAKE_CXX_COMPILER=g++ \
--DPYTHON_EXECUTABLE="/usr/bin/python3" \
+-DPYTHON_EXECUTABLE:FILEPATH=/usr/bin/python3 \
 -DPython3_EXECUTABLE="/usr/bin/python3" \
 -DQT_BUILD_EXAMPLES:BOOL=OFF \
 -DCLANGTOOLING_LINK_CLANG_DYLIB:BOOL=NO \
@@ -685,7 +697,7 @@ fi
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1620315789
+export SOURCE_DATE_EPOCH=1620316975
 rm -rf %{buildroot}
 pushd clr-build
 %make_install
