@@ -502,7 +502,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1620305926
+export SOURCE_DATE_EPOCH=1620311686
 unset LD_AS_NEEDED
 mkdir -p clr-build
 pushd clr-build
@@ -581,7 +581,7 @@ export CXXFLAGS="${CXXFLAGS_GENERATE}"
 export FFLAGS="${FFLAGS_GENERATE}"
 export FCFLAGS="${FCFLAGS_GENERATE}"
 export LDFLAGS="${LDFLAGS_GENERATE}"
-%cmake .. -DCMAKE_GENERATOR=Ninja \
+%cmake .. -G Ninja \
 -DCMAKE_BUILD_TYPE=Release \
 -DCMAKE_C_COMPILER=gcc \
 -DCMAKE_CXX_COMPILER=g++ \
@@ -601,8 +601,10 @@ export LDFLAGS="${LDFLAGS_GENERATE}"
 -DCMAKE_PREFIX_PATH=/usr \
 -DWITH_TESTS:BOOL=ON \
 -DBUILD_QBS:BOOL=OFF \
+-DBUILD_LIBRARY_QLITEHTM=OFF \
+-DENABLE_SVG_SUPPORT=ON \
 -DENABLE_BUILD_QBS:BOOL=OFF \
--DGOOGLE_BENCHMARK_SRC_DIR="../../GoogleBenchmark"
+-DGOOGLE_BENCHMARK_SRC_DIR="../../GoogleBenchmark/src"
 make -j16 VERBOSE=1 V=1
 ## ccache stats
 ccache -s
@@ -649,7 +651,7 @@ export CXXFLAGS="${CXXFLAGS_USE}"
 export FFLAGS="${FFLAGS_USE}"
 export FCFLAGS="${FCFLAGS_USE}"
 export LDFLAGS="${LDFLAGS_USE}"
-%cmake .. -DCMAKE_GENERATOR=Ninja \
+%cmake .. -G Ninja \
 -DCMAKE_BUILD_TYPE=Release \
 -DCMAKE_C_COMPILER=gcc \
 -DCMAKE_CXX_COMPILER=g++ \
@@ -669,8 +671,10 @@ export LDFLAGS="${LDFLAGS_USE}"
 -DCMAKE_PREFIX_PATH=/usr \
 -DWITH_TESTS:BOOL=OFF \
 -DBUILD_QBS:BOOL=OFF \
+-DBUILD_LIBRARY_QLITEHTM=OFF \
+-DENABLE_SVG_SUPPORT=ON \
 -DENABLE_BUILD_QBS:BOOL=OFF \
--DGOOGLE_BENCHMARK_SRC_DIR="../../GoogleBenchmark"
+-DGOOGLE_BENCHMARK_SRC_DIR="../../GoogleBenchmark/src"
 make -j16 VERBOSE=1 V=1
 ## ccache stats
 ccache -s
@@ -679,7 +683,7 @@ fi
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1620305926
+export SOURCE_DATE_EPOCH=1620311686
 rm -rf %{buildroot}
 pushd clr-build
 %make_install
