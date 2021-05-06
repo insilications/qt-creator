@@ -502,7 +502,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1620304478
+export SOURCE_DATE_EPOCH=1620305926
 unset LD_AS_NEEDED
 mkdir -p clr-build
 pushd clr-build
@@ -550,12 +550,14 @@ export CCACHE_BASEDIR=/builddir/build/BUILD
 #export CCACHE_NODIRECT=true
 #
 export DISPLAY=:0
+export GPG_AGENT_INFO=/run/user/1000/gnupg/S.gpg-agent:0:1
 export __GL_ALLOW_UNOFFICIAL_PROTOCOL=1
 export __GL_SYNC_TO_VBLANK=0
 export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF8
 export XDG_CONFIG_DIRS=/usr/share/xdg:/etc/xdg
 export XDG_SEAT=seat0
-export XDG_SESSION_TYPE=tty
+export XDG_SESSION_TYPE=x11
 export XDG_CURRENT_DESKTOP=KDE
 export XDG_SESSION_CLASS=user
 export XDG_VTNR=1
@@ -579,8 +581,13 @@ export CXXFLAGS="${CXXFLAGS_GENERATE}"
 export FFLAGS="${FFLAGS_GENERATE}"
 export FCFLAGS="${FCFLAGS_GENERATE}"
 export LDFLAGS="${LDFLAGS_GENERATE}"
-%cmake .. -G Ninja \
+%cmake .. -DCMAKE_GENERATOR=Ninja \
 -DCMAKE_BUILD_TYPE=Release \
+-DCMAKE_C_COMPILER=gcc \
+-DCMAKE_CXX_COMPILER=g++ \
+-DPYTHON_EXECUTABLE="/usr/bin/python3" \
+-DPython3_EXECUTABLE="/usr/bin/python3" \
+-DBUILD_WITH_PCH=OFF \
 -DQT_BUILD_EXAMPLES=OFF \
 -DCLANGTOOLING_LINK_CLANG_DYLIB=NO \
 -DBUILD_CPLUSPLUS_TOOLS=ON \
@@ -595,22 +602,21 @@ export LDFLAGS="${LDFLAGS_GENERATE}"
 -DWITH_TESTS:BOOL=ON \
 -DBUILD_QBS:BOOL=OFF \
 -DENABLE_BUILD_QBS:BOOL=OFF \
--DGOOGLE_BENCHMARK_SRC_DIR="../../GoogleBenchmark" \
--DCMAKE_C_COMPILER=gcc \
--DCMAKE_CXX_COMPILER=g++ \
--Wno-dev
+-DGOOGLE_BENCHMARK_SRC_DIR="../../GoogleBenchmark"
 make -j16 VERBOSE=1 V=1
 ## ccache stats
 ccache -s
 ## ccache stats
 
 export DISPLAY=:0
+export GPG_AGENT_INFO=/run/user/1000/gnupg/S.gpg-agent:0:1
 export __GL_ALLOW_UNOFFICIAL_PROTOCOL=1
 export __GL_SYNC_TO_VBLANK=0
 export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF8
 export XDG_CONFIG_DIRS=/usr/share/xdg:/etc/xdg
 export XDG_SEAT=seat0
-export XDG_SESSION_TYPE=tty
+export XDG_SESSION_TYPE=x11
 export XDG_CURRENT_DESKTOP=KDE
 export XDG_SESSION_CLASS=user
 export XDG_VTNR=1
@@ -643,7 +649,13 @@ export CXXFLAGS="${CXXFLAGS_USE}"
 export FFLAGS="${FFLAGS_USE}"
 export FCFLAGS="${FCFLAGS_USE}"
 export LDFLAGS="${LDFLAGS_USE}"
-%cmake .. -DCMAKE_BUILD_TYPE=Release \
+%cmake .. -DCMAKE_GENERATOR=Ninja \
+-DCMAKE_BUILD_TYPE=Release \
+-DCMAKE_C_COMPILER=gcc \
+-DCMAKE_CXX_COMPILER=g++ \
+-DPYTHON_EXECUTABLE="/usr/bin/python3" \
+-DPython3_EXECUTABLE="/usr/bin/python3" \
+-DBUILD_WITH_PCH=OFF \
 -DQT_BUILD_EXAMPLES=OFF \
 -DCLANGTOOLING_LINK_CLANG_DYLIB=NO \
 -DBUILD_CPLUSPLUS_TOOLS=ON \
@@ -658,10 +670,7 @@ export LDFLAGS="${LDFLAGS_USE}"
 -DWITH_TESTS:BOOL=OFF \
 -DBUILD_QBS:BOOL=OFF \
 -DENABLE_BUILD_QBS:BOOL=OFF \
--DGOOGLE_BENCHMARK_SRC_DIR="../../GoogleBenchmark" \
--DCMAKE_C_COMPILER=gcc \
--DCMAKE_CXX_COMPILER=g++ \
--Wno-dev
+-DGOOGLE_BENCHMARK_SRC_DIR="../../GoogleBenchmark"
 make -j16 VERBOSE=1 V=1
 ## ccache stats
 ccache -s
@@ -670,7 +679,7 @@ fi
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1620304478
+export SOURCE_DATE_EPOCH=1620305926
 rm -rf %{buildroot}
 pushd clr-build
 %make_install

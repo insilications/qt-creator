@@ -40,12 +40,14 @@ export CCACHE_BASEDIR=/builddir/build/BUILD
 #export CCACHE_NODIRECT=true
 #
 export DISPLAY=:0
+export GPG_AGENT_INFO=/run/user/1000/gnupg/S.gpg-agent:0:1
 export __GL_ALLOW_UNOFFICIAL_PROTOCOL=1
 export __GL_SYNC_TO_VBLANK=0
 export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF8
 export XDG_CONFIG_DIRS=/usr/share/xdg:/etc/xdg
 export XDG_SEAT=seat0
-export XDG_SESSION_TYPE=tty
+export XDG_SESSION_TYPE=x11
 export XDG_CURRENT_DESKTOP=KDE
 export XDG_SESSION_CLASS=user
 export XDG_VTNR=1
