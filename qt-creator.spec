@@ -502,7 +502,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1620311790
+export SOURCE_DATE_EPOCH=1620311903
 unset LD_AS_NEEDED
 mkdir -p clr-build
 pushd clr-build
@@ -554,7 +554,6 @@ export GPG_AGENT_INFO=/run/user/1000/gnupg/S.gpg-agent:0:1
 export __GL_ALLOW_UNOFFICIAL_PROTOCOL=1
 export __GL_SYNC_TO_VBLANK=0
 export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF8
 export XDG_CONFIG_DIRS=/usr/share/xdg:/etc/xdg
 export XDG_SEAT=seat0
 export XDG_SESSION_TYPE=x11
@@ -605,7 +604,7 @@ export LDFLAGS="${LDFLAGS_GENERATE}"
 -DENABLE_SVG_SUPPORT=ON \
 -DENABLE_BUILD_QBS:BOOL=OFF \
 -DGOOGLE_BENCHMARK_SRC_DIR="../../GoogleBenchmark/src"
-ninja -j16 VERBOSE=1 V=1
+ninja --verbose -j16
 ## ccache stats
 ccache -s
 ## ccache stats
@@ -615,7 +614,6 @@ export GPG_AGENT_INFO=/run/user/1000/gnupg/S.gpg-agent:0:1
 export __GL_ALLOW_UNOFFICIAL_PROTOCOL=1
 export __GL_SYNC_TO_VBLANK=0
 export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF8
 export XDG_CONFIG_DIRS=/usr/share/xdg:/etc/xdg
 export XDG_SEAT=seat0
 export XDG_SESSION_TYPE=x11
@@ -675,7 +673,7 @@ export LDFLAGS="${LDFLAGS_USE}"
 -DENABLE_SVG_SUPPORT=ON \
 -DENABLE_BUILD_QBS:BOOL=OFF \
 -DGOOGLE_BENCHMARK_SRC_DIR="../../GoogleBenchmark/src"
-ninja -j16 VERBOSE=1 V=1
+ninja --verbose -j16
 ## ccache stats
 ccache -s
 ## ccache stats
@@ -683,7 +681,7 @@ fi
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1620311790
+export SOURCE_DATE_EPOCH=1620311903
 rm -rf %{buildroot}
 pushd clr-build
 %make_install
