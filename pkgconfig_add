@@ -2,7 +2,6 @@
 # not get picked up automatically. One name per line, no whitespace.
 alsa
 alsa-topology
-benchmark
 dbus-1
 dri
 egl

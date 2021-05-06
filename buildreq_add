@@ -64,8 +64,6 @@ gmp-dev
 gmp-staticdev
 gnutls
 gnutls-dev
-GoogleBenchmark
-GoogleBenchmark-dev
 googletest
 googletest-dev
 graphite
