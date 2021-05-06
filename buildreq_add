@@ -16,6 +16,7 @@ buildreq-cmake
 buildreq-qmake
 bzip2
 bzip2-dev
+ninja
 bzip2-staticdev
 ca-certs
 ca-certs-static
