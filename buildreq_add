@@ -16,7 +16,6 @@ buildreq-cmake
 buildreq-qmake
 bzip2
 bzip2-dev
-ninja
 bzip2-staticdev
 ca-certs
 ca-certs-static
@@ -28,7 +27,13 @@ clazy
 cmake
 cppcheck
 curl-dev
+dbus
+dbus-broker
+dbus-broker-dev
 dbus-dev
+dbus-glib
+dbus-glib-dev
+dbus-python
 doxygen
 e2fsprogs-dev
 elfutils-dev
@@ -346,6 +351,7 @@ wmctrl
 xauth
 xclip
 xdg-dbus-proxy
+xdg-dbus-proxy-dev
 xdg-desktop-portal
 xdg-desktop-portal-dev
 xdg-desktop-portal-gtk
@@ -400,3 +406,30 @@ zlib-dev
 zlib-staticdev
 zstd-dev
 zstd-staticdev
+BuildRequires : buildreq-cmake
+BuildRequires : doxygen
+BuildRequires : expat-dev
+BuildRequires : expat-dev32
+BuildRequires : gcc-dev32
+BuildRequires : gcc-libgcc32
+BuildRequires : gcc-libstdc++32
+BuildRequires : gettext
+BuildRequires : glibc-dev32
+BuildRequires : glibc-libc32
+BuildRequires : libxslt-bin
+BuildRequires : perl(XML::Parser)
+BuildRequires : pkg-config
+BuildRequires : pkgconfig(32expat)
+BuildRequires : pkgconfig(32glib-2.0)
+BuildRequires : pkgconfig(32ice)
+BuildRequires : pkgconfig(32libsystemd)
+BuildRequires : pkgconfig(32sm)
+BuildRequires : pkgconfig(32x11)
+BuildRequires : pkgconfig(expat)
+BuildRequires : pkgconfig(glib-2.0)
+BuildRequires : pkgconfig(ice)
+BuildRequires : pkgconfig(libsystemd)
+BuildRequires : pkgconfig(sm)
+BuildRequires : pkgconfig(systemd)
+BuildRequires : pkgconfig(valgrind)
+BuildRequires : pkgconfig(x11)

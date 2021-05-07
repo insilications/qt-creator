@@ -8,12 +8,9 @@ Version  : 1
 Release  : 1
 URL      : file:///insilications/build/git-clr/qt-creator-clr.tar.gz
 Source0  : file:///insilications/build/git-clr/qt-creator-clr.tar.gz
-Source1  : file:///aot/build/clearlinux/packages/GoogleBenchmark/GoogleBenchmark-1.5.3.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
-License  : Apache-2.0 GPL-2.0 GPL-3.0 LGPL-2.1
-BuildRequires : GoogleBenchmark
-BuildRequires : GoogleBenchmark-dev
+License  : GPL-2.0 GPL-3.0 LGPL-2.1
 BuildRequires : ImageMagick-dev
 BuildRequires : SDL2
 BuildRequires : SDL2-dev
@@ -303,7 +300,6 @@ BuildRequires : pkgconfig(Qt5X11Extras)
 BuildRequires : pkgconfig(Qt5Xml)
 BuildRequires : pkgconfig(alsa)
 BuildRequires : pkgconfig(alsa-topology)
-BuildRequires : pkgconfig(benchmark)
 BuildRequires : pkgconfig(dbus-1)
 BuildRequires : pkgconfig(dri)
 BuildRequires : pkgconfig(egl)
@@ -494,11 +490,7 @@ classes.
 
 %prep
 %setup -q -n qt-creator-clr
-cd %{_builddir}
-tar xf %{_sourcedir}/GoogleBenchmark-1.5.3.tar.gz
 cd %{_builddir}/qt-creator-clr
-mkdir -p GoogleBenchmark
-cp -r %{_builddir}/GoogleBenchmark/* %{_builddir}/qt-creator-clr/GoogleBenchmark
 
 %build
 unset http_proxy
@@ -506,7 +498,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1620319847
+export SOURCE_DATE_EPOCH=1620335583
 unset LD_AS_NEEDED
 mkdir -p clr-build
 pushd clr-build
@@ -611,8 +603,7 @@ export LDFLAGS="${LDFLAGS_GENERATE}"
 -DBUILD_QBS:BOOL=OFF \
 -DBUILD_LIBRARY_QLITEHTML:BOOL=OFF \
 -DENABLE_SVG_SUPPORT:BOOL=ON \
--DENABLE_BUILD_QBS:BOOL=OFF \
--DGOOGLE_BENCHMARK_SRC_DIR="../../GoogleBenchmark/src"
+-DENABLE_BUILD_QBS:BOOL=OFF
 ninja --verbose -j16
 #make -j16 V=1 VERBOSE=1
 ## ccache stats
@@ -686,8 +677,7 @@ export LDFLAGS="${LDFLAGS_USE}"
 -DBUILD_QBS:BOOL=OFF \
 -DBUILD_LIBRARY_QLITEHTML:BOOL=OFF \
 -DENABLE_SVG_SUPPORT:BOOL=ON \
--DENABLE_BUILD_QBS:BOOL=OFF \
--DGOOGLE_BENCHMARK_SRC_DIR="../../GoogleBenchmark/src"
+-DENABLE_BUILD_QBS:BOOL=OFF
 ninja --verbose -j16
 #make -j16 V=1 VERBOSE=1
 ## ccache stats
@@ -697,7 +687,7 @@ fi
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1620319847
+export SOURCE_DATE_EPOCH=1620335583
 rm -rf %{buildroot}
 pushd clr-build
 %make_install
