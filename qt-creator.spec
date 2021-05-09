@@ -11,33 +11,6 @@ Source0  : file:///insilications/build/git-clr/qt-creator-clr.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0 GPL-3.0 LGPL-2.1
-BuildRequires : BuildRequires : buildreq-cmake
-BuildRequires : BuildRequires : doxygen
-BuildRequires : BuildRequires : expat-dev
-BuildRequires : BuildRequires : expat-dev32
-BuildRequires : BuildRequires : gcc-dev32
-BuildRequires : BuildRequires : gcc-libgcc32
-BuildRequires : BuildRequires : gcc-libstdc++32
-BuildRequires : BuildRequires : gettext
-BuildRequires : BuildRequires : glibc-dev32
-BuildRequires : BuildRequires : glibc-libc32
-BuildRequires : BuildRequires : libxslt-bin
-BuildRequires : BuildRequires : perl(XML::Parser)
-BuildRequires : BuildRequires : pkg-config
-BuildRequires : BuildRequires : pkgconfig(32expat)
-BuildRequires : BuildRequires : pkgconfig(32glib-2.0)
-BuildRequires : BuildRequires : pkgconfig(32ice)
-BuildRequires : BuildRequires : pkgconfig(32libsystemd)
-BuildRequires : BuildRequires : pkgconfig(32sm)
-BuildRequires : BuildRequires : pkgconfig(32x11)
-BuildRequires : BuildRequires : pkgconfig(expat)
-BuildRequires : BuildRequires : pkgconfig(glib-2.0)
-BuildRequires : BuildRequires : pkgconfig(ice)
-BuildRequires : BuildRequires : pkgconfig(libsystemd)
-BuildRequires : BuildRequires : pkgconfig(sm)
-BuildRequires : BuildRequires : pkgconfig(systemd)
-BuildRequires : BuildRequires : pkgconfig(valgrind)
-BuildRequires : BuildRequires : pkgconfig(x11)
 BuildRequires : ImageMagick-dev
 BuildRequires : SDL2
 BuildRequires : SDL2-dev
@@ -75,7 +48,6 @@ BuildRequires : cppcheck
 BuildRequires : curl-dev
 BuildRequires : dbus
 BuildRequires : dbus-broker
-BuildRequires : dbus-broker-dev
 BuildRequires : dbus-dev
 BuildRequires : dbus-glib
 BuildRequires : dbus-glib-dev
@@ -85,6 +57,7 @@ BuildRequires : e2fsprogs-dev
 BuildRequires : elfutils-dev
 BuildRequires : evtest
 BuildRequires : expat-dev
+BuildRequires : expat-dev32
 BuildRequires : expat-staticdev
 BuildRequires : findutils
 BuildRequires : fontconfig-data
@@ -95,12 +68,15 @@ BuildRequires : freetype-lib
 BuildRequires : fribidi-dev
 BuildRequires : gcc
 BuildRequires : gcc-dev
+BuildRequires : gcc-dev32
+BuildRequires : gcc-libgcc32
 BuildRequires : gcc-libs-math
 BuildRequires : gcc-libstdc++32
 BuildRequires : gcc-libubsan
 BuildRequires : gcc-locale
 BuildRequires : gdb
 BuildRequires : gdb-dev
+BuildRequires : gettext
 BuildRequires : glib
 BuildRequires : glib-bin
 BuildRequires : glib-data
@@ -108,7 +84,9 @@ BuildRequires : glib-dev
 BuildRequires : glib-lib
 BuildRequires : glibc
 BuildRequires : glibc-dev
+BuildRequires : glibc-dev32
 BuildRequires : glibc-lib-avx2
+BuildRequires : glibc-libc32
 BuildRequires : glibc-staticdev
 BuildRequires : gmp
 BuildRequires : gmp-dev
@@ -217,6 +195,7 @@ BuildRequires : libxcb-dev
 BuildRequires : libxcb-lib
 BuildRequires : libxml2-dev
 BuildRequires : libxml2-staticdev
+BuildRequires : libxslt-bin
 BuildRequires : llvm
 BuildRequires : llvm-abi
 BuildRequires : llvm-bin
@@ -268,6 +247,7 @@ BuildRequires : pango-lib
 BuildRequires : pcre-dev
 BuildRequires : pcre-staticdev
 BuildRequires : perl
+BuildRequires : perl(XML::Parser)
 BuildRequires : perl-Config-General
 BuildRequires : perl-Config-Tiny
 BuildRequires : perl-Crypt-SSLeay
@@ -299,6 +279,12 @@ BuildRequires : pixman-lib
 BuildRequires : pixman-staticdev
 BuildRequires : pkg-config
 BuildRequires : pkg-config-dev
+BuildRequires : pkgconfig(32expat)
+BuildRequires : pkgconfig(32glib-2.0)
+BuildRequires : pkgconfig(32ice)
+BuildRequires : pkgconfig(32libsystemd)
+BuildRequires : pkgconfig(32sm)
+BuildRequires : pkgconfig(32x11)
 BuildRequires : pkgconfig(Qt5Concurrent)
 BuildRequires : pkgconfig(Qt5Core)
 BuildRequires : pkgconfig(Qt5DBus)
@@ -336,16 +322,20 @@ BuildRequires : pkgconfig(alsa-topology)
 BuildRequires : pkgconfig(dbus-1)
 BuildRequires : pkgconfig(dri)
 BuildRequires : pkgconfig(egl)
+BuildRequires : pkgconfig(expat)
 BuildRequires : pkgconfig(gbm)
 BuildRequires : pkgconfig(gl)
 BuildRequires : pkgconfig(glesv1_cm)
 BuildRequires : pkgconfig(glesv2)
+BuildRequires : pkgconfig(glib-2.0)
 BuildRequires : pkgconfig(gmock)
 BuildRequires : pkgconfig(gmock_main)
 BuildRequires : pkgconfig(gtest)
 BuildRequires : pkgconfig(gtest_main)
+BuildRequires : pkgconfig(ice)
 BuildRequires : pkgconfig(libdrm)
 BuildRequires : pkgconfig(libpulse-simple)
+BuildRequires : pkgconfig(libsystemd)
 BuildRequires : pkgconfig(libudev)
 BuildRequires : pkgconfig(libunwind)
 BuildRequires : pkgconfig(libunwind-coredump)
@@ -355,6 +345,9 @@ BuildRequires : pkgconfig(libunwind-setjmp)
 BuildRequires : pkgconfig(libusb-1.0)
 BuildRequires : pkgconfig(osmesa)
 BuildRequires : pkgconfig(samplerate)
+BuildRequires : pkgconfig(sm)
+BuildRequires : pkgconfig(systemd)
+BuildRequires : pkgconfig(valgrind)
 BuildRequires : pkgconfig(vulkan)
 BuildRequires : pkgconfig(wayland-protocols)
 BuildRequires : pkgconfig(x11)
@@ -461,7 +454,6 @@ BuildRequires : wmctrl
 BuildRequires : xauth
 BuildRequires : xclip
 BuildRequires : xdg-dbus-proxy
-BuildRequires : xdg-dbus-proxy-dev
 BuildRequires : xdg-desktop-portal
 BuildRequires : xdg-desktop-portal-dev
 BuildRequires : xdg-desktop-portal-gtk
@@ -532,7 +524,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1620519951
+export SOURCE_DATE_EPOCH=1620521832
 unset LD_AS_NEEDED
 mkdir -p clr-build
 pushd clr-build
@@ -720,7 +712,7 @@ fi
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1620519951
+export SOURCE_DATE_EPOCH=1620521832
 rm -rf %{buildroot}
 pushd clr-build
 %make_install

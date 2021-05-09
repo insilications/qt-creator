@@ -29,7 +29,6 @@ cppcheck
 curl-dev
 dbus
 dbus-broker
-dbus-broker-dev
 dbus-dev
 dbus-glib
 dbus-glib-dev
@@ -359,7 +358,6 @@ wmctrl
 xauth
 xclip
 xdg-dbus-proxy
-xdg-dbus-proxy-dev
 xdg-desktop-portal
 xdg-desktop-portal-dev
 xdg-desktop-portal-gtk
