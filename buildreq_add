@@ -39,6 +39,7 @@ e2fsprogs-dev
 elfutils-dev
 evtest
 expat-dev
+expat-dev32
 expat-staticdev
 findutils
 fontconfig-data
@@ -49,17 +50,22 @@ freetype-lib
 fribidi-dev
 gcc
 gcc-dev
+gcc-dev32
+gcc-libgcc32
 gcc-libs-math
 gcc-libstdc++32
 gcc-libubsan
 gcc-locale
 gdb
 gdb-dev
+gettext
 glib
 glib-bin
 glibc
 glibc-dev
+glibc-dev32
 glibc-lib-avx2
+glibc-libc32
 glibc-staticdev
 glib-data
 glib-dev
@@ -168,6 +174,7 @@ libXrender-lib
 libXScrnSaver
 libXScrnSaver-dev
 libXScrnSaver-lib
+libxslt-bin
 libXtst-dev
 libXtst-lib
 libXxf86vm-dev
@@ -247,6 +254,7 @@ perl-Test-Simple
 perl-Try-Tiny
 perl-URI
 perl-XML-NamespaceSupport
+perl(XML::Parser)
 perl-XML-Parser
 pixman
 pixman-dev
@@ -406,30 +414,3 @@ zlib-dev
 zlib-staticdev
 zstd-dev
 zstd-staticdev
-BuildRequires : buildreq-cmake
-BuildRequires : doxygen
-BuildRequires : expat-dev
-BuildRequires : expat-dev32
-BuildRequires : gcc-dev32
-BuildRequires : gcc-libgcc32
-BuildRequires : gcc-libstdc++32
-BuildRequires : gettext
-BuildRequires : glibc-dev32
-BuildRequires : glibc-libc32
-BuildRequires : libxslt-bin
-BuildRequires : perl(XML::Parser)
-BuildRequires : pkg-config
-BuildRequires : pkgconfig(32expat)
-BuildRequires : pkgconfig(32glib-2.0)
-BuildRequires : pkgconfig(32ice)
-BuildRequires : pkgconfig(32libsystemd)
-BuildRequires : pkgconfig(32sm)
-BuildRequires : pkgconfig(32x11)
-BuildRequires : pkgconfig(expat)
-BuildRequires : pkgconfig(glib-2.0)
-BuildRequires : pkgconfig(ice)
-BuildRequires : pkgconfig(libsystemd)
-BuildRequires : pkgconfig(sm)
-BuildRequires : pkgconfig(systemd)
-BuildRequires : pkgconfig(valgrind)
-BuildRequires : pkgconfig(x11)

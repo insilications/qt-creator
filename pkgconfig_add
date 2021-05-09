@@ -1,20 +1,30 @@
 # This file contains additional pkgconfig build requirements that did
 # not get picked up automatically. One name per line, no whitespace.
+32expat
+32glib-2.0
+32ice
+32libsystemd
+32sm
+32x11
 alsa
 alsa-topology
 dbus-1
 dri
 egl
+expat
 gbm
 gl
 glesv1_cm
+glesv2
+glib-2.0
 gmock
 gmock_main
 gtest
 gtest_main
-glesv2
+ice
 libdrm
 libpulse-simple
+libsystemd
 libudev
 libunwind
 libunwind-coredump
@@ -56,6 +66,9 @@ Qt5Widgets
 Qt5X11Extras
 Qt5Xml
 samplerate
+sm
+systemd
+valgrind
 vulkan
 wayland-protocols
 x11
