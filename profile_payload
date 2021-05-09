@@ -27,4 +27,5 @@ export $(dbus-launch)
 ctest --parallel 16 -V --progress --timeout 200 || :
 #/builddir/build/BUILD/qt-creator-clr/clr-build/bin/qtcreator -temporarycleansettings -settingspath /builddir/ -installsettingspath /builddir/ -pluginpath /builddir/build/BUILD/qt-creator-clr/clr-build/lib64/qtcreator/plugins -noload ClangCodeModel ClangFormat
 #/builddir/build/BUILD/qt-creator-clr/clr-build/bin/qtcreator -settingspath /builddir/ -installsettingspath /builddir/ -pluginpath /builddir/build/BUILD/qt-creator-clr/clr-build/lib64/qtcreator/plugins -noload ClangCodeModel ClangFormat
-/builddir/build/BUILD/qt-creator-clr/clr-build/bin/qtcreator -noload Help
+#/builddir/build/BUILD/qt-creator-clr/clr-build/bin/qtcreator -noload Help
+exit
