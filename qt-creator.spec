@@ -30,6 +30,7 @@ BuildRequires : binutils-dev
 BuildRequires : binutils-staticdev
 BuildRequires : brotli
 BuildRequires : brotli-dev
+BuildRequires : brotli-staticdev
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-meson
 BuildRequires : buildreq-qmake
@@ -107,6 +108,7 @@ BuildRequires : icu4c-lib
 BuildRequires : jsoncpp
 BuildRequires : jsoncpp-dev
 BuildRequires : jsoncpp-lib
+BuildRequires : jsoncpp-staticdev
 BuildRequires : keyutils
 BuildRequires : keyutils-dev
 BuildRequires : krb5
@@ -164,6 +166,7 @@ BuildRequires : libgpg-error
 BuildRequires : libgpg-error-dev
 BuildRequires : libidn2
 BuildRequires : libidn2-dev
+BuildRequires : libidn2-staticdev
 BuildRequires : libinput-data
 BuildRequires : libinput-lib
 BuildRequires : libinput-libexec
@@ -180,6 +183,7 @@ BuildRequires : libstdc++
 BuildRequires : libstdc++-dev
 BuildRequires : libtasn1-dev
 BuildRequires : libunistring-dev
+BuildRequires : libunistring-staticdev
 BuildRequires : libunwind
 BuildRequires : libunwind-dev
 BuildRequires : libusb
@@ -214,6 +218,7 @@ BuildRequires : lzo-dev
 BuildRequires : lzo-staticdev
 BuildRequires : md4c
 BuildRequires : md4c-dev
+BuildRequires : md4c-staticdev
 BuildRequires : mediasdk-dev
 BuildRequires : mesa
 BuildRequires : mesa-dev
@@ -525,7 +530,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1620544176
+export SOURCE_DATE_EPOCH=1620545208
 unset LD_AS_NEEDED
 mkdir -p clr-build
 pushd clr-build
@@ -540,7 +545,7 @@ export CXXFLAGS_GENERATE="-g -O3 --param=lto-max-streaming-parallelism=16 -march
 export LDFLAGS_GENERATE="-g -O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -falign-functions=32 -flimit-function-alignment -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -fno-math-errno -fno-trapping-math -pipe -ffat-lto-objects -flto=16 -fPIC -Wl,-z,max-page-size=0x1000 -fomit-frame-pointer -pthread -static-libstdc++ -static-libgcc -lpthread -Wl,--build-id=sha1 -fdevirtualize-at-ltrans -Wl,-z,now -Wl,-z,relro -Wl,-sort-common -fasynchronous-unwind-tables $PGO_GEN"
 ## pgo use
 ## -ffat-lto-objects -fno-PIE -fno-PIE -m64 -no-pie -fPIC -Wl,-z,max-page-size=0x1000 -fvisibility=hidden -flto-partition=none
-## gcc: -feliminate-unused-debug-types -fipa-pta -flto=16 -Wno-error -Wp,-D_REENTRANT -fno-common
+## gcc: -feliminate-unused-debug-types -fipa-pta -flto=16 -Wno-error -Wp,-D_REENTRANT -fno-common -DWITH_UNIT_TESTS:BOOL=ON
 export PGO_USE="-fprofile-use=/var/tmp/pgo -fprofile-dir=/var/tmp/pgo -fprofile-abs-path -fprofile-correction -fprofile-partial-training"
 export CFLAGS_USE="-g -O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -floop-block -fno-math-errno -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -ffat-lto-objects -fPIC -Wl,-z,max-page-size=0x1000 -fomit-frame-pointer -pthread -static-libstdc++ -static-libgcc $PGO_USE"
 export FCFLAGS_USE="-g -O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -floop-block -fno-math-errno -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -ffat-lto-objects -fPIC -Wl,-z,max-page-size=0x1000 -fomit-frame-pointer -pthread -static-libstdc++ -static-libgcc $PGO_USE"
@@ -624,7 +629,6 @@ export LDFLAGS="${LDFLAGS_GENERATE}"
 -DWITH_DOCS:BOOL=OFF \
 -DLITEHTML_UTF8:BOOL=OFF \
 -DWITH_TESTS:BOOL=ON \
--DWITH_UNIT_TESTS:BOOL=ON \
 -DBUILD_TESTING:BOOL=ON \
 -DBUILD_QBS:BOOL=OFF \
 -DBUILD_LIBRARY_QLITEHTML:BOOL=OFF \
@@ -702,7 +706,6 @@ export LDFLAGS="${LDFLAGS_USE}"
 -DWITH_DOCS:BOOL=OFF \
 -DLITEHTML_UTF8:BOOL=OFF \
 -DWITH_TESTS:BOOL=OFF \
--DWITH_UNIT_TESTS:BOOL=OFF \
 -DBUILD_TESTING:BOOL=OFF \
 -DBUILD_QBS:BOOL=OFF \
 -DBUILD_LIBRARY_QLITEHTML:BOOL=OFF \
@@ -721,7 +724,7 @@ fi
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1620544176
+export SOURCE_DATE_EPOCH=1620545208
 rm -rf %{buildroot}
 pushd clr-build
 %make_install
