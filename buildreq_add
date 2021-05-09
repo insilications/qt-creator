@@ -12,6 +12,7 @@ binutils-dev
 binutils-staticdev
 brotli
 brotli-dev
+brotli-staticdev
 buildreq-cmake
 buildreq-qmake
 bzip2
@@ -89,12 +90,14 @@ ImageMagick-dev
 jsoncpp
 jsoncpp-dev
 jsoncpp-lib
+jsoncpp-staticdev
 keyutils
 keyutils-dev
 krb5
 krb5-dev
 libarchive
 libarchive-dev
+libarchive-staticdev
 libatomic_ops-dev
 libatomic_ops-staticdev
 libcap
@@ -118,6 +121,7 @@ libgpg-error
 libgpg-error-dev
 libidn2
 libidn2-dev
+libidn2-staticdev
 libinput-data
 libinput-lib
 libinput-libexec
@@ -134,6 +138,7 @@ libstdc++
 libstdc++-dev
 libtasn1-dev
 libunistring-dev
+libunistring-staticdev
 libunwind
 libunwind-dev
 libusb
@@ -195,6 +200,7 @@ lzo-dev
 lzo-staticdev
 md4c
 md4c-dev
+md4c-staticdev
 mediasdk-dev
 mesa
 mesa-dev
