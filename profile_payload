@@ -22,7 +22,7 @@ export GTK_RC_FILES=/etc/gtk/gtkrc
 export FONTCONFIG_PATH=/usr/share/defaults/fonts
 export LD_LIBRARY_PATH="/builddir/build/BUILD/qt-creator-clr/clr-build/lib64:/builddir/build/BUILD/qt-creator-clr/clr-build/lib64/qtcreator:/builddir/build/BUILD/qt-creator-clr/clr-build/lib64/qtcreator/plugins:/usr/cuda/lib64:/usr/cuda/targets/x86_64-linux/lib:/usr/nvidia/lib64:/usr/nvidia/lib:/usr/nvidia/lib/vdpau:/usr/nvidia/lib64/xorg/modules/drivers:/usr/nvidia/lib64/xorg/modules/extensions:/usr/lib64/dri:/usr/lib64/haswell:/usr/lib64:/usr/lib:/usr/share"
 export PKG_CONFIG_PATH="/usr/lib64/pkgconfig:../"
-export PATH="/builddir/build/BUILD/qt-creator-clr/clr-build/bin:/builddir/build/BUILD/qt-creator-clr/clr-build/libexec/qtcreator:/opt/nvidia/bin:/usr/bin/haswell:/usr/bin:/usr/sbin"
+export PATH="/builddir/build/BUILD/qt-creator-clr/clr-build/bin:/builddir/build/BUILD/qt-creator-clr/clr-build/libexec/qtcreator:/usr/nvidia/bin:/usr/bin/haswell:/usr/bin:/usr/sbin"
 export $(dbus-launch)
 ctest --parallel 16 -V --progress --timeout 200 || :
 #/builddir/build/BUILD/qt-creator-clr/clr-build/bin/qtcreator -temporarycleansettings -settingspath /builddir/ -installsettingspath /builddir/ -pluginpath /builddir/build/BUILD/qt-creator-clr/clr-build/lib64/qtcreator/plugins -noload ClangCodeModel ClangFormat
