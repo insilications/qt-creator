@@ -523,6 +523,7 @@ xz-dev
 xz-staticdev
 yaml-cpp
 yaml-cpp-dev
+yaml-cpp-staticdev
 Z3-dev
 Z3-staticdev
 zlib
