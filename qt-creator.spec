@@ -6,17 +6,17 @@
 Name     : qt-creator
 Version  : 1
 Release  : 1
-URL      : file:///insilications/build/git-clr/qt-creator-clr.tar.gz
-Source0  : file:///insilications/build/git-clr/qt-creator-clr.tar.gz
+URL      : file:///insilications/build/git-clr/qt-creator.tar.gz
+Source0  : file:///insilications/build/git-clr/qt-creator.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0 GPL-3.0 LGPL-2.1
-Requires: qt-creator-bin = %{version}-%{release}
-Requires: qt-creator-data = %{version}-%{release}
-Requires: qt-creator-libexec = %{version}-%{release}
 BuildRequires : ImageMagick-dev
+BuildRequires : LuaJIT-dev
+BuildRequires : LuaJIT-staticdev
 BuildRequires : SDL2
 BuildRequires : SDL2-dev
+BuildRequires : SDL2-staticdev
 BuildRequires : Sphinx
 BuildRequires : Vulkan-Headers-dev
 BuildRequires : Vulkan-Loader-dev
@@ -28,6 +28,7 @@ BuildRequires : acl-staticdev
 BuildRequires : alsa-lib-dev
 BuildRequires : alsa-lib-lib
 BuildRequires : alsa-tools
+BuildRequires : asciidoctor-dev
 BuildRequires : binutils
 BuildRequires : binutils-dev
 BuildRequires : binutils-staticdev
@@ -48,8 +49,12 @@ BuildRequires : cairo-lib
 BuildRequires : ccache
 BuildRequires : clazy
 BuildRequires : cmake
+BuildRequires : cmake-dev
 BuildRequires : cppcheck
 BuildRequires : curl-dev
+BuildRequires : curl-staticdev
+BuildRequires : dav1d-dev
+BuildRequires : dav1d-staticdev
 BuildRequires : dbus
 BuildRequires : dbus-broker
 BuildRequires : dbus-dev
@@ -59,17 +64,27 @@ BuildRequires : dbus-python
 BuildRequires : doxygen
 BuildRequires : e2fsprogs-dev
 BuildRequires : elfutils-dev
+BuildRequires : elfutils-staticdev
 BuildRequires : evtest
 BuildRequires : expat-dev
 BuildRequires : expat-dev32
 BuildRequires : expat-staticdev
+BuildRequires : fakechroot-dev
+BuildRequires : fakechroot-staticdev
+BuildRequires : fftw-dev
+BuildRequires : fftw-staticdev
 BuildRequires : findutils
+BuildRequires : flac-dev
+BuildRequires : flac-staticdev
 BuildRequires : fontconfig-data
 BuildRequires : fontconfig-dev
 BuildRequires : fontconfig-lib
+BuildRequires : fontconfig-staticdev
 BuildRequires : freetype-dev
 BuildRequires : freetype-lib
+BuildRequires : freetype-staticdev
 BuildRequires : fribidi-dev
+BuildRequires : fribidi-staticdev
 BuildRequires : gcc
 BuildRequires : gcc-dev
 BuildRequires : gcc-dev32
@@ -86,6 +101,7 @@ BuildRequires : glib-bin
 BuildRequires : glib-data
 BuildRequires : glib-dev
 BuildRequires : glib-lib
+BuildRequires : glib-staticdev
 BuildRequires : glibc
 BuildRequires : glibc-dev
 BuildRequires : glibc-dev32
@@ -101,21 +117,34 @@ BuildRequires : googletest
 BuildRequires : googletest-dev
 BuildRequires : graphite
 BuildRequires : graphite-dev
+BuildRequires : graphite-staticdev
 BuildRequires : gsm-dev
+BuildRequires : gsm-staticdev
 BuildRequires : gtk+-data
 BuildRequires : gtk+-lib
 BuildRequires : gtk3-lib
 BuildRequires : harfbuzz-dev
 BuildRequires : harfbuzz-lib
+BuildRequires : harfbuzz-staticdev
 BuildRequires : icu4c-lib
+BuildRequires : insync-dev
+BuildRequires : json-c-dev
+BuildRequires : json-c-staticdev
 BuildRequires : jsoncpp
 BuildRequires : jsoncpp-dev
 BuildRequires : jsoncpp-lib
 BuildRequires : jsoncpp-staticdev
+BuildRequires : kakadu-dev
 BuildRequires : keyutils
 BuildRequires : keyutils-dev
 BuildRequires : krb5
 BuildRequires : krb5-dev
+BuildRequires : l-smash-dev
+BuildRequires : l-smash-staticdev
+BuildRequires : ladspa_sdk-dev
+BuildRequires : ladspa_sdk-staticdev
+BuildRequires : lcms2-dev
+BuildRequires : lcms2-staticdev
 BuildRequires : libX11-data
 BuildRequires : libX11-dev
 BuildRequires : libX11-lib
@@ -143,22 +172,33 @@ BuildRequires : libXtst-dev
 BuildRequires : libXtst-lib
 BuildRequires : libXxf86vm-dev
 BuildRequires : libXxf86vm-lib
+BuildRequires : libaom-dev
+BuildRequires : libaom-staticdev
 BuildRequires : libarchive
 BuildRequires : libarchive-dev
 BuildRequires : libarchive-staticdev
+BuildRequires : libass-dev
+BuildRequires : libass-staticdev
 BuildRequires : libatomic_ops-dev
 BuildRequires : libatomic_ops-staticdev
+BuildRequires : libbluray-dev
+BuildRequires : libbluray-staticdev
 BuildRequires : libcap
 BuildRequires : libcap-dev
 BuildRequires : libcap-ng-dev
 BuildRequires : libconfig-dev
+BuildRequires : libconfig-staticdev
 BuildRequires : libdrm
 BuildRequires : libdrm-dev
 BuildRequires : libdrm-lib
+BuildRequires : libdrm-staticdev
 BuildRequires : libedit
 BuildRequires : libedit-dev
 BuildRequires : libepoxy
 BuildRequires : libepoxy-dev
+BuildRequires : libepoxy-staticdev
+BuildRequires : libfdk_aac-dev
+BuildRequires : libfdk_aac-staticdev
 BuildRequires : libffi
 BuildRequires : libffi-dev
 BuildRequires : libffi-staticdev
@@ -171,20 +211,38 @@ BuildRequires : libidn2
 BuildRequires : libidn2-dev
 BuildRequires : libidn2-staticdev
 BuildRequires : libinput-data
+BuildRequires : libinput-dev
 BuildRequires : libinput-lib
 BuildRequires : libinput-libexec
 BuildRequires : libjpeg-turbo-dev
+BuildRequires : libjpeg-turbo-staticdev
+BuildRequires : libmp3lame-dev
+BuildRequires : libmp3lame-staticdev
 BuildRequires : libogg
 BuildRequires : libogg-dev
+BuildRequires : libogg-staticdev
 BuildRequires : libpciaccess
 BuildRequires : libpciaccess-dev
 BuildRequires : libplacebo
 BuildRequires : libplacebo-dev
+BuildRequires : libplacebo-staticdev
 BuildRequires : libpng-dev
 BuildRequires : libpng-lib
+BuildRequires : libpng-staticdev
+BuildRequires : libsamplerate-dev
+BuildRequires : libsamplerate-staticdev
+BuildRequires : libsndfile-dev
+BuildRequires : libsndfile-staticdev
+BuildRequires : libsrt-dev
+BuildRequires : libsrt-staticdev
 BuildRequires : libstdc++
 BuildRequires : libstdc++-dev
 BuildRequires : libtasn1-dev
+BuildRequires : libtasn1-staticdev
+BuildRequires : libtheora-dev
+BuildRequires : libtheora-staticdev
+BuildRequires : libudfread-dev
+BuildRequires : libudfread-staticdev
 BuildRequires : libunistring-dev
 BuildRequires : libunistring-staticdev
 BuildRequires : libunwind
@@ -194,16 +252,33 @@ BuildRequires : libusb-dev
 BuildRequires : libva
 BuildRequires : libva-dev
 BuildRequires : libva-lib
+BuildRequires : libva-vdpau-driver-chromium-dev
+BuildRequires : libvapoursynth-dev
+BuildRequires : libvapoursynth-staticdev
 BuildRequires : libvdpau
 BuildRequires : libvdpau-dev
 BuildRequires : libvorbis
 BuildRequires : libvorbis-dev
+BuildRequires : libvorbis-staticdev
+BuildRequires : libvpx-dev
+BuildRequires : libvpx-staticdev
 BuildRequires : libwebp-dev
+BuildRequires : libwebp-staticdev
+BuildRequires : libx264-dev
+BuildRequires : libx264-staticdev
+BuildRequires : libx265-dev
+BuildRequires : libx265-staticdev
 BuildRequires : libxcb-dev
 BuildRequires : libxcb-lib
 BuildRequires : libxml2-dev
 BuildRequires : libxml2-staticdev
 BuildRequires : libxslt-bin
+BuildRequires : libxslt-dev
+BuildRequires : libxslt-staticdev
+BuildRequires : libxvid-dev
+BuildRequires : libxvid-staticdev
+BuildRequires : libzimg-dev
+BuildRequires : libzimg-staticdev
 BuildRequires : llvm
 BuildRequires : llvm-abi
 BuildRequires : llvm-bin
@@ -213,6 +288,8 @@ BuildRequires : llvm-lib
 BuildRequires : llvm-libexec
 BuildRequires : llvm-man
 BuildRequires : llvm-staticdev
+BuildRequires : lrzip-dev
+BuildRequires : lrzip-staticdev
 BuildRequires : lz4
 BuildRequires : lz4-dev
 BuildRequires : lz4-staticdev
@@ -232,20 +309,28 @@ BuildRequires : nasm-bin
 BuildRequires : ncurses-dev
 BuildRequires : nettle
 BuildRequires : nettle-dev
+BuildRequires : nettle-staticdev
+BuildRequires : nghttp2-dev
 BuildRequires : ninja
+BuildRequires : nosync-dev
 BuildRequires : not-ffmpeg
 BuildRequires : not-ffmpeg-dev
+BuildRequires : nspr-dev
+BuildRequires : nspr-staticdev
+BuildRequires : nss-dev
+BuildRequires : nss-staticdev
 BuildRequires : numlockx
-BuildRequires : nvidia
-BuildRequires : nvidia-dev
-BuildRequires : nvidia-lib
+BuildRequires : nv-codec-headers-dev
 BuildRequires : opencl-headers
 BuildRequires : opencl-headers-dev
 BuildRequires : openjpeg-dev
+BuildRequires : openjpeg-staticdev
 BuildRequires : openssl
 BuildRequires : openssl-dev
 BuildRequires : openssl-lib
 BuildRequires : openssl-staticdev
+BuildRequires : opus-dev
+BuildRequires : opus-staticdev
 BuildRequires : orc-dev
 BuildRequires : orc-staticdev
 BuildRequires : p11-kit
@@ -255,6 +340,8 @@ BuildRequires : pacrunner-dev
 BuildRequires : pango-lib
 BuildRequires : pcre-dev
 BuildRequires : pcre-staticdev
+BuildRequires : pcre2-dev
+BuildRequires : pcre2-staticdev
 BuildRequires : perl
 BuildRequires : perl(XML::Parser)
 BuildRequires : perl-Config-General
@@ -369,6 +456,8 @@ BuildRequires : pkgconfig(xkbcommon)
 BuildRequires : pkgconfig(xrandr)
 BuildRequires : pkgconfig(xscrnsaver)
 BuildRequires : pkgconfig(zlib)
+BuildRequires : popt-dev
+BuildRequires : popt-staticdev
 BuildRequires : pulseaudio
 BuildRequires : pulseaudio-dev
 BuildRequires : python3
@@ -441,22 +530,42 @@ BuildRequires : qtx11extras
 BuildRequires : qtx11extras-dev
 BuildRequires : qtxmlpatterns
 BuildRequires : qtxmlpatterns-dev
+BuildRequires : rtmpdump-dev
+BuildRequires : rtmpdump-staticdev
+BuildRequires : rubberband-dev
+BuildRequires : rubberband-staticdev
 BuildRequires : setxkbmap
+BuildRequires : shaderc-dev
+BuildRequires : shaderc-staticdev
 BuildRequires : shared-mime-info
 BuildRequires : snappy-dev
+BuildRequires : snappy-staticdev
+BuildRequires : speex-dev
+BuildRequires : speex-staticdev
+BuildRequires : speexdsp-dev
+BuildRequires : speexdsp-staticdev
 BuildRequires : sqlite-autoconf
 BuildRequires : sqlite-autoconf-dev
+BuildRequires : sqlite-autoconf-staticdev
 BuildRequires : syntax-highlighting
 BuildRequires : syntax-highlighting-data
 BuildRequires : syntax-highlighting-dev
 BuildRequires : syntax-highlighting-lib
+BuildRequires : syntax-highlighting-staticdev
 BuildRequires : systemd
 BuildRequires : systemd-dev
 BuildRequires : texinfo
+BuildRequires : tiff-dev
+BuildRequires : tiff-staticdev
+BuildRequires : uchardet-dev
+BuildRequires : uchardet-staticdev
 BuildRequires : util-linux
 BuildRequires : util-linux-dev
+BuildRequires : util-linux-staticdev
 BuildRequires : valgrind
 BuildRequires : valgrind-dev
+BuildRequires : vamp-sdk-dev
+BuildRequires : vamp-sdk-staticdev
 BuildRequires : wayland
 BuildRequires : weston
 BuildRequires : wmctrl
@@ -510,6 +619,7 @@ BuildRequires : xz-dev
 BuildRequires : xz-staticdev
 BuildRequires : yaml-cpp
 BuildRequires : yaml-cpp-dev
+BuildRequires : yaml-cpp-staticdev
 BuildRequires : zlib
 BuildRequires : zlib-dev
 BuildRequires : zlib-staticdev
@@ -523,44 +633,6 @@ BuildRequires : zstd-staticdev
 Qt is provided with a powerful embedded scripting environment through the Qt Script
 classes.
 
-%package bin
-Summary: bin components for the qt-creator package.
-Group: Binaries
-Requires: qt-creator-data = %{version}-%{release}
-Requires: qt-creator-libexec = %{version}-%{release}
-
-%description bin
-bin components for the qt-creator package.
-
-
-%package data
-Summary: data components for the qt-creator package.
-Group: Data
-
-%description data
-data components for the qt-creator package.
-
-
-%package dev
-Summary: dev components for the qt-creator package.
-Group: Development
-Requires: qt-creator-bin = %{version}-%{release}
-Requires: qt-creator-data = %{version}-%{release}
-Provides: qt-creator-devel = %{version}-%{release}
-Requires: qt-creator = %{version}-%{release}
-
-%description dev
-dev components for the qt-creator package.
-
-
-%package libexec
-Summary: libexec components for the qt-creator package.
-Group: Default
-
-%description libexec
-libexec components for the qt-creator package.
-
-
 %prep
 %setup -q -n qt-creator-clr
 cd %{_builddir}/qt-creator-clr
@@ -571,7 +643,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1620550284
+export SOURCE_DATE_EPOCH=1621964878
 unset LD_AS_NEEDED
 mkdir -p clr-build
 pushd clr-build
@@ -579,20 +651,20 @@ export GCC_IGNORE_WERROR=1
 ## altflags_pgo content
 ## pgo generate
 export PGO_GEN="-fprofile-generate=/var/tmp/pgo -fprofile-dir=/var/tmp/pgo -fprofile-abs-path -fprofile-update=atomic -fprofile-arcs -ftest-coverage --coverage -fprofile-partial-training"
-export CFLAGS_GENERATE="-g -O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -falign-functions=32 -flimit-function-alignment -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -fno-math-errno -fno-trapping-math -pipe -ffat-lto-objects -flto=16 -fPIC -Wl,-z,max-page-size=0x1000 -fomit-frame-pointer -pthread -static-libstdc++ -static-libgcc -Wl,--build-id=sha1 -fdevirtualize-at-ltrans -Wl,-z,now -Wl,-z,relro -Wl,-sort-common -fasynchronous-unwind-tables $PGO_GEN"
-export FCFLAGS_GENERATE="-g -O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -falign-functions=32 -flimit-function-alignment -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -fno-math-errno -fno-trapping-math -pipe -ffat-lto-objects -flto=16 -fPIC -Wl,-z,max-page-size=0x1000 -fomit-frame-pointer -pthread -static-libstdc++ -static-libgcc -Wl,--build-id=sha1 -fdevirtualize-at-ltrans -Wl,-z,now -Wl,-z,relro -Wl,-sort-common -fasynchronous-unwind-tables $PGO_GEN"
-export FFLAGS_GENERATE="-g -O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -falign-functions=32 -flimit-function-alignment -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -fno-math-errno -fno-trapping-math -pipe -ffat-lto-objects -flto=16 -fPIC -Wl,-z,max-page-size=0x1000 -fomit-frame-pointer -pthread -static-libstdc++ -static-libgcc -Wl,--build-id=sha1 -fdevirtualize-at-ltrans -Wl,-z,now -Wl,-z,relro -Wl,-sort-common -fasynchronous-unwind-tables $PGO_GEN"
-export CXXFLAGS_GENERATE="-g -O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -falign-functions=32 -flimit-function-alignment -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -fno-math-errno -fno-trapping-math -fvisibility-inlines-hidden -pipe -ffat-lto-objects -flto=16 -fPIC -Wl,-z,max-page-size=0x1000 -fomit-frame-pointer -pthread -static-libstdc++ -static-libgcc -Wl,--build-id=sha1 -fdevirtualize-at-ltrans -Wl,-z,now -Wl,-z,relro -Wl,-sort-common -fasynchronous-unwind-tables $PGO_GEN"
-export LDFLAGS_GENERATE="-g -O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -falign-functions=32 -flimit-function-alignment -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -fno-math-errno -fno-trapping-math -pipe -ffat-lto-objects -flto=16 -fPIC -Wl,-z,max-page-size=0x1000 -fomit-frame-pointer -pthread -static-libstdc++ -static-libgcc -lpthread -Wl,--build-id=sha1 -fdevirtualize-at-ltrans -Wl,-z,now -Wl,-z,relro -Wl,-sort-common -fasynchronous-unwind-tables $PGO_GEN"
+export CFLAGS_GENERATE="-g -O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -falign-functions=32 -flimit-function-alignment -fno-semantic-interposition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -mtls-dialect=gnu2 -fno-math-errno -fno-trapping-math -pipe -ffat-lto-objects -flto=16 -fPIC -Wl,-z,max-page-size=0x1000 -fomit-frame-pointer -pthread -static-libstdc++ -static-libgcc -Wl,--build-id=sha1 -fdevirtualize-at-ltrans -Wl,-z,now -Wl,-z,relro -Wl,-sort-common -fasynchronous-unwind-tables $PGO_GEN"
+export FCFLAGS_GENERATE="-g -O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -falign-functions=32 -flimit-function-alignment -fno-semantic-interposition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -mtls-dialect=gnu2 -fno-math-errno -fno-trapping-math -pipe -ffat-lto-objects -flto=16 -fPIC -Wl,-z,max-page-size=0x1000 -fomit-frame-pointer -pthread -static-libstdc++ -static-libgcc -Wl,--build-id=sha1 -fdevirtualize-at-ltrans -Wl,-z,now -Wl,-z,relro -Wl,-sort-common -fasynchronous-unwind-tables $PGO_GEN"
+export FFLAGS_GENERATE="-g -O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -falign-functions=32 -flimit-function-alignment -fno-semantic-interposition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -mtls-dialect=gnu2 -fno-math-errno -fno-trapping-math -pipe -ffat-lto-objects -flto=16 -fPIC -Wl,-z,max-page-size=0x1000 -fomit-frame-pointer -pthread -static-libstdc++ -static-libgcc -Wl,--build-id=sha1 -fdevirtualize-at-ltrans -Wl,-z,now -Wl,-z,relro -Wl,-sort-common -fasynchronous-unwind-tables $PGO_GEN"
+export CXXFLAGS_GENERATE="-g -O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -falign-functions=32 -flimit-function-alignment -fno-semantic-interposition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -mtls-dialect=gnu2 -fno-math-errno -fno-trapping-math -fvisibility-inlines-hidden -pipe -ffat-lto-objects -flto=16 -fPIC -Wl,-z,max-page-size=0x1000 -fomit-frame-pointer -pthread -static-libstdc++ -static-libgcc -Wl,--build-id=sha1 -fdevirtualize-at-ltrans -Wl,-z,now -Wl,-z,relro -Wl,-sort-common -fasynchronous-unwind-tables $PGO_GEN"
+export LDFLAGS_GENERATE="-g -O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -falign-functions=32 -flimit-function-alignment -fno-semantic-interposition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -mtls-dialect=gnu2 -fno-math-errno -fno-trapping-math -pipe -ffat-lto-objects -flto=16 -fPIC -Wl,-z,max-page-size=0x1000 -fomit-frame-pointer -pthread -static-libstdc++ -static-libgcc -lpthread -Wl,--build-id=sha1 -fdevirtualize-at-ltrans -Wl,-z,now -Wl,-z,relro -Wl,-sort-common -fasynchronous-unwind-tables $PGO_GEN"
 ## pgo use
 ## -ffat-lto-objects -fno-PIE -fno-PIE -m64 -no-pie -fPIC -Wl,-z,max-page-size=0x1000 -fvisibility=hidden -flto-partition=none
-## gcc: -feliminate-unused-debug-types -fipa-pta -flto=16 -Wno-error -Wp,-D_REENTRANT -fno-common
+## gcc: -feliminate-unused-debug-types -fipa-pta -flto=16 -Wno-error -Wp,-D_REENTRANT -fno-common -funroll-loops
 export PGO_USE="-fprofile-use=/var/tmp/pgo -fprofile-dir=/var/tmp/pgo -fprofile-abs-path -fprofile-correction -fprofile-partial-training"
-export CFLAGS_USE="-g -O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -floop-block -fno-math-errno -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -ffat-lto-objects -fPIC -Wl,-z,max-page-size=0x1000 -fomit-frame-pointer -pthread -static-libstdc++ -static-libgcc $PGO_USE"
-export FCFLAGS_USE="-g -O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -floop-block -fno-math-errno -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -ffat-lto-objects -fPIC -Wl,-z,max-page-size=0x1000 -fomit-frame-pointer -pthread -static-libstdc++ -static-libgcc $PGO_USE"
-export FFLAGS_USE="-g -O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -floop-block -fno-math-errno -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -ffat-lto-objects -fPIC -Wl,-z,max-page-size=0x1000 -fomit-frame-pointer -pthread -static-libstdc++ -static-libgcc $PGO_USE"
-export CXXFLAGS_USE="-g -O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -floop-block -fno-math-errno -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -fvisibility-inlines-hidden -pipe -ffat-lto-objects -fPIC -Wl,-z,max-page-size=0x1000 -fomit-frame-pointer -pthread -static-libstdc++ -static-libgcc $PGO_USE"
-export LDFLAGS_USE="-g -O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -floop-block -fno-math-errno -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -ffat-lto-objects -fPIC -Wl,-z,max-page-size=0x1000 -fomit-frame-pointer -pthread -static-libstdc++ -static-libgcc -lpthread $PGO_USE"
+export CFLAGS_USE="-g -O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -floop-block -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -ffat-lto-objects -fPIC -Wl,-z,max-page-size=0x1000 -fomit-frame-pointer -pthread -static-libstdc++ -static-libgcc $PGO_USE"
+export FCFLAGS_USE="-g -O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -floop-block -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -ffat-lto-objects -fPIC -Wl,-z,max-page-size=0x1000 -fomit-frame-pointer -pthread -static-libstdc++ -static-libgcc $PGO_USE"
+export FFLAGS_USE="-g -O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -floop-block -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -ffat-lto-objects -fPIC -Wl,-z,max-page-size=0x1000 -fomit-frame-pointer -pthread -static-libstdc++ -static-libgcc $PGO_USE"
+export CXXFLAGS_USE="-g -O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -floop-block -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -fvisibility-inlines-hidden -pipe -ffat-lto-objects -fPIC -Wl,-z,max-page-size=0x1000 -fomit-frame-pointer -pthread -static-libstdc++ -static-libgcc $PGO_USE"
+export LDFLAGS_USE="-g -O3 --param=lto-max-streaming-parallelism=16 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -floop-block -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -ffat-lto-objects -fPIC -Wl,-z,max-page-size=0x1000 -fomit-frame-pointer -pthread -static-libstdc++ -static-libgcc -lpthread $PGO_USE"
 #
 export AR=/usr/bin/gcc-ar
 export RANLIB=/usr/bin/gcc-ranlib
@@ -669,9 +741,6 @@ export LDFLAGS="${LDFLAGS_GENERATE}"
 -DSHOW_BUILD_DATE:BOOL=ON \
 -DWITH_DOCS:BOOL=OFF \
 -DLITEHTML_UTF8:BOOL=OFF \
--DWITH_TESTS:BOOL=ON \
--DWITH_UNIT_TESTS:BOOL=ON \
--DBUILD_TESTING:BOOL=ON \
 -DBUILD_QBS:BOOL=OFF \
 -DBUILD_LIBRARY_QLITEHTML:BOOL=OFF \
 -DENABLE_SVG_SUPPORT:BOOL=ON \
@@ -679,9 +748,20 @@ export LDFLAGS="${LDFLAGS_GENERATE}"
 -DPYTHON_EXECUTABLE:FILEPATH=/usr/bin/python3 \
 -DPython3_EXECUTABLE="/usr/bin/python3" \
 -DClang_DIR=/usr/lib64/cmake/clang \
--DLLVM_DIR=/usr/lib64/cmake/llvm
+-DLLVM_DIR=/usr/lib64/cmake/llvm \
+-DCPLUSPLUS_BUILD_STATIC_LIB:BOOL=ON \
+-DWITH_TESTS:BOOL=ON \
+-DWITH_UNIT_TESTS:BOOL=ON \
+-DBUILD_TESTING:BOOL=ON
+## make_prepend content
+#sd "/usr/lib64/libz3.so" "/usr/lib64/libz3.a" $(fd -uu --glob *.ninja)
+#sd "/usr/lib64/libz.so" "/usr/lib64/libz.a" $(fd -uu --glob *.ninja)
+#sd "/usr/lib64/libxml2.so" "/usr/lib64/libxml2.a /usr/lib64/liblzma.a /usr/lib64/libz.a" $(fd -uu --glob *.ninja)
+## make_prepend end
+## make_macro content
 ninja --verbose -j16
 #make -j16 V=1 VERBOSE=1
+## make_macro end
 ## ccache stats
 ccache -s
 ## ccache stats
@@ -710,7 +790,7 @@ export GTK_RC_FILES=/etc/gtk/gtkrc
 export FONTCONFIG_PATH=/usr/share/defaults/fonts
 export LD_LIBRARY_PATH="/builddir/build/BUILD/qt-creator-clr/clr-build/lib64:/builddir/build/BUILD/qt-creator-clr/clr-build/lib64/qtcreator:/builddir/build/BUILD/qt-creator-clr/clr-build/lib64/qtcreator/plugins:/usr/cuda/lib64:/usr/cuda/targets/x86_64-linux/lib:/usr/nvidia/lib64:/usr/nvidia/lib:/usr/nvidia/lib/vdpau:/usr/nvidia/lib64/xorg/modules/drivers:/usr/nvidia/lib64/xorg/modules/extensions:/usr/lib64/dri:/usr/lib64/haswell:/usr/lib64:/usr/lib:/usr/share"
 export PKG_CONFIG_PATH="/usr/lib64/pkgconfig:../"
-export PATH="/builddir/build/BUILD/qt-creator-clr/clr-build/bin:/builddir/build/BUILD/qt-creator-clr/clr-build/libexec/qtcreator:/opt/nvidia/bin:/usr/bin/haswell:/usr/bin:/usr/sbin"
+export PATH="/builddir/build/BUILD/qt-creator-clr/clr-build/bin:/builddir/build/BUILD/qt-creator-clr/clr-build/libexec/qtcreator:/usr/nvidia/bin:/usr/bin/haswell:/usr/bin:/usr/sbin"
 export $(dbus-launch)
 ctest --parallel 16 -V --progress --timeout 200 || :
 #/builddir/build/BUILD/qt-creator-clr/clr-build/bin/qtcreator -temporarycleansettings -settingspath /builddir/ -installsettingspath /builddir/ -pluginpath /builddir/build/BUILD/qt-creator-clr/clr-build/lib64/qtcreator/plugins -noload ClangCodeModel ClangFormat
@@ -748,9 +828,6 @@ export LDFLAGS="${LDFLAGS_USE}"
 -DSHOW_BUILD_DATE:BOOL=ON \
 -DWITH_DOCS:BOOL=OFF \
 -DLITEHTML_UTF8:BOOL=OFF \
--DWITH_TESTS:BOOL=OFF \
--DWITH_UNIT_TESTS:BOOL=OFF \
--DBUILD_TESTING:BOOL=OFF \
 -DBUILD_QBS:BOOL=OFF \
 -DBUILD_LIBRARY_QLITEHTML:BOOL=OFF \
 -DENABLE_SVG_SUPPORT:BOOL=ON \
@@ -758,9 +835,20 @@ export LDFLAGS="${LDFLAGS_USE}"
 -DPYTHON_EXECUTABLE:FILEPATH=/usr/bin/python3 \
 -DPython3_EXECUTABLE="/usr/bin/python3" \
 -DClang_DIR=/usr/lib64/cmake/clang \
--DLLVM_DIR=/usr/lib64/cmake/llvm
+-DLLVM_DIR=/usr/lib64/cmake/llvm \
+-DCPLUSPLUS_BUILD_STATIC_LIB:BOOL=ON \
+-DWITH_TESTS:BOOL=OFF \
+-DWITH_UNIT_TESTS:BOOL=OFF \
+-DBUILD_TESTING:BOOL=OFF
+## make_prepend content
+#sd "/usr/lib64/libz3.so" "/usr/lib64/libz3.a" $(fd -uu --glob *.ninja)
+#sd "/usr/lib64/libz.so" "/usr/lib64/libz.a" $(fd -uu --glob *.ninja)
+#sd "/usr/lib64/libxml2.so" "/usr/lib64/libxml2.a /usr/lib64/liblzma.a /usr/lib64/libz.a" $(fd -uu --glob *.ninja)
+## make_prepend end
+## make_macro content
 ninja --verbose -j16
 #make -j16 V=1 VERBOSE=1
+## make_macro end
 ## ccache stats
 ccache -s
 ## ccache stats
@@ -768,7 +856,7 @@ fi
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1620550284
+export SOURCE_DATE_EPOCH=1621964878
 rm -rf %{buildroot}
 pushd clr-build
 %ninja_install
@@ -776,1019 +864,3 @@ popd
 
 %files
 %defattr(-,root,root,-)
-
-%files bin
-%defattr(-,root,root,-)
-/usr/bin/qtcreator
-/usr/bin/qtcreator.sh
-
-%files data
-%defattr(-,root,root,-)
-/usr/share/applications/org.qt-project.qtcreator.desktop
-/usr/share/icons/hicolor/128x128/apps/QtProject-qtcreator.png
-/usr/share/icons/hicolor/16x16/apps/QtProject-qtcreator.png
-/usr/share/icons/hicolor/24x24/apps/QtProject-qtcreator.png
-/usr/share/icons/hicolor/256x256/apps/QtProject-qtcreator.png
-/usr/share/icons/hicolor/32x32/apps/QtProject-qtcreator.png
-/usr/share/icons/hicolor/48x48/apps/QtProject-qtcreator.png
-/usr/share/icons/hicolor/512x512/apps/QtProject-qtcreator.png
-/usr/share/icons/hicolor/64x64/apps/QtProject-qtcreator.png
-/usr/share/metainfo/org.qt-project.qtcreator.appdata.xml
-/usr/share/qtcreator/android/sdk_definitions.json
-/usr/share/qtcreator/cplusplus/examples/CMakeLists.txt
-/usr/share/qtcreator/cplusplus/examples/clazy_example.cpp
-/usr/share/qtcreator/cplusplus/examples/examples.pro
-/usr/share/qtcreator/cplusplus/examples/icontest.cpp
-/usr/share/qtcreator/cplusplus/examples/tidy_example.cpp
-/usr/share/qtcreator/cplusplus/examples/tidy_example.h
-/usr/share/qtcreator/cplusplus/wrappedMingwHeaders/float.h
-/usr/share/qtcreator/cplusplus/wrappedQtHeaders/QtCore/qobjectdefs.h
-/usr/share/qtcreator/debugger/.pylintrc
-/usr/share/qtcreator/debugger/LICENSE.GPL3-EXCEPT
-/usr/share/qtcreator/debugger/README.txt
-/usr/share/qtcreator/debugger/boosttypes.py
-/usr/share/qtcreator/debugger/cdbbridge.py
-/usr/share/qtcreator/debugger/creatortypes.py
-/usr/share/qtcreator/debugger/dumper.py
-/usr/share/qtcreator/debugger/gdbbridge.py
-/usr/share/qtcreator/debugger/gdbtracepoint.py
-/usr/share/qtcreator/debugger/lldbbridge.py
-/usr/share/qtcreator/debugger/misctypes.py
-/usr/share/qtcreator/debugger/opencvtypes.py
-/usr/share/qtcreator/debugger/pdbbridge.py
-/usr/share/qtcreator/debugger/personaltypes.py
-/usr/share/qtcreator/debugger/qttypes.py
-/usr/share/qtcreator/debugger/setup.cfg
-/usr/share/qtcreator/debugger/stdtypes.py
-/usr/share/qtcreator/debugger/utils.py
-/usr/share/qtcreator/externaltools/lrelease.xml
-/usr/share/qtcreator/externaltools/lupdate.xml
-/usr/share/qtcreator/externaltools/qmlscene.xml
-/usr/share/qtcreator/externaltools/qmlviewer.xml
-/usr/share/qtcreator/externaltools/vi.xml
-/usr/share/qtcreator/fonts/SourceCodePro-Bold.ttf
-/usr/share/qtcreator/fonts/SourceCodePro-It.ttf
-/usr/share/qtcreator/fonts/SourceCodePro-Regular.ttf
-/usr/share/qtcreator/fonts/SourceCodePro.txt
-/usr/share/qtcreator/glsl/glsl_120.frag
-/usr/share/qtcreator/glsl/glsl_120.vert
-/usr/share/qtcreator/glsl/glsl_120_common.glsl
-/usr/share/qtcreator/glsl/glsl_330.frag
-/usr/share/qtcreator/glsl/glsl_330.vert
-/usr/share/qtcreator/glsl/glsl_330_common.glsl
-/usr/share/qtcreator/glsl/glsl_es_100.frag
-/usr/share/qtcreator/glsl/glsl_es_100.vert
-/usr/share/qtcreator/glsl/glsl_es_100_common.glsl
-/usr/share/qtcreator/indexer_preincludes/QtCore/qconfig.h
-/usr/share/qtcreator/indexer_preincludes/QtCore/qglobal.h
-/usr/share/qtcreator/indexer_preincludes/qglobal.h
-/usr/share/qtcreator/indexer_preincludes/windows.h
-/usr/share/qtcreator/modeleditor/standard.def
-/usr/share/qtcreator/package-manager/auto-setup.cmake
-/usr/share/qtcreator/package-manager/conan.cmake
-/usr/share/qtcreator/qml-type-descriptions/builtins.qmltypes
-/usr/share/qtcreator/qml-type-descriptions/qbs-base.qmltypes
-/usr/share/qtcreator/qml-type-descriptions/qbs-bundle.json
-/usr/share/qtcreator/qml-type-descriptions/qbs.qmltypes
-/usr/share/qtcreator/qml-type-descriptions/qmlproject-bundle.json
-/usr/share/qtcreator/qml-type-descriptions/qmlproject.qmltypes
-/usr/share/qtcreator/qml-type-descriptions/qmlruntime.qmltypes
-/usr/share/qtcreator/qml-type-descriptions/qmltypes-bundle.json
-/usr/share/qtcreator/qml-type-descriptions/qt-labs-folderlistmodel.qmltypes
-/usr/share/qtcreator/qml-type-descriptions/qt-labs-gestures.qmltypes
-/usr/share/qtcreator/qml-type-descriptions/qt-labs-particles.qmltypes
-/usr/share/qtcreator/qml-type-descriptions/qt5QtQuick2-bundle.json
-/usr/share/qtcreator/qml-type-descriptions/qtmobility-connectivity.qmltypes
-/usr/share/qtcreator/qml-type-descriptions/qtmobility-contacts.qmltypes
-/usr/share/qtcreator/qml-type-descriptions/qtmobility-feedback.qmltypes
-/usr/share/qtcreator/qml-type-descriptions/qtmobility-gallery.qmltypes
-/usr/share/qtcreator/qml-type-descriptions/qtmobility-location.qmltypes
-/usr/share/qtcreator/qml-type-descriptions/qtmobility-messaging.qmltypes
-/usr/share/qtcreator/qml-type-descriptions/qtmobility-organizer.qmltypes
-/usr/share/qtcreator/qml-type-descriptions/qtmobility-publishsubscribe.qmltypes
-/usr/share/qtcreator/qml-type-descriptions/qtmobility-sensors.qmltypes
-/usr/share/qtcreator/qml-type-descriptions/qtmobility-serviceframework.qmltypes
-/usr/share/qtcreator/qml-type-descriptions/qtmobility-systeminfo.qmltypes
-/usr/share/qtcreator/qml-type-descriptions/qtmultimediakit.qmltypes
-/usr/share/qtcreator/qml-type-descriptions/qtwebkit.qmltypes
-/usr/share/qtcreator/qml/qmlpuppet/commands/captureddatacommand.h
-/usr/share/qtcreator/qml/qmlpuppet/commands/changeauxiliarycommand.cpp
-/usr/share/qtcreator/qml/qmlpuppet/commands/changeauxiliarycommand.h
-/usr/share/qtcreator/qml/qmlpuppet/commands/changebindingscommand.cpp
-/usr/share/qtcreator/qml/qmlpuppet/commands/changebindingscommand.h
-/usr/share/qtcreator/qml/qmlpuppet/commands/changefileurlcommand.cpp
-/usr/share/qtcreator/qml/qmlpuppet/commands/changefileurlcommand.h
-/usr/share/qtcreator/qml/qmlpuppet/commands/changeidscommand.cpp
-/usr/share/qtcreator/qml/qmlpuppet/commands/changeidscommand.h
-/usr/share/qtcreator/qml/qmlpuppet/commands/changelanguagecommand.cpp
-/usr/share/qtcreator/qml/qmlpuppet/commands/changelanguagecommand.h
-/usr/share/qtcreator/qml/qmlpuppet/commands/changenodesourcecommand.cpp
-/usr/share/qtcreator/qml/qmlpuppet/commands/changenodesourcecommand.h
-/usr/share/qtcreator/qml/qmlpuppet/commands/changepreviewimagesizecommand.cpp
-/usr/share/qtcreator/qml/qmlpuppet/commands/changepreviewimagesizecommand.h
-/usr/share/qtcreator/qml/qmlpuppet/commands/changeselectioncommand.cpp
-/usr/share/qtcreator/qml/qmlpuppet/commands/changeselectioncommand.h
-/usr/share/qtcreator/qml/qmlpuppet/commands/changestatecommand.cpp
-/usr/share/qtcreator/qml/qmlpuppet/commands/changestatecommand.h
-/usr/share/qtcreator/qml/qmlpuppet/commands/changevaluescommand.cpp
-/usr/share/qtcreator/qml/qmlpuppet/commands/changevaluescommand.h
-/usr/share/qtcreator/qml/qmlpuppet/commands/childrenchangedcommand.cpp
-/usr/share/qtcreator/qml/qmlpuppet/commands/childrenchangedcommand.h
-/usr/share/qtcreator/qml/qmlpuppet/commands/clearscenecommand.cpp
-/usr/share/qtcreator/qml/qmlpuppet/commands/clearscenecommand.h
-/usr/share/qtcreator/qml/qmlpuppet/commands/commands.pri
-/usr/share/qtcreator/qml/qmlpuppet/commands/completecomponentcommand.cpp
-/usr/share/qtcreator/qml/qmlpuppet/commands/completecomponentcommand.h
-/usr/share/qtcreator/qml/qmlpuppet/commands/componentcompletedcommand.cpp
-/usr/share/qtcreator/qml/qmlpuppet/commands/componentcompletedcommand.h
-/usr/share/qtcreator/qml/qmlpuppet/commands/createinstancescommand.cpp
-/usr/share/qtcreator/qml/qmlpuppet/commands/createinstancescommand.h
-/usr/share/qtcreator/qml/qmlpuppet/commands/createscenecommand.cpp
-/usr/share/qtcreator/qml/qmlpuppet/commands/createscenecommand.h
-/usr/share/qtcreator/qml/qmlpuppet/commands/debugoutputcommand.cpp
-/usr/share/qtcreator/qml/qmlpuppet/commands/debugoutputcommand.h
-/usr/share/qtcreator/qml/qmlpuppet/commands/endpuppetcommand.cpp
-/usr/share/qtcreator/qml/qmlpuppet/commands/endpuppetcommand.h
-/usr/share/qtcreator/qml/qmlpuppet/commands/informationchangedcommand.cpp
-/usr/share/qtcreator/qml/qmlpuppet/commands/informationchangedcommand.h
-/usr/share/qtcreator/qml/qmlpuppet/commands/inputeventcommand.cpp
-/usr/share/qtcreator/qml/qmlpuppet/commands/inputeventcommand.h
-/usr/share/qtcreator/qml/qmlpuppet/commands/pixmapchangedcommand.cpp
-/usr/share/qtcreator/qml/qmlpuppet/commands/pixmapchangedcommand.h
-/usr/share/qtcreator/qml/qmlpuppet/commands/puppetalivecommand.cpp
-/usr/share/qtcreator/qml/qmlpuppet/commands/puppetalivecommand.h
-/usr/share/qtcreator/qml/qmlpuppet/commands/puppettocreatorcommand.cpp
-/usr/share/qtcreator/qml/qmlpuppet/commands/puppettocreatorcommand.h
-/usr/share/qtcreator/qml/qmlpuppet/commands/removeinstancescommand.cpp
-/usr/share/qtcreator/qml/qmlpuppet/commands/removeinstancescommand.h
-/usr/share/qtcreator/qml/qmlpuppet/commands/removepropertiescommand.cpp
-/usr/share/qtcreator/qml/qmlpuppet/commands/removepropertiescommand.h
-/usr/share/qtcreator/qml/qmlpuppet/commands/removesharedmemorycommand.cpp
-/usr/share/qtcreator/qml/qmlpuppet/commands/removesharedmemorycommand.h
-/usr/share/qtcreator/qml/qmlpuppet/commands/reparentinstancescommand.cpp
-/usr/share/qtcreator/qml/qmlpuppet/commands/reparentinstancescommand.h
-/usr/share/qtcreator/qml/qmlpuppet/commands/requestmodelnodepreviewimagecommand.cpp
-/usr/share/qtcreator/qml/qmlpuppet/commands/requestmodelnodepreviewimagecommand.h
-/usr/share/qtcreator/qml/qmlpuppet/commands/scenecreatedcommand.h
-/usr/share/qtcreator/qml/qmlpuppet/commands/statepreviewimagechangedcommand.cpp
-/usr/share/qtcreator/qml/qmlpuppet/commands/statepreviewimagechangedcommand.h
-/usr/share/qtcreator/qml/qmlpuppet/commands/synchronizecommand.cpp
-/usr/share/qtcreator/qml/qmlpuppet/commands/synchronizecommand.h
-/usr/share/qtcreator/qml/qmlpuppet/commands/tokencommand.cpp
-/usr/share/qtcreator/qml/qmlpuppet/commands/tokencommand.h
-/usr/share/qtcreator/qml/qmlpuppet/commands/update3dviewstatecommand.cpp
-/usr/share/qtcreator/qml/qmlpuppet/commands/update3dviewstatecommand.h
-/usr/share/qtcreator/qml/qmlpuppet/commands/valueschangedcommand.cpp
-/usr/share/qtcreator/qml/qmlpuppet/commands/valueschangedcommand.h
-/usr/share/qtcreator/qml/qmlpuppet/commands/view3dactioncommand.cpp
-/usr/share/qtcreator/qml/qmlpuppet/commands/view3dactioncommand.h
-/usr/share/qtcreator/qml/qmlpuppet/container/addimportcontainer.cpp
-/usr/share/qtcreator/qml/qmlpuppet/container/addimportcontainer.h
-/usr/share/qtcreator/qml/qmlpuppet/container/container.pri
-/usr/share/qtcreator/qml/qmlpuppet/container/idcontainer.cpp
-/usr/share/qtcreator/qml/qmlpuppet/container/idcontainer.h
-/usr/share/qtcreator/qml/qmlpuppet/container/imagecontainer.cpp
-/usr/share/qtcreator/qml/qmlpuppet/container/imagecontainer.h
-/usr/share/qtcreator/qml/qmlpuppet/container/informationcontainer.cpp
-/usr/share/qtcreator/qml/qmlpuppet/container/informationcontainer.h
-/usr/share/qtcreator/qml/qmlpuppet/container/instancecontainer.cpp
-/usr/share/qtcreator/qml/qmlpuppet/container/instancecontainer.h
-/usr/share/qtcreator/qml/qmlpuppet/container/mockuptypecontainer.cpp
-/usr/share/qtcreator/qml/qmlpuppet/container/mockuptypecontainer.h
-/usr/share/qtcreator/qml/qmlpuppet/container/propertyabstractcontainer.cpp
-/usr/share/qtcreator/qml/qmlpuppet/container/propertyabstractcontainer.h
-/usr/share/qtcreator/qml/qmlpuppet/container/propertybindingcontainer.cpp
-/usr/share/qtcreator/qml/qmlpuppet/container/propertybindingcontainer.h
-/usr/share/qtcreator/qml/qmlpuppet/container/propertyvaluecontainer.cpp
-/usr/share/qtcreator/qml/qmlpuppet/container/propertyvaluecontainer.h
-/usr/share/qtcreator/qml/qmlpuppet/container/reparentcontainer.cpp
-/usr/share/qtcreator/qml/qmlpuppet/container/reparentcontainer.h
-/usr/share/qtcreator/qml/qmlpuppet/container/sharedmemory.h
-/usr/share/qtcreator/qml/qmlpuppet/container/sharedmemory_qt.cpp
-/usr/share/qtcreator/qml/qmlpuppet/container/sharedmemory_unix.cpp
-/usr/share/qtcreator/qml/qmlpuppet/html/welcome.html
-/usr/share/qtcreator/qml/qmlpuppet/images/non-visual-component.png
-/usr/share/qtcreator/qml/qmlpuppet/images/non-visual-component@2x.png
-/usr/share/qtcreator/qml/qmlpuppet/images/template_image.png
-/usr/share/qtcreator/qml/qmlpuppet/images/webkit.png
-/usr/share/qtcreator/qml/qmlpuppet/instances/instances.pri
-/usr/share/qtcreator/qml/qmlpuppet/instances/nodeinstanceclientproxy.cpp
-/usr/share/qtcreator/qml/qmlpuppet/instances/nodeinstanceclientproxy.h
-/usr/share/qtcreator/qml/qmlpuppet/interfaces/commondefines.h
-/usr/share/qtcreator/qml/qmlpuppet/interfaces/interfaces.pri
-/usr/share/qtcreator/qml/qmlpuppet/interfaces/nodeinstanceclientinterface.h
-/usr/share/qtcreator/qml/qmlpuppet/interfaces/nodeinstanceglobal.h
-/usr/share/qtcreator/qml/qmlpuppet/interfaces/nodeinstanceserverinterface.cpp
-/usr/share/qtcreator/qml/qmlpuppet/interfaces/nodeinstanceserverinterface.h
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/AdjustableArrow.qml
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/AreaLightHandle.qml
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/Arrow.qml
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/AutoScaleHelper.qml
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/AxisHelper.qml
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/AxisHelperArm.qml
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/CameraFrustum.qml
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/CameraGizmo.qml
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/Dialog.qml
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/DirectionalDraggable.qml
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/EditCameraController.qml
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/EditView3D.qml
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/FadeHandle.qml
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/GenericBackend.qml
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/HelperGrid.qml
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/IconGizmo.qml
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/IconRenderer3D.qml
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/LightGizmo.qml
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/LightIconGizmo.qml
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/LightModel.qml
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/Line3D.qml
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/MaterialNodeView.qml
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/ModelNode2DImageView.qml
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/ModelNode3DImageView.qml
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/ModelNodeView.qml
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/MoveGizmo.qml
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/NodeNodeView.qml
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/Overlay2D.qml
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/PlanarDraggable.qml
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/PlanarMoveHandle.qml
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/PlanarScaleHandle.qml
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/RotateGizmo.qml
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/RotateRing.qml
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/ScaleGizmo.qml
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/ScaleRod.qml
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/SceneView3D.qml
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/SelectionBox.qml
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/SpotLightHandle.qml
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/SwipeView.qml
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/ToggleButton.qml
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/ToolBarButton.qml
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/Window.qml
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/images/area.png
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/images/area@2x.png
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/images/directional.png
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/images/directional@2x.png
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/images/editor_camera.png
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/images/editor_camera@2x.png
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/images/point.png
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/images/point@2x.png
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/images/spot.png
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/images/spot@2x.png
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/meshes/arrow.mesh
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/meshes/axishelper.mesh
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/meshes/ring.mesh
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/meshes/ringselect.mesh
-/usr/share/qtcreator/qml/qmlpuppet/mockfiles/meshes/scalerod.mesh
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/Info.plist
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/editor3d/camerageometry.cpp
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/editor3d/camerageometry.h
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/editor3d/editor3d.pri
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/editor3d/generalhelper.cpp
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/editor3d/generalhelper.h
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/editor3d/gridgeometry.cpp
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/editor3d/gridgeometry.h
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/editor3d/icongizmoimageprovider.cpp
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/editor3d/icongizmoimageprovider.h
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/editor3d/lightgeometry.cpp
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/editor3d/lightgeometry.h
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/editor3d/linegeometry.cpp
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/editor3d/linegeometry.h
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/editor3d/mousearea3d.cpp
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/editor3d/mousearea3d.h
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/editor3d/qt5compat/qquick3darealight.cpp
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/editor3d/qt5compat/qquick3darealight_p.h
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/editor3d/selectionboxgeometry.cpp
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/editor3d/selectionboxgeometry.h
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/iconrenderer/iconrenderer.cpp
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/iconrenderer/iconrenderer.h
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/iconrenderer/iconrenderer.pri
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/import3d/import3d.cpp
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/import3d/import3d.h
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/import3d/import3d.pri
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/anchorchangesnodeinstance.cpp
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/anchorchangesnodeinstance.h
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/behaviornodeinstance.cpp
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/behaviornodeinstance.h
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/capturenodeinstanceserverdispatcher.cpp
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/capturenodeinstanceserverdispatcher.h
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/childrenchangeeventfilter.cpp
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/childrenchangeeventfilter.h
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/componentnodeinstance.cpp
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/componentnodeinstance.h
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/dummycontextobject.cpp
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/dummycontextobject.h
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/dummynodeinstance.cpp
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/dummynodeinstance.h
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/instances.pri
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/layoutnodeinstance.cpp
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/layoutnodeinstance.h
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/nodeinstanceserver.cpp
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/nodeinstanceserver.h
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/nodeinstanceserverdispatcher.cpp
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/nodeinstanceserverdispatcher.h
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/nodeinstancesignalspy.cpp
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/nodeinstancesignalspy.h
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/objectnodeinstance.cpp
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/objectnodeinstance.h
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/positionernodeinstance.cpp
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/positionernodeinstance.h
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/qmlpropertychangesnodeinstance.cpp
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/qmlpropertychangesnodeinstance.h
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/qmlstatenodeinstance.cpp
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/qmlstatenodeinstance.h
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/qmltransitionnodeinstance.cpp
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/qmltransitionnodeinstance.h
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/qt3dpresentationnodeinstance.cpp
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/qt3dpresentationnodeinstance.h
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/qt5captureimagenodeinstanceserver.cpp
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/qt5captureimagenodeinstanceserver.h
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/qt5capturepreviewnodeinstanceserver.cpp
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/qt5capturepreviewnodeinstanceserver.h
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/qt5informationnodeinstanceserver.cpp
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/qt5informationnodeinstanceserver.h
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/qt5nodeinstanceclientproxy.cpp
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/qt5nodeinstanceclientproxy.h
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/qt5nodeinstanceserver.cpp
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/qt5nodeinstanceserver.h
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/qt5previewnodeinstanceserver.cpp
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/qt5previewnodeinstanceserver.h
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/qt5rendernodeinstanceserver.cpp
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/qt5rendernodeinstanceserver.h
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/qt5testnodeinstanceserver.cpp
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/qt5testnodeinstanceserver.h
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/quick3dnodeinstance.cpp
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/quick3dnodeinstance.h
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/quick3dtexturenodeinstance.cpp
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/quick3dtexturenodeinstance.h
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/quickitemnodeinstance.cpp
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/quickitemnodeinstance.h
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/servernodeinstance.cpp
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/instances/servernodeinstance.h
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/qml2puppet.pri
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/qml2puppet.pro
-/usr/share/qtcreator/qml/qmlpuppet/qml2puppet/qml2puppetmain.cpp
-/usr/share/qtcreator/qml/qmlpuppet/qmlprivategate/designercustomobjectdata.cpp
-/usr/share/qtcreator/qml/qmlpuppet/qmlprivategate/designercustomobjectdata.h
-/usr/share/qtcreator/qml/qmlpuppet/qmlprivategate/designersupportdelegate.h
-/usr/share/qtcreator/qml/qmlpuppet/qmlprivategate/metaobject.cpp
-/usr/share/qtcreator/qml/qmlpuppet/qmlprivategate/metaobject.h
-/usr/share/qtcreator/qml/qmlpuppet/qmlprivategate/qmlprivategate.cpp
-/usr/share/qtcreator/qml/qmlpuppet/qmlprivategate/qmlprivategate.h
-/usr/share/qtcreator/qml/qmlpuppet/qmlprivategate/qmlprivategate.pri
-/usr/share/qtcreator/qml/qmlpuppet/qmlprivategate/qmlprivategate_56.cpp
-/usr/share/qtcreator/qml/qmlpuppet/qmlpuppet.qrc
-/usr/share/qtcreator/qml/qmlpuppet/qmlpuppet_utilities.pri
-/usr/share/qtcreator/qml/qmlpuppet/types/enumeration.h
-/usr/share/qtcreator/qml/qmlpuppet/types/types.pri
-/usr/share/qtcreator/qmldesigner/itemLibraryQmlSources/AddImport.qml
-/usr/share/qtcreator/qmldesigner/itemLibraryQmlSources/ItemDelegate.qml
-/usr/share/qtcreator/qmldesigner/itemLibraryQmlSources/ItemsView.qml
-/usr/share/qtcreator/qmldesigner/itemLibraryQmlSources/LibraryHeader.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/PropertyTemplates/BooleanEditorTemplate.template
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/PropertyTemplates/ColorEditorTemplate.template
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/PropertyTemplates/FontEditorTemplate.template
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/PropertyTemplates/ImageEditorTemplate.template
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/PropertyTemplates/IntEditorTemplate.template
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/PropertyTemplates/RealEditorTemplate.template
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/PropertyTemplates/RectangleEditorTemplate.template
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/PropertyTemplates/StringEditorTemplate.template
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/PropertyTemplates/TemplateTypes.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/PropertyTemplates/TextEditorTemplate.template
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/PropertyTemplates/UrlEditorTemplate.template
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/QtQml/ConnectionsSpecifics.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/QtQml/QtObjectPane.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/QtQuick/AdvancedSection.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/QtQuick/AlignDistributeSection.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/QtQuick/AnchorRow.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/QtQuick/AnimatedImageSpecifics.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/QtQuick/AnimationSection.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/QtQuick/AnimationTargetSection.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/QtQuick/BorderImageSpecifics.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/QtQuick/ColorAnimationSpecifics.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/QtQuick/ColumnSpecifics.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/QtQuick/ConnectionsSpecifics.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/QtQuick/Controls/DialogSpecifics.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/QtQuick/Controls/DrawerSpecifics.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/QtQuick/Controls/PopupSection.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/QtQuick/Controls/PopupSpecifics.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/QtQuick/FlickableSpecifics.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/QtQuick/FlipableSpecifics.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/QtQuick/FlowSpecifics.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/QtQuick/GeometrySection.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/QtQuick/GridSpecifics.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/QtQuick/GridViewSpecifics.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/QtQuick/ImageSpecifics.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/QtQuick/ItemPane.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/QtQuick/LayerSection.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/QtQuick/LayoutPoperties.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/QtQuick/LayoutSection.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/QtQuick/Layouts/GridLayoutSpecifics.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/QtQuick/ListViewSpecifics.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/QtQuick/MouseAreaSpecifics.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/QtQuick/NumberAnimationSpecifics.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/QtQuick/ParallelAnimationSpecifics.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/QtQuick/PathViewSpecifics.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/QtQuick/PauseAnimationSpecifics.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/QtQuick/PropertyActionSpecifics.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/QtQuick/PropertyAnimationSpecifics.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/QtQuick/QtObjectPane.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/QtQuick/RectangleSpecifics.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/QtQuick/RowSpecifics.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/QtQuick/ScriptActionSpecifics.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/QtQuick/SequentialAnimationSpecifics.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/QtQuick/StateSpecifics.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/QtQuick/TargetComboBox.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/QtQuick/TextEditSpecifics.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/QtQuick/TextInputSection.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/QtQuick/TextInputSpecifics.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/QtQuick/TextSpecifics.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/QtQuick/Window/WindowSpecifics.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/QtQuick/emptyPane.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/QtQuick/project.qmlproject
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/QtQuick3D/Object3DPane.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/RegExpValidator.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/AbstractButton.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/ActionIndicator.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/AligmentHorizontalButtons.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/AligmentVerticalButtons.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/AnchorButtons.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/BoolButtonRowButton.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/Button.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/ButtonRow.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/ButtonRow2.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/ButtonRowButton.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/CheckBox.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/ColorButton.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/ColorCheckButton.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/ColorEditor.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/ColorLine.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/ColorLogic.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/ComboBox.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/ComponentButton.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/Constants.js
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/DoubleSpinBox.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/EditableListView.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/ExpandingSpacer.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/ExpressionTextField.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/ExtendedFunctionLogic.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/FlickableSection.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/FontComboBox.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/FontSection.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/FontStyleButtons.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/GradientDialogPopup.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/GradientLine.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/GradientPopupIndicator.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/GradientPresetList.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/GradientPresetTabContent.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/GradientPropertySpinBox.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/HorizontalScrollBar.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/HueSlider.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/IconLabel.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/ImagePreviewTooltipArea.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/ItemFilterComboBox.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/Label.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/LineEdit.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/ListViewComboBox.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/MarginSection.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/OriginControl.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/PaddingSection.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/RoundedPanel.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/ScrollView.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/SecondColumnLayout.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/Section.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/SectionLayout.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/SimpleColorPalette.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/SpinBox.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/StandardTextSection.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/ToolTipArea.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/UrlChooser.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/VerticalScrollBar.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/images/checkers.png
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/images/down-arrow.png
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/images/down-arrow@2x.png
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/images/expression.png
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/images/expression@2x.png
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/images/icon-gradient-list.png
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/images/icon_color_conical_gradient.png
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/images/icon_color_gradient.png
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/images/icon_color_none.png
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/images/icon_color_radial_gradient.png
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/images/icon_color_solid.png
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/images/placeholder.png
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/images/placeholder@2x.png
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/images/submenu.png
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/images/submenu@2x.png
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/images/up-arrow.png
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/images/up-arrow@2x.png
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/HelperWidgets/qmldir
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/StudioControls/AbstractButton.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/StudioControls/ActionIndicator.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/StudioControls/Button.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/StudioControls/ButtonGroup.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/StudioControls/ButtonRow.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/StudioControls/CheckBox.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/StudioControls/CheckIndicator.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/StudioControls/ComboBox.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/StudioControls/ComboBoxInput.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/StudioControls/ContextMenu.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/StudioControls/ExpandingSpacer.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/StudioControls/ItemDelegate.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/StudioControls/Menu.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/StudioControls/MenuItem.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/StudioControls/MenuItemWithIcon.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/StudioControls/MenuSeparator.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/StudioControls/RealSliderPopup.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/StudioControls/RealSpinBox.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/StudioControls/RealSpinBoxIndicator.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/StudioControls/RealSpinBoxInput.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/StudioControls/ScrollBar.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/StudioControls/ScrollView.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/StudioControls/SecondColumnLayout.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/StudioControls/Section.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/StudioControls/SectionLabel.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/StudioControls/SectionLayout.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/StudioControls/Slider.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/StudioControls/SliderPopup.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/StudioControls/SpinBox.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/StudioControls/SpinBoxIndicator.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/StudioControls/SpinBoxInput.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/StudioControls/TabBar.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/StudioControls/TabButton.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/StudioControls/TextArea.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/StudioControls/TextField.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/StudioControls/TranslationIndicator.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/StudioControls/qmldir
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/StudioTheme/Constants.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/StudioTheme/InternalConstants.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/StudioTheme/Values.qml
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/StudioTheme/icons.ttf
-/usr/share/qtcreator/qmldesigner/propertyEditorQmlSources/imports/StudioTheme/qmldir
-/usr/share/qtcreator/qmldesigner/qt4mcu/metadata.qml
-/usr/share/qtcreator/qmldesigner/qt4mcu/qul-14.qml
-/usr/share/qtcreator/qmldesigner/qt4mcu/qul-17.qml
-/usr/share/qtcreator/qmldesigner/qt4mcu/qul-18.qml
-/usr/share/qtcreator/qmldesigner/statesEditorQmlSources/StatesDelegate.qml
-/usr/share/qtcreator/qmldesigner/statesEditorQmlSources/StatesList.qml
-/usr/share/qtcreator/qmldesigner/statesEditorQmlSources/images/checkers.png
-/usr/share/qtcreator/qmldesigner/workspacePresets/3D_Preset.wrk
-/usr/share/qtcreator/qmldesigner/workspacePresets/Essentials.wrk
-/usr/share/qtcreator/qmlicons/Qt/16x16/BorderImage.png
-/usr/share/qtcreator/qmlicons/Qt/16x16/BusyIndicator.png
-/usr/share/qtcreator/qmlicons/Qt/16x16/Button.png
-/usr/share/qtcreator/qmlicons/Qt/16x16/ButtonColumn.png
-/usr/share/qtcreator/qmlicons/Qt/16x16/ButtonRow.png
-/usr/share/qtcreator/qmlicons/Qt/16x16/CheckBox.png
-/usr/share/qtcreator/qmlicons/Qt/16x16/ChoiceList.png
-/usr/share/qtcreator/qmlicons/Qt/16x16/ColorAnimation.png
-/usr/share/qtcreator/qmlicons/Qt/16x16/Component.png
-/usr/share/qtcreator/qmlicons/Qt/16x16/CountBubble.png
-/usr/share/qtcreator/qmlicons/Qt/16x16/DatePickerDialog.png
-/usr/share/qtcreator/qmlicons/Qt/16x16/Flickable.png
-/usr/share/qtcreator/qmlicons/Qt/16x16/Flipable.png
-/usr/share/qtcreator/qmlicons/Qt/16x16/FocusScope.png
-/usr/share/qtcreator/qmlicons/Qt/16x16/GridView.png
-/usr/share/qtcreator/qmlicons/Qt/16x16/Image.png
-/usr/share/qtcreator/qmlicons/Qt/16x16/InfoBanner.png
-/usr/share/qtcreator/qmlicons/Qt/16x16/Item.png
-/usr/share/qtcreator/qmlicons/Qt/16x16/ListButton.png
-/usr/share/qtcreator/qmlicons/Qt/16x16/ListDelegate.png
-/usr/share/qtcreator/qmlicons/Qt/16x16/ListView.png
-/usr/share/qtcreator/qmlicons/Qt/16x16/MoreIndicator.png
-/usr/share/qtcreator/qmlicons/Qt/16x16/MouseArea.png
-/usr/share/qtcreator/qmlicons/Qt/16x16/PageIndicator.png
-/usr/share/qtcreator/qmlicons/Qt/16x16/ParallelAnimation.png
-/usr/share/qtcreator/qmlicons/Qt/16x16/PathView.png
-/usr/share/qtcreator/qmlicons/Qt/16x16/PauseAnimation.png
-/usr/share/qtcreator/qmlicons/Qt/16x16/ProgressBar.png
-/usr/share/qtcreator/qmlicons/Qt/16x16/PropertyChanges.png
-/usr/share/qtcreator/qmlicons/Qt/16x16/RadioButton.png
-/usr/share/qtcreator/qmlicons/Qt/16x16/RatingIndicator.png
-/usr/share/qtcreator/qmlicons/Qt/16x16/Rectangle.png
-/usr/share/qtcreator/qmlicons/Qt/16x16/SequentialAnimation.png
-/usr/share/qtcreator/qmlicons/Qt/16x16/Slider.png
-/usr/share/qtcreator/qmlicons/Qt/16x16/State.png
-/usr/share/qtcreator/qmlicons/Qt/16x16/Switch.png
-/usr/share/qtcreator/qmlicons/Qt/16x16/TabBar.png
-/usr/share/qtcreator/qmlicons/Qt/16x16/TabButton.png
-/usr/share/qtcreator/qmlicons/Qt/16x16/Text.png
-/usr/share/qtcreator/qmlicons/Qt/16x16/TextArea.png
-/usr/share/qtcreator/qmlicons/Qt/16x16/TextEdit.png
-/usr/share/qtcreator/qmlicons/Qt/16x16/TextField.png
-/usr/share/qtcreator/qmlicons/Qt/16x16/TextInput.png
-/usr/share/qtcreator/qmlicons/Qt/16x16/TimePickerDialog.png
-/usr/share/qtcreator/qmlicons/Qt/16x16/ToolBar.png
-/usr/share/qtcreator/qmlicons/Qt/16x16/Transition.png
-/usr/share/qtcreator/qmlicons/Qt/16x16/Tumbler.png
-/usr/share/qtcreator/qmlicons/Qt/16x16/TumblerButton.png
-/usr/share/qtcreator/qmlicons/Qt/16x16/TumblerColumn.png
-/usr/share/qtcreator/qmlicons/Qt/16x16/TumblerDialog.png
-/usr/share/qtcreator/qmlicons/Qt/16x16/Window.png
-/usr/share/qtcreator/qmlicons/Qt/16x16/item-icon16.png
-/usr/share/qtcreator/qmlicons/QtWebkit/16x16/WebView.png
-/usr/share/qtcreator/schemes/MS_Visual_C++.kms
-/usr/share/qtcreator/schemes/Xcode.kms
-/usr/share/qtcreator/snippets/cpp.xml
-/usr/share/qtcreator/snippets/qml.xml
-/usr/share/qtcreator/snippets/text.xml
-/usr/share/qtcreator/styles/creator-dark.xml
-/usr/share/qtcreator/styles/dark.xml
-/usr/share/qtcreator/styles/default.xml
-/usr/share/qtcreator/styles/default_classic.xml
-/usr/share/qtcreator/styles/grayscale.xml
-/usr/share/qtcreator/styles/inkpot.xml
-/usr/share/qtcreator/styles/intellij.xml
-/usr/share/qtcreator/styles/modnokai_night_shift_v2.xml
-/usr/share/qtcreator/styles/solarized-dark.xml
-/usr/share/qtcreator/styles/solarized-light.xml
-/usr/share/qtcreator/templates/qt4project/customwidgetwizard/tpl_collection.cpp
-/usr/share/qtcreator/templates/qt4project/customwidgetwizard/tpl_collection.h
-/usr/share/qtcreator/templates/qt4project/customwidgetwizard/tpl_plugin.pro
-/usr/share/qtcreator/templates/qt4project/customwidgetwizard/tpl_resources.qrc
-/usr/share/qtcreator/templates/qt4project/customwidgetwizard/tpl_single.cpp
-/usr/share/qtcreator/templates/qt4project/customwidgetwizard/tpl_single.h
-/usr/share/qtcreator/templates/qt4project/customwidgetwizard/tpl_widget.cpp
-/usr/share/qtcreator/templates/qt4project/customwidgetwizard/tpl_widget.h
-/usr/share/qtcreator/templates/qt4project/customwidgetwizard/tpl_widget_include.pri
-/usr/share/qtcreator/templates/qt4project/customwidgetwizard/tpl_widget_lib.pro
-/usr/share/qtcreator/templates/wizards/README.txt
-/usr/share/qtcreator/templates/wizards/autotest/autotest.png
-/usr/share/qtcreator/templates/wizards/autotest/autotest@2x.png
-/usr/share/qtcreator/templates/wizards/autotest/files/catch2_tst.cpp
-/usr/share/qtcreator/templates/wizards/autotest/files/googlecommon.js
-/usr/share/qtcreator/templates/wizards/autotest/files/gtest_dependency.pri
-/usr/share/qtcreator/templates/wizards/autotest/files/tst.pro
-/usr/share/qtcreator/templates/wizards/autotest/files/tst.qbs
-/usr/share/qtcreator/templates/wizards/autotest/files/tst.txt
-/usr/share/qtcreator/templates/wizards/autotest/files/tst_main.cpp
-/usr/share/qtcreator/templates/wizards/autotest/files/tst_qml.tmpl
-/usr/share/qtcreator/templates/wizards/autotest/files/tst_src.cpp
-/usr/share/qtcreator/templates/wizards/autotest/files/tst_src.h
-/usr/share/qtcreator/templates/wizards/autotest/wizard.json
-/usr/share/qtcreator/templates/wizards/classes/cpp/file.cpp
-/usr/share/qtcreator/templates/wizards/classes/cpp/file.h
-/usr/share/qtcreator/templates/wizards/classes/cpp/wizard.json
-/usr/share/qtcreator/templates/wizards/classes/itemmodel/itemmodel.cpp
-/usr/share/qtcreator/templates/wizards/classes/itemmodel/itemmodel.h
-/usr/share/qtcreator/templates/wizards/classes/itemmodel/listmodel.cpp
-/usr/share/qtcreator/templates/wizards/classes/itemmodel/listmodel.h
-/usr/share/qtcreator/templates/wizards/classes/itemmodel/tablemodel.cpp
-/usr/share/qtcreator/templates/wizards/classes/itemmodel/tablemodel.h
-/usr/share/qtcreator/templates/wizards/classes/itemmodel/wizard.json
-/usr/share/qtcreator/templates/wizards/classes/python/file.py
-/usr/share/qtcreator/templates/wizards/classes/python/wizard.json
-/usr/share/qtcreator/templates/wizards/classes/qtquickui/file.qml.tpl
-/usr/share/qtcreator/templates/wizards/classes/qtquickui/fileForm.ui.qml.tpl
-/usr/share/qtcreator/templates/wizards/classes/qtquickui/wizard.json
-/usr/share/qtcreator/templates/wizards/codesnippet/main.cpp
-/usr/share/qtcreator/templates/wizards/codesnippet/project.pro
-/usr/share/qtcreator/templates/wizards/codesnippet/wizard.xml
-/usr/share/qtcreator/templates/wizards/files/cppheader/file.h
-/usr/share/qtcreator/templates/wizards/files/cppheader/wizard.json
-/usr/share/qtcreator/templates/wizards/files/cppsource/file.cpp
-/usr/share/qtcreator/templates/wizards/files/cppsource/wizard.json
-/usr/share/qtcreator/templates/wizards/files/form/file.ui
-/usr/share/qtcreator/templates/wizards/files/form/wizard.json
-/usr/share/qtcreator/templates/wizards/files/glsl/gl/fragment/file.frag
-/usr/share/qtcreator/templates/wizards/files/glsl/gl/fragment/wizard.json
-/usr/share/qtcreator/templates/wizards/files/glsl/gl/vertex/file.vert
-/usr/share/qtcreator/templates/wizards/files/glsl/gl/vertex/wizard.json
-/usr/share/qtcreator/templates/wizards/files/glsl/gles/fragment/file.fsh
-/usr/share/qtcreator/templates/wizards/files/glsl/gles/fragment/wizard.json
-/usr/share/qtcreator/templates/wizards/files/glsl/gles/vertex/file.vsh
-/usr/share/qtcreator/templates/wizards/files/glsl/gles/vertex/wizard.json
-/usr/share/qtcreator/templates/wizards/files/java/source.java
-/usr/share/qtcreator/templates/wizards/files/java/wizard.json
-/usr/share/qtcreator/templates/wizards/files/js/file.js
-/usr/share/qtcreator/templates/wizards/files/js/wizard.json
-/usr/share/qtcreator/templates/wizards/files/modeling/model/file.qmodel
-/usr/share/qtcreator/templates/wizards/files/modeling/model/wizard.json
-/usr/share/qtcreator/templates/wizards/files/modeling/scratch/file.qmodel
-/usr/share/qtcreator/templates/wizards/files/modeling/scratch/wizard.json
-/usr/share/qtcreator/templates/wizards/files/nim/file.nim
-/usr/share/qtcreator/templates/wizards/files/nim/wizard.json
-/usr/share/qtcreator/templates/wizards/files/nimscript/file.nims
-/usr/share/qtcreator/templates/wizards/files/nimscript/wizard.json
-/usr/share/qtcreator/templates/wizards/files/python/file.py
-/usr/share/qtcreator/templates/wizards/files/python/icon.png
-/usr/share/qtcreator/templates/wizards/files/python/icon@2x.png
-/usr/share/qtcreator/templates/wizards/files/python/wizard.json
-/usr/share/qtcreator/templates/wizards/files/qrc/file.qrc
-/usr/share/qtcreator/templates/wizards/files/qrc/wizard.json
-/usr/share/qtcreator/templates/wizards/files/qtquick2/file.qml.tpl
-/usr/share/qtcreator/templates/wizards/files/qtquick2/wizard.json
-/usr/share/qtcreator/templates/wizards/files/scratch/file.txt
-/usr/share/qtcreator/templates/wizards/files/scratch/wizard.json
-/usr/share/qtcreator/templates/wizards/files/scxml/file.scxml
-/usr/share/qtcreator/templates/wizards/files/scxml/wizard.json
-/usr/share/qtcreator/templates/wizards/files/text/file.txt
-/usr/share/qtcreator/templates/wizards/files/text/wizard.json
-/usr/share/qtcreator/templates/wizards/global/consoleapplication.png
-/usr/share/qtcreator/templates/wizards/global/consoleapplication@2x.png
-/usr/share/qtcreator/templates/wizards/global/guiapplication.png
-/usr/share/qtcreator/templates/wizards/global/guiapplication@2x.png
-/usr/share/qtcreator/templates/wizards/global/lib.png
-/usr/share/qtcreator/templates/wizards/global/lib@2x.png
-/usr/share/qtcreator/templates/wizards/projects/consoleapp/CMakeLists.txt
-/usr/share/qtcreator/templates/wizards/projects/consoleapp/file.pro
-/usr/share/qtcreator/templates/wizards/projects/consoleapp/file.qbs
-/usr/share/qtcreator/templates/wizards/projects/consoleapp/main.cpp
-/usr/share/qtcreator/templates/wizards/projects/consoleapp/meson.build
-/usr/share/qtcreator/templates/wizards/projects/consoleapp/wizard.json
-/usr/share/qtcreator/templates/wizards/projects/cpplibrary/CMakeLists.txt
-/usr/share/qtcreator/templates/wizards/projects/cpplibrary/lib.cpp
-/usr/share/qtcreator/templates/wizards/projects/cpplibrary/lib.h
-/usr/share/qtcreator/templates/wizards/projects/cpplibrary/lib_global.h
-/usr/share/qtcreator/templates/wizards/projects/cpplibrary/meson.build
-/usr/share/qtcreator/templates/wizards/projects/cpplibrary/project.json
-/usr/share/qtcreator/templates/wizards/projects/cpplibrary/project.pro
-/usr/share/qtcreator/templates/wizards/projects/cpplibrary/project.qbs
-/usr/share/qtcreator/templates/wizards/projects/cpplibrary/wizard.json
-/usr/share/qtcreator/templates/wizards/projects/git.ignore
-/usr/share/qtcreator/templates/wizards/projects/nim/file.nimproject
-/usr/share/qtcreator/templates/wizards/projects/nim/icon.png
-/usr/share/qtcreator/templates/wizards/projects/nim/icon@2x.png
-/usr/share/qtcreator/templates/wizards/projects/nim/main.nim
-/usr/share/qtcreator/templates/wizards/projects/nim/wizard.json
-/usr/share/qtcreator/templates/wizards/projects/nimble/binary/binary.nimble
-/usr/share/qtcreator/templates/wizards/projects/nimble/binary/src/binary.nim
-/usr/share/qtcreator/templates/wizards/projects/nimble/hybrid/hybrid.nimble
-/usr/share/qtcreator/templates/wizards/projects/nimble/hybrid/src/hybrid.nim
-/usr/share/qtcreator/templates/wizards/projects/nimble/hybrid/src/hybridpkg/submodule.nim
-/usr/share/qtcreator/templates/wizards/projects/nimble/hybrid/tests/config.nims
-/usr/share/qtcreator/templates/wizards/projects/nimble/hybrid/tests/test1.nim
-/usr/share/qtcreator/templates/wizards/projects/nimble/library/library.nimble
-/usr/share/qtcreator/templates/wizards/projects/nimble/library/src/library.nim
-/usr/share/qtcreator/templates/wizards/projects/nimble/library/src/library/submodule.nim
-/usr/share/qtcreator/templates/wizards/projects/nimble/library/tests/config.nims
-/usr/share/qtcreator/templates/wizards/projects/nimble/library/tests/test1.nim
-/usr/share/qtcreator/templates/wizards/projects/nimble/wizard.json
-/usr/share/qtcreator/templates/wizards/projects/plainc/CMakeLists.txt
-/usr/share/qtcreator/templates/wizards/projects/plainc/file.pro
-/usr/share/qtcreator/templates/wizards/projects/plainc/file.qbs
-/usr/share/qtcreator/templates/wizards/projects/plainc/main.c
-/usr/share/qtcreator/templates/wizards/projects/plainc/meson.build
-/usr/share/qtcreator/templates/wizards/projects/plainc/wizard.json
-/usr/share/qtcreator/templates/wizards/projects/plaincpp/CMakeLists.txt
-/usr/share/qtcreator/templates/wizards/projects/plaincpp/file.pro
-/usr/share/qtcreator/templates/wizards/projects/plaincpp/file.qbs
-/usr/share/qtcreator/templates/wizards/projects/plaincpp/main.cpp
-/usr/share/qtcreator/templates/wizards/projects/plaincpp/meson.build
-/usr/share/qtcreator/templates/wizards/projects/plaincpp/wizard.json
-/usr/share/qtcreator/templates/wizards/projects/qmake/empty/file.pro
-/usr/share/qtcreator/templates/wizards/projects/qmake/empty/wizard.json
-/usr/share/qtcreator/templates/wizards/projects/qtforpythonapplication/empty/icon.png
-/usr/share/qtcreator/templates/wizards/projects/qtforpythonapplication/empty/icon@2x.png
-/usr/share/qtcreator/templates/wizards/projects/qtforpythonapplication/empty/wizard.json
-/usr/share/qtcreator/templates/wizards/projects/qtforpythonapplication/icons/icon.png
-/usr/share/qtcreator/templates/wizards/projects/qtforpythonapplication/icons/icon@2x.png
-/usr/share/qtcreator/templates/wizards/projects/qtforpythonapplication/main.pyproject
-/usr/share/qtcreator/templates/wizards/projects/qtforpythonapplication/main_empty.py
-/usr/share/qtcreator/templates/wizards/projects/qtforpythonapplication/main_mainwindow.py
-/usr/share/qtcreator/templates/wizards/projects/qtforpythonapplication/main_qtquick.py
-/usr/share/qtcreator/templates/wizards/projects/qtforpythonapplication/main_widget.py
-/usr/share/qtcreator/templates/wizards/projects/qtforpythonapplication/main_widget.ui
-/usr/share/qtcreator/templates/wizards/projects/qtforpythonapplication/mainwindow/wizard.json
-/usr/share/qtcreator/templates/wizards/projects/qtforpythonapplication/qtquickapplication/main.pyproject
-/usr/share/qtcreator/templates/wizards/projects/qtforpythonapplication/qtquickapplication/main.qml.tpl
-/usr/share/qtcreator/templates/wizards/projects/qtforpythonapplication/qtquickapplication/wizard.json
-/usr/share/qtcreator/templates/wizards/projects/qtforpythonapplication/widget/main.pyproject
-/usr/share/qtcreator/templates/wizards/projects/qtforpythonapplication/widget/wizard.json
-/usr/share/qtcreator/templates/wizards/projects/qtquick2-extension/lib.png
-/usr/share/qtcreator/templates/wizards/projects/qtquick2-extension/lib@2x.png
-/usr/share/qtcreator/templates/wizards/projects/qtquick2-extension/object.cpp
-/usr/share/qtcreator/templates/wizards/projects/qtquick2-extension/object.h
-/usr/share/qtcreator/templates/wizards/projects/qtquick2-extension/plugin.cpp
-/usr/share/qtcreator/templates/wizards/projects/qtquick2-extension/plugin.h
-/usr/share/qtcreator/templates/wizards/projects/qtquick2-extension/project.pro
-/usr/share/qtcreator/templates/wizards/projects/qtquick2-extension/qmldir
-/usr/share/qtcreator/templates/wizards/projects/qtquick2-extension/wizard.json
-/usr/share/qtcreator/templates/wizards/projects/qtquickapplication/CMakeLists.txt
-/usr/share/qtcreator/templates/wizards/projects/qtquickapplication/app.pro
-/usr/share/qtcreator/templates/wizards/projects/qtquickapplication/app.qbs
-/usr/share/qtcreator/templates/wizards/projects/qtquickapplication/empty/icon.png
-/usr/share/qtcreator/templates/wizards/projects/qtquickapplication/empty/icon@2x.png
-/usr/share/qtcreator/templates/wizards/projects/qtquickapplication/empty/main.qml.tpl
-/usr/share/qtcreator/templates/wizards/projects/qtquickapplication/empty/qml.qrc
-/usr/share/qtcreator/templates/wizards/projects/qtquickapplication/empty/wizard.json
-/usr/share/qtcreator/templates/wizards/projects/qtquickapplication/main.cpp
-/usr/share/qtcreator/templates/wizards/projects/qtquickapplication/qtquickcontrols2.conf
-/usr/share/qtcreator/templates/wizards/projects/qtquickapplication/scroll/icon.png
-/usr/share/qtcreator/templates/wizards/projects/qtquickapplication/scroll/icon@2x.png
-/usr/share/qtcreator/templates/wizards/projects/qtquickapplication/scroll/main.qml.tpl
-/usr/share/qtcreator/templates/wizards/projects/qtquickapplication/scroll/qml.qrc
-/usr/share/qtcreator/templates/wizards/projects/qtquickapplication/scroll/wizard.json
-/usr/share/qtcreator/templates/wizards/projects/qtquickapplication/stack/HomeForm.ui.qml.tpl
-/usr/share/qtcreator/templates/wizards/projects/qtquickapplication/stack/Page1Form.ui.qml.tpl
-/usr/share/qtcreator/templates/wizards/projects/qtquickapplication/stack/Page2Form.ui.qml.tpl
-/usr/share/qtcreator/templates/wizards/projects/qtquickapplication/stack/icon.png
-/usr/share/qtcreator/templates/wizards/projects/qtquickapplication/stack/icon@2x.png
-/usr/share/qtcreator/templates/wizards/projects/qtquickapplication/stack/main.qml.tpl
-/usr/share/qtcreator/templates/wizards/projects/qtquickapplication/stack/qml.qrc
-/usr/share/qtcreator/templates/wizards/projects/qtquickapplication/stack/wizard.json
-/usr/share/qtcreator/templates/wizards/projects/qtquickapplication/swipe/Page1Form.ui.qml.tpl
-/usr/share/qtcreator/templates/wizards/projects/qtquickapplication/swipe/Page2Form.ui.qml.tpl
-/usr/share/qtcreator/templates/wizards/projects/qtquickapplication/swipe/icon.png
-/usr/share/qtcreator/templates/wizards/projects/qtquickapplication/swipe/icon@2x.png
-/usr/share/qtcreator/templates/wizards/projects/qtquickapplication/swipe/main.qml.tpl
-/usr/share/qtcreator/templates/wizards/projects/qtquickapplication/swipe/qml.qrc
-/usr/share/qtcreator/templates/wizards/projects/qtquickapplication/swipe/wizard.json
-/usr/share/qtcreator/templates/wizards/projects/qtquickuiprototype/app.qmlproject
-/usr/share/qtcreator/templates/wizards/projects/qtquickuiprototype/qtquickuiprototype.png
-/usr/share/qtcreator/templates/wizards/projects/qtquickuiprototype/qtquickuiprototype@2x.png
-/usr/share/qtcreator/templates/wizards/projects/qtquickuiprototype/wizard.json
-/usr/share/qtcreator/templates/wizards/projects/qtwidgetsapplication/CMakeLists.txt
-/usr/share/qtcreator/templates/wizards/projects/qtwidgetsapplication/main.cpp
-/usr/share/qtcreator/templates/wizards/projects/qtwidgetsapplication/meson.build
-/usr/share/qtcreator/templates/wizards/projects/qtwidgetsapplication/project.pro
-/usr/share/qtcreator/templates/wizards/projects/qtwidgetsapplication/project.qbs
-/usr/share/qtcreator/templates/wizards/projects/qtwidgetsapplication/widget.cpp
-/usr/share/qtcreator/templates/wizards/projects/qtwidgetsapplication/widget.h
-/usr/share/qtcreator/templates/wizards/projects/qtwidgetsapplication/widget.ui
-/usr/share/qtcreator/templates/wizards/projects/qtwidgetsapplication/wizard.json
-/usr/share/qtcreator/templates/wizards/projects/translation.ts
-/usr/share/qtcreator/templates/wizards/projects/vcs/bazaar/icon.png
-/usr/share/qtcreator/templates/wizards/projects/vcs/bazaar/icon@2x.png
-/usr/share/qtcreator/templates/wizards/projects/vcs/bazaar/wizard.json
-/usr/share/qtcreator/templates/wizards/projects/vcs/cvs/icon.png
-/usr/share/qtcreator/templates/wizards/projects/vcs/cvs/icon@2x.png
-/usr/share/qtcreator/templates/wizards/projects/vcs/cvs/wizard.json
-/usr/share/qtcreator/templates/wizards/projects/vcs/git/icon.png
-/usr/share/qtcreator/templates/wizards/projects/vcs/git/icon@2x.png
-/usr/share/qtcreator/templates/wizards/projects/vcs/git/wizard.json
-/usr/share/qtcreator/templates/wizards/projects/vcs/mercurial/icon.png
-/usr/share/qtcreator/templates/wizards/projects/vcs/mercurial/icon@2x.png
-/usr/share/qtcreator/templates/wizards/projects/vcs/mercurial/wizard.json
-/usr/share/qtcreator/templates/wizards/projects/vcs/subversion/icon.png
-/usr/share/qtcreator/templates/wizards/projects/vcs/subversion/icon@2x.png
-/usr/share/qtcreator/templates/wizards/projects/vcs/subversion/wizard.json
-/usr/share/qtcreator/templates/wizards/qtcreatorplugin/CMakeLists.txt
-/usr/share/qtcreator/templates/wizards/qtcreatorplugin/MyPlugin.json.in
-/usr/share/qtcreator/templates/wizards/qtcreatorplugin/README.md
-/usr/share/qtcreator/templates/wizards/qtcreatorplugin/github_workflows_README.md
-/usr/share/qtcreator/templates/wizards/qtcreatorplugin/github_workflows_build_cmake.yml
-/usr/share/qtcreator/templates/wizards/qtcreatorplugin/myplugin.cpp
-/usr/share/qtcreator/templates/wizards/qtcreatorplugin/myplugin.h
-/usr/share/qtcreator/templates/wizards/qtcreatorplugin/myplugin_global.h
-/usr/share/qtcreator/templates/wizards/qtcreatorplugin/mypluginconstants.h
-/usr/share/qtcreator/templates/wizards/qtcreatorplugin/qtcreatorplugin.png
-/usr/share/qtcreator/templates/wizards/qtcreatorplugin/qtcreatorplugin@2x.png
-/usr/share/qtcreator/templates/wizards/qtcreatorplugin/wizard.json
-/usr/share/qtcreator/templates/wizards/qtquickstyleicons/default.png
-/usr/share/qtcreator/templates/wizards/qtquickstyleicons/default@2x.png
-/usr/share/qtcreator/templates/wizards/qtquickstyleicons/material-dark.png
-/usr/share/qtcreator/templates/wizards/qtquickstyleicons/material-dark@2x.png
-/usr/share/qtcreator/templates/wizards/qtquickstyleicons/material-light.png
-/usr/share/qtcreator/templates/wizards/qtquickstyleicons/material-light@2x.png
-/usr/share/qtcreator/templates/wizards/qtquickstyleicons/universal-dark.png
-/usr/share/qtcreator/templates/wizards/qtquickstyleicons/universal-dark@2x.png
-/usr/share/qtcreator/templates/wizards/qtquickstyleicons/universal-light.png
-/usr/share/qtcreator/templates/wizards/qtquickstyleicons/universal-light@2x.png
-/usr/share/qtcreator/themes/dark.creatortheme
-/usr/share/qtcreator/themes/default.creatortheme
-/usr/share/qtcreator/themes/design-light.creatortheme
-/usr/share/qtcreator/themes/design.creatortheme
-/usr/share/qtcreator/themes/flat-dark.creatortheme
-/usr/share/qtcreator/themes/flat-light.creatortheme
-/usr/share/qtcreator/themes/flat.creatortheme
-/usr/share/qtcreator/translations/qtcreator_cs.qm
-/usr/share/qtcreator/translations/qtcreator_da.qm
-/usr/share/qtcreator/translations/qtcreator_de.qm
-/usr/share/qtcreator/translations/qtcreator_fr.qm
-/usr/share/qtcreator/translations/qtcreator_hr.qm
-/usr/share/qtcreator/translations/qtcreator_ja.qm
-/usr/share/qtcreator/translations/qtcreator_pl.qm
-/usr/share/qtcreator/translations/qtcreator_ru.qm
-/usr/share/qtcreator/translations/qtcreator_sl.qm
-/usr/share/qtcreator/translations/qtcreator_uk.qm
-/usr/share/qtcreator/translations/qtcreator_zh_CN.qm
-/usr/share/qtcreator/translations/qtcreator_zh_TW.qm
-
-%files dev
-%defattr(-,root,root,-)
-/usr/lib64/qtcreator/libAdvancedDockingSystem.so.4
-/usr/lib64/qtcreator/libAdvancedDockingSystem.so.4.82.0
-/usr/lib64/qtcreator/libAggregation.so.4
-/usr/lib64/qtcreator/libAggregation.so.4.82.0
-/usr/lib64/qtcreator/libCPlusPlus.so.4
-/usr/lib64/qtcreator/libCPlusPlus.so.4.82.0
-/usr/lib64/qtcreator/libExtensionSystem.so.4
-/usr/lib64/qtcreator/libExtensionSystem.so.4.82.0
-/usr/lib64/qtcreator/libGLSL.so.4
-/usr/lib64/qtcreator/libGLSL.so.4.82.0
-/usr/lib64/qtcreator/libLanguageServerProtocol.so.4
-/usr/lib64/qtcreator/libLanguageServerProtocol.so.4.82.0
-/usr/lib64/qtcreator/libLanguageUtils.so.4
-/usr/lib64/qtcreator/libLanguageUtils.so.4.82.0
-/usr/lib64/qtcreator/libModeling.so.4
-/usr/lib64/qtcreator/libModeling.so.4.82.0
-/usr/lib64/qtcreator/libProParser.so.4
-/usr/lib64/qtcreator/libProParser.so.4.82.0
-/usr/lib64/qtcreator/libQmlDebug.so.4
-/usr/lib64/qtcreator/libQmlDebug.so.4.82.0
-/usr/lib64/qtcreator/libQmlEditorWidgets.so.4
-/usr/lib64/qtcreator/libQmlEditorWidgets.so.4.82.0
-/usr/lib64/qtcreator/libQmlJS.so.4
-/usr/lib64/qtcreator/libQmlJS.so.4.82.0
-/usr/lib64/qtcreator/libQtcSsh.so.4
-/usr/lib64/qtcreator/libQtcSsh.so.4.82.0
-/usr/lib64/qtcreator/libSqlite.so.4
-/usr/lib64/qtcreator/libSqlite.so.4.82.0
-/usr/lib64/qtcreator/libTracing.so.4
-/usr/lib64/qtcreator/libTracing.so.4.82.0
-/usr/lib64/qtcreator/libUtils.so.4
-/usr/lib64/qtcreator/libUtils.so.4.82.0
-/usr/lib64/qtcreator/plugins/libAndroid.so
-/usr/lib64/qtcreator/plugins/libAutoTest.so
-/usr/lib64/qtcreator/plugins/libAutotoolsProjectManager.so
-/usr/lib64/qtcreator/plugins/libBareMetal.so
-/usr/lib64/qtcreator/plugins/libBazaar.so
-/usr/lib64/qtcreator/plugins/libBeautifier.so
-/usr/lib64/qtcreator/plugins/libBinEditor.so
-/usr/lib64/qtcreator/plugins/libBookmarks.so
-/usr/lib64/qtcreator/plugins/libBoot2Qt.so
-/usr/lib64/qtcreator/plugins/libCMakeProjectManager.so
-/usr/lib64/qtcreator/plugins/libCVS.so
-/usr/lib64/qtcreator/plugins/libClangCodeModel.so
-/usr/lib64/qtcreator/plugins/libClangFormat.so
-/usr/lib64/qtcreator/plugins/libClangTools.so
-/usr/lib64/qtcreator/plugins/libClassView.so
-/usr/lib64/qtcreator/plugins/libClearCase.so
-/usr/lib64/qtcreator/plugins/libCodePaster.so
-/usr/lib64/qtcreator/plugins/libCompilationDatabaseProjectManager.so
-/usr/lib64/qtcreator/plugins/libConan.so
-/usr/lib64/qtcreator/plugins/libCore.so
-/usr/lib64/qtcreator/plugins/libCppEditor.so
-/usr/lib64/qtcreator/plugins/libCppTools.so
-/usr/lib64/qtcreator/plugins/libCppcheck.so
-/usr/lib64/qtcreator/plugins/libCtfVisualizer.so
-/usr/lib64/qtcreator/plugins/libDebugger.so
-/usr/lib64/qtcreator/plugins/libDesigner.so
-/usr/lib64/qtcreator/plugins/libDiffEditor.so
-/usr/lib64/qtcreator/plugins/libDocker.so
-/usr/lib64/qtcreator/plugins/libEmacsKeys.so
-/usr/lib64/qtcreator/plugins/libFakeVim.so
-/usr/lib64/qtcreator/plugins/libGLSLEditor.so
-/usr/lib64/qtcreator/plugins/libGenericProjectManager.so
-/usr/lib64/qtcreator/plugins/libGit.so
-/usr/lib64/qtcreator/plugins/libHelloWorld.so
-/usr/lib64/qtcreator/plugins/libHelp.so
-/usr/lib64/qtcreator/plugins/libImageViewer.so
-/usr/lib64/qtcreator/plugins/libIncrediBuild.so
-/usr/lib64/qtcreator/plugins/libIos.so
-/usr/lib64/qtcreator/plugins/libLanguageClient.so
-/usr/lib64/qtcreator/plugins/libMacros.so
-/usr/lib64/qtcreator/plugins/libMarketplace.so
-/usr/lib64/qtcreator/plugins/libMcuSupport.so
-/usr/lib64/qtcreator/plugins/libMercurial.so
-/usr/lib64/qtcreator/plugins/libMesonProjectManager.so
-/usr/lib64/qtcreator/plugins/libModelEditor.so
-/usr/lib64/qtcreator/plugins/libNim.so
-/usr/lib64/qtcreator/plugins/libPerfProfiler.so
-/usr/lib64/qtcreator/plugins/libPerforce.so
-/usr/lib64/qtcreator/plugins/libProjectExplorer.so
-/usr/lib64/qtcreator/plugins/libPython.so
-/usr/lib64/qtcreator/plugins/libQbsProjectManager.so
-/usr/lib64/qtcreator/plugins/libQmakeProjectManager.so
-/usr/lib64/qtcreator/plugins/libQmlDesigner.so
-/usr/lib64/qtcreator/plugins/libQmlJSEditor.so
-/usr/lib64/qtcreator/plugins/libQmlJSTools.so
-/usr/lib64/qtcreator/plugins/libQmlPreview.so
-/usr/lib64/qtcreator/plugins/libQmlProfiler.so
-/usr/lib64/qtcreator/plugins/libQmlProjectManager.so
-/usr/lib64/qtcreator/plugins/libQnx.so
-/usr/lib64/qtcreator/plugins/libQtSupport.so
-/usr/lib64/qtcreator/plugins/libRemoteLinux.so
-/usr/lib64/qtcreator/plugins/libResourceEditor.so
-/usr/lib64/qtcreator/plugins/libScxmlEditor.so
-/usr/lib64/qtcreator/plugins/libSerialTerminal.so
-/usr/lib64/qtcreator/plugins/libSilverSearcher.so
-/usr/lib64/qtcreator/plugins/libStudioWelcome.so
-/usr/lib64/qtcreator/plugins/libSubversion.so
-/usr/lib64/qtcreator/plugins/libTaskList.so
-/usr/lib64/qtcreator/plugins/libTextEditor.so
-/usr/lib64/qtcreator/plugins/libTodo.so
-/usr/lib64/qtcreator/plugins/libUpdateInfo.so
-/usr/lib64/qtcreator/plugins/libValgrind.so
-/usr/lib64/qtcreator/plugins/libVcsBase.so
-/usr/lib64/qtcreator/plugins/libWebAssembly.so
-/usr/lib64/qtcreator/plugins/libWelcome.so
-/usr/lib64/qtcreator/plugins/libWinRt.so
-/usr/lib64/qtcreator/plugins/qmldesigner/libassetexporterplugin.so
-/usr/lib64/qtcreator/plugins/qmldesigner/libcomponentsplugin.so
-/usr/lib64/qtcreator/plugins/qmldesigner/libqmlpreviewplugin.so
-/usr/lib64/qtcreator/plugins/qmldesigner/libqtquickplugin.so
-
-%files libexec
-%defattr(-,root,root,-)
-/usr/libexec/qtcreator/buildoutputparser
-/usr/libexec/qtcreator/clangbackend
-/usr/libexec/qtcreator/cpaster
-/usr/libexec/qtcreator/cplusplus-ast2png
-/usr/libexec/qtcreator/cplusplus-frontend
-/usr/libexec/qtcreator/cplusplus-mkvisitor
-/usr/libexec/qtcreator/cplusplus-update-frontend
-/usr/libexec/qtcreator/perf2text
-/usr/libexec/qtcreator/perfparser
-/usr/libexec/qtcreator/qml2puppet
-/usr/libexec/qtcreator/qtc-askpass
-/usr/libexec/qtcreator/qtcreator_process_stub
-/usr/libexec/qtcreator/qtpromaker
-/usr/libexec/qtcreator/sdktool
