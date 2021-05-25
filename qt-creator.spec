@@ -643,7 +643,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1621964878
+export SOURCE_DATE_EPOCH=1621970616
 unset LD_AS_NEEDED
 mkdir -p clr-build
 pushd clr-build
@@ -721,9 +721,9 @@ export FFLAGS="${FFLAGS_GENERATE}"
 export FCFLAGS="${FCFLAGS_GENERATE}"
 export LDFLAGS="${LDFLAGS_GENERATE}"
 %cmake .. -G Ninja \
--DCMAKE_JOB_POOLS:STRING="compile=16;link=6" \
+-DCMAKE_JOB_POOLS:STRING="compile=11;link=6" \
 -DCMAKE_JOB_POOL_COMPILE:STRING="compile" \
--DCMAKE_JOB_POOL_LINK:STRING="link" \
+-DCMAKE_JOB_POOL_LINK:STRING="compile" \
 -DCMAKE_NM=/usr/bin/gcc-nm \
 -DCMAKE_RANLIB=/usr/bin/gcc-ranlib \
 -DCMAKE_AR=/usr/bin/gcc-ar \
@@ -759,7 +759,8 @@ export LDFLAGS="${LDFLAGS_GENERATE}"
 #sd "/usr/lib64/libxml2.so" "/usr/lib64/libxml2.a /usr/lib64/liblzma.a /usr/lib64/libz.a" $(fd -uu --glob *.ninja)
 ## make_prepend end
 ## make_macro content
-ninja --verbose -j16
+exit 1
+ninja --verbose
 #make -j16 V=1 VERBOSE=1
 ## make_macro end
 ## ccache stats
@@ -808,9 +809,9 @@ export FFLAGS="${FFLAGS_USE}"
 export FCFLAGS="${FCFLAGS_USE}"
 export LDFLAGS="${LDFLAGS_USE}"
 %cmake .. -G Ninja \
--DCMAKE_JOB_POOLS:STRING="compile=16;link=6" \
+-DCMAKE_JOB_POOLS:STRING="compile=11;link=6" \
 -DCMAKE_JOB_POOL_COMPILE:STRING="compile" \
--DCMAKE_JOB_POOL_LINK:STRING="link" \
+-DCMAKE_JOB_POOL_LINK:STRING="compile" \
 -DCMAKE_NM=/usr/bin/gcc-nm \
 -DCMAKE_RANLIB=/usr/bin/gcc-ranlib \
 -DCMAKE_AR=/usr/bin/gcc-ar \
@@ -846,7 +847,8 @@ export LDFLAGS="${LDFLAGS_USE}"
 #sd "/usr/lib64/libxml2.so" "/usr/lib64/libxml2.a /usr/lib64/liblzma.a /usr/lib64/libz.a" $(fd -uu --glob *.ninja)
 ## make_prepend end
 ## make_macro content
-ninja --verbose -j16
+exit 1
+ninja --verbose
 #make -j16 V=1 VERBOSE=1
 ## make_macro end
 ## ccache stats
@@ -856,7 +858,7 @@ fi
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1621964878
+export SOURCE_DATE_EPOCH=1621970616
 rm -rf %{buildroot}
 pushd clr-build
 %ninja_install

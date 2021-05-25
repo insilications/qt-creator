@@ -1,5 +1,5 @@
 -G Ninja
--DCMAKE_JOB_POOLS:STRING="compile=16;link=6"
+-DCMAKE_JOB_POOLS:STRING="compile=11;link=6"
 -DCMAKE_JOB_POOL_COMPILE:STRING="compile"
 -DCMAKE_JOB_POOL_LINK:STRING="compile"
 -DCMAKE_NM=/usr/bin/gcc-nm
