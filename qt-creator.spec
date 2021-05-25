@@ -645,7 +645,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1621976481
+export SOURCE_DATE_EPOCH=1621979852
 unset LD_AS_NEEDED
 mkdir -p clr-build
 pushd clr-build
@@ -792,7 +792,7 @@ export LIBVA_DRIVER_NAME=vdpau
 export LIBVA_DRIVERS_PATH=/usr/lib64/dri
 export GTK_RC_FILES=/etc/gtk/gtkrc
 export FONTCONFIG_PATH=/usr/share/defaults/fonts
-export LD_LIBRARY_PATH="/builddir/build/BUILD/qt-creator-clr/clr-build/lib64:/builddir/build/BUILD/qt-creator-clr/clr-build/lib64/qtcreator:/builddir/build/BUILD/qt-creator-clr/clr-build/lib64/qtcreator/plugins:/usr/cuda/lib64:/usr/cuda/targets/x86_64-linux/lib:/usr/nvidia/lib64:/usr/nvidia/lib:/usr/nvidia/lib/vdpau:/usr/nvidia/lib64/xorg/modules/drivers:/usr/nvidia/lib64/xorg/modules/extensions:/usr/lib64/dri:/usr/lib64/haswell:/usr/lib64:/usr/lib:/usr/share"
+export LD_LIBRARY_PATH="/builddir/build/BUILD/qt-creator-clr/clr-build/lib64:/builddir/build/BUILD/qt-creator-clr/clr-build/lib64/qtcreator:/builddir/build/BUILD/qt-creator-clr/clr-build/lib64/qtcreator/plugins:/usr/local/cuda/lib64:/usr/local/cuda/targets/x86_64-linux/lib:/usr/nvidia/lib64:/usr/nvidia/lib:/usr/nvidia/lib/vdpau:/usr/nvidia/lib64/xorg/modules/drivers:/usr/nvidia/lib64/xorg/modules/extensions:/usr/lib64/dri:/usr/lib64/haswell:/usr/lib64:/usr/lib:/usr/share"
 export PKG_CONFIG_PATH="/usr/lib64/pkgconfig:../"
 export PATH="/builddir/build/BUILD/qt-creator-clr/clr-build/bin:/builddir/build/BUILD/qt-creator-clr/clr-build/libexec/qtcreator:/usr/nvidia/bin:/usr/bin/haswell:/usr/bin:/usr/sbin"
 export $(dbus-launch)
@@ -862,7 +862,7 @@ fi
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1621976481
+export SOURCE_DATE_EPOCH=1621979852
 rm -rf %{buildroot}
 pushd clr-build
 %ninja_install
