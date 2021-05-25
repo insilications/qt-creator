@@ -453,6 +453,7 @@ sqlite-autoconf-staticdev
 syntax-highlighting
 syntax-highlighting-data
 syntax-highlighting-dev
+syntax-highlighting-staticdev
 syntax-highlighting-lib
 systemd
 systemd-dev
