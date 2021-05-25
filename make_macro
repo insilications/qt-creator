@@ -1,3 +1,2 @@
-exit 1
 ninja --verbose
 #make -j16 V=1 VERBOSE=1

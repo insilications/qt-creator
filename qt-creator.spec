@@ -338,6 +338,7 @@ BuildRequires : p11-kit-dev
 BuildRequires : pacrunner
 BuildRequires : pacrunner-dev
 BuildRequires : pango-lib
+BuildRequires : pax-utils
 BuildRequires : pcre-dev
 BuildRequires : pcre-staticdev
 BuildRequires : pcre2-dev
@@ -460,6 +461,7 @@ BuildRequires : popt-dev
 BuildRequires : popt-staticdev
 BuildRequires : pulseaudio
 BuildRequires : pulseaudio-dev
+BuildRequires : pyelftools
 BuildRequires : python3
 BuildRequires : python3-core
 BuildRequires : python3-dev
@@ -643,7 +645,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1621970616
+export SOURCE_DATE_EPOCH=1621976481
 unset LD_AS_NEEDED
 mkdir -p clr-build
 pushd clr-build
@@ -721,7 +723,7 @@ export FFLAGS="${FFLAGS_GENERATE}"
 export FCFLAGS="${FCFLAGS_GENERATE}"
 export LDFLAGS="${LDFLAGS_GENERATE}"
 %cmake .. -G Ninja \
--DCMAKE_JOB_POOLS:STRING="compile=11;link=6" \
+-DCMAKE_JOB_POOLS:STRING="compile=16;link=6" \
 -DCMAKE_JOB_POOL_COMPILE:STRING="compile" \
 -DCMAKE_JOB_POOL_LINK:STRING="compile" \
 -DCMAKE_NM=/usr/bin/gcc-nm \
@@ -749,17 +751,18 @@ export LDFLAGS="${LDFLAGS_GENERATE}"
 -DPython3_EXECUTABLE="/usr/bin/python3" \
 -DClang_DIR=/usr/lib64/cmake/clang \
 -DLLVM_DIR=/usr/lib64/cmake/llvm \
--DCPLUSPLUS_BUILD_STATIC_LIB:BOOL=ON \
 -DWITH_TESTS:BOOL=ON \
 -DWITH_UNIT_TESTS:BOOL=ON \
 -DBUILD_TESTING:BOOL=ON
 ## make_prepend content
-#sd "/usr/lib64/libz3.so" "/usr/lib64/libz3.a" $(fd -uu --glob *.ninja)
-#sd "/usr/lib64/libz.so" "/usr/lib64/libz.a" $(fd -uu --glob *.ninja)
-#sd "/usr/lib64/libxml2.so" "/usr/lib64/libxml2.a /usr/lib64/liblzma.a /usr/lib64/libz.a" $(fd -uu --glob *.ninja)
+sd "/usr/lib64/libz3.so" "/usr/lib64/libz3.a" $(fd -uu --glob *.ninja)
+sd "/usr/lib64/libz.so" "/usr/lib64/libz.a" $(fd -uu --glob *.ninja)
+sd "/usr/lib64/libxml2.so" "/usr/lib64/libxml2.a /usr/lib64/liblzma.a /usr/lib64/libz.a" $(fd -uu --glob *.ninja)
+sd "/usr/lib64/libzstd.so" "/usr/lib64/libzstd.a" $(fd -uu --glob *.ninja)
+sd "/usr/lib64/libelf.so" "/usr/lib64/libelf.a /usr/lib64/libz.a" $(fd -uu --glob *.ninja)
+sd "/usr/lib64/libdw.so" "/usr/lib64/libdw.a /usr/lib64/libelf.a /usr/lib64/libz.a /usr/lib64/liblzma.a /usr/lib64/libzstd.a" $(fd -uu --glob *.ninja)
 ## make_prepend end
 ## make_macro content
-exit 1
 ninja --verbose
 #make -j16 V=1 VERBOSE=1
 ## make_macro end
@@ -809,7 +812,7 @@ export FFLAGS="${FFLAGS_USE}"
 export FCFLAGS="${FCFLAGS_USE}"
 export LDFLAGS="${LDFLAGS_USE}"
 %cmake .. -G Ninja \
--DCMAKE_JOB_POOLS:STRING="compile=11;link=6" \
+-DCMAKE_JOB_POOLS:STRING="compile=16;link=6" \
 -DCMAKE_JOB_POOL_COMPILE:STRING="compile" \
 -DCMAKE_JOB_POOL_LINK:STRING="compile" \
 -DCMAKE_NM=/usr/bin/gcc-nm \
@@ -837,17 +840,18 @@ export LDFLAGS="${LDFLAGS_USE}"
 -DPython3_EXECUTABLE="/usr/bin/python3" \
 -DClang_DIR=/usr/lib64/cmake/clang \
 -DLLVM_DIR=/usr/lib64/cmake/llvm \
--DCPLUSPLUS_BUILD_STATIC_LIB:BOOL=ON \
 -DWITH_TESTS:BOOL=OFF \
 -DWITH_UNIT_TESTS:BOOL=OFF \
 -DBUILD_TESTING:BOOL=OFF
 ## make_prepend content
-#sd "/usr/lib64/libz3.so" "/usr/lib64/libz3.a" $(fd -uu --glob *.ninja)
-#sd "/usr/lib64/libz.so" "/usr/lib64/libz.a" $(fd -uu --glob *.ninja)
-#sd "/usr/lib64/libxml2.so" "/usr/lib64/libxml2.a /usr/lib64/liblzma.a /usr/lib64/libz.a" $(fd -uu --glob *.ninja)
+sd "/usr/lib64/libz3.so" "/usr/lib64/libz3.a" $(fd -uu --glob *.ninja)
+sd "/usr/lib64/libz.so" "/usr/lib64/libz.a" $(fd -uu --glob *.ninja)
+sd "/usr/lib64/libxml2.so" "/usr/lib64/libxml2.a /usr/lib64/liblzma.a /usr/lib64/libz.a" $(fd -uu --glob *.ninja)
+sd "/usr/lib64/libzstd.so" "/usr/lib64/libzstd.a" $(fd -uu --glob *.ninja)
+sd "/usr/lib64/libelf.so" "/usr/lib64/libelf.a /usr/lib64/libz.a" $(fd -uu --glob *.ninja)
+sd "/usr/lib64/libdw.so" "/usr/lib64/libdw.a /usr/lib64/libelf.a /usr/lib64/libz.a /usr/lib64/liblzma.a /usr/lib64/libzstd.a" $(fd -uu --glob *.ninja)
 ## make_prepend end
 ## make_macro content
-exit 1
 ninja --verbose
 #make -j16 V=1 VERBOSE=1
 ## make_macro end
@@ -858,7 +862,7 @@ fi
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1621970616
+export SOURCE_DATE_EPOCH=1621976481
 rm -rf %{buildroot}
 pushd clr-build
 %ninja_install
